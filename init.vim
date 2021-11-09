@@ -218,42 +218,6 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set wrap linebreak
 
 
-" Minimalistic autocompletion
-" Add this to your vimrc to get a minimalist autocomplete pop
-" Or use as a plugin : https://github.com/maxboisvert/vim-simple-complete
-
-" Minimalist-TabComplete-Plugin
-"inoremap <expr> <Tab> TabComplete()
-"fun! TabComplete()
-"    if getline('.')[col('.') - 2] =~ '\K' || pumvisible()
-"        return "\<C-P>"
-"    else
-"        return "\<Tab>"
-"    endif
-"endfun
-
-" Minimalist-AutoCompletePop-Plugin
-"set completeopt=menu,menuone,noinsert
-"inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-"autocmd InsertCharPre * call AutoComplete()
-"fun! AutoComplete()
-"    if v:char =~ '\K'
-"        \ && getline('.')[col('.') - 4] !~ '\K'
-"        \ && getline('.')[col('.') - 3] =~ '\K'
-"        \ && getline('.')[col('.') - 2] =~ '\K' " last char
-"        \ && getline('.')[col('.') - 1] !~ '\K'
-"
-"        call feedkeys("\<C-P>", 'n')
-"    end
-"endfun
-
-" IMPORTANT: it is necessary to install the linters and the language server
-"   in order to use them.
-" Minimum:
-"   - Linter: sudo pip install flake8
-"   - Autocomplete: sudo npm install -g pyright
-let g:ale_completion_enabled = 1
-
 " Make the left and right arrow keys change line
 set whichwrap+=<,>,[,],h,l
 
@@ -286,13 +250,6 @@ inoremap <C-k> <C-o>gj
 " map <ScrollWheelUp> <C-y>
 " map <ScrollWheelDown> <C-e>
 
-" Define ALE linters
-let g:ale_linters = {
-\   'python': ['flake8'],
-\}
-
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
 
 " Use <c-r> to trigger completion.
 inoremap <silent><expr> <c-r> coc#refresh()
