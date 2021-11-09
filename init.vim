@@ -57,6 +57,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'sheerun/vim-polyglot'
+
 " Initialize plugin system
 call plug#end()
 
