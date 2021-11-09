@@ -1,3 +1,4 @@
 {
-    "python.analysis.useLibraryCodeForTypes": false
+    "pyright.disableDiagnostics": true,
+    "python.linting.flake8Enabled": true,
 }
