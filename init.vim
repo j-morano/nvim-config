@@ -49,6 +49,10 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'lervag/vimtex'
 
+Plug 'antoinemadec/FixCursorHold.nvim'
+
+Plug 'Vimjas/vim-python-pep8-indent'
+
 " Initialize plugin system
 call plug#end()
 
@@ -183,8 +187,9 @@ set number
 " Status line
 set laststatus=2
 
-" Vertical ruler
-set colorcolumn=80
+" Vertical rulers for Python
+autocmd FileType python set colorcolumn=73,80
+
 
 " Colorscheme
 set background=light
@@ -333,4 +338,15 @@ command Dec call CocAction("jumpDeclaration")
 " Replace currently selected text with default register
 "  without yanking it
 vnoremap p "_dP
+
+" Enable highlight current symbol on CursorHold:
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" in millisecond, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
+
+
+" Show tabline
+set showtabline=1
 
