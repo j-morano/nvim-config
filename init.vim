@@ -53,6 +53,10 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
+Plug 'vim-airline/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
+
 " Initialize plugin system
 call plug#end()
 
@@ -349,4 +353,9 @@ let g:cursorhold_updatetime = 100
 
 " Show tabline
 set showtabline=1
+
+" Airline configuration
+let g:airline_theme='papercolor'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
