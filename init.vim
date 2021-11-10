@@ -236,8 +236,7 @@ nnoremap _ :noh<CR>
 " noremap k j
 " noremap j h
 " Custom
-noremap l h
-noremap ñ l
+noremap ñ h
 
 " Move cursor up and down in the visible area.
 " " nnoremap <Up> gk
