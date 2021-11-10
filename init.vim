@@ -231,20 +231,28 @@ nnoremap * *N
 nnoremap _ :noh<CR>
 
 " Remap hjkl to more natural jklñ
+" noremap ñ l
+" noremap l k
+" noremap k j
+" noremap j h
+" Custom
+noremap l h
 noremap ñ l
-noremap l k
-noremap k j
-noremap j h
 
 " Move cursor up and down in the visible area.
-" nnoremap <Up> gk
-" nnoremap <Down> gj
-nnoremap l gk
-nnoremap k gj
-inoremap <C-l> <C-o>gk
-inoremap <C-k> <C-o>gj
-" inoremap <Up> <C-o>gk
-" inoremap <Down> <C-o>gj
+" " nnoremap <Up> gk
+" " nnoremap <Down> gj
+" nnoremap l gk
+" nnoremap k gj
+" inoremap <C-l> <C-o>gk
+" inoremap <C-k> <C-o>gj
+" " inoremap <Up> <C-o>gk
+" " inoremap <Down> <C-o>gj
+" Custom
+nnoremap k gk
+nnoremap j gj
+inoremap <C-k> <C-o>gk
+inoremap <C-j> <C-o>gj
 
 " Slow mouse scroll
 " map <ScrollWheelUp> <C-y>
