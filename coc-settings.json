@@ -1,4 +1,0 @@
-{
-    "pyright.disableDiagnostics": true,
-    "python.linting.flake8Enabled": true,
-}
