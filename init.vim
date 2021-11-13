@@ -31,13 +31,13 @@ silent! endwhile
 
 
 " Disable polyglot for certain file types
-let g:polyglot_disabled = ['markdown']
+" let g:polyglot_disabled = ['markdown']
 
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Make sure you use single quotes
 
@@ -343,4 +343,10 @@ cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
 
 " Switch buffer even if it is not saved
 set hidden
+
+
+"Prevent vim from hiding symbols in markdown and json
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
