@@ -30,6 +30,10 @@ silent! while 0
 silent! endwhile
 
 
+" Disable polyglot for certain file types
+let g:polyglot_disabled = ['markdown']
+
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
