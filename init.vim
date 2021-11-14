@@ -282,7 +282,9 @@ let g:vimtex_syntax_nospell_comments=1
 " Only check spelling in LaTex files
 " autocmd BufRead,BufNewFile *.tex set spelllang=en,es spell
 
+" Custom tabspaces values
 autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
