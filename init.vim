@@ -238,6 +238,7 @@ set clipboard+=unnamedplus
 " set hlsearch
 nnoremap * *N
 nnoremap _ :noh<CR>
+set nohlsearch
 
 " Remap hjkl to more natural jklñ
 " noremap ñ l
