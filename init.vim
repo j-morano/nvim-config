@@ -30,8 +30,8 @@ silent! while 0
 silent! endwhile
 
 
-" Disable polyglot for certain file types
-" let g:polyglot_disabled = ['markdown']
+" Disable indentLine plugin for certain file types
+let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json']
 
 
 " Specify a directory for plugins
@@ -347,10 +347,4 @@ cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
 
 " Switch buffer even if it is not saved
 set hidden
-
-
-"Prevent vim from hiding symbols in markdown and json
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
 
