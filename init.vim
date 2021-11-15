@@ -65,6 +65,8 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'Yggdroot/indentLine'
 
+Plug 'github/copilot.vim'
+
 " Initialize plugin system
 call plug#end()
 
