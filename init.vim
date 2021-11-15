@@ -246,8 +246,9 @@ set nohlsearch
 " noremap k j
 " noremap j h
 " Custom
-noremap ñ l
-noremap l h
+" noremap ñ l
+" noremap l h
+noremap ñ h
 
 " Move cursor up and down in the visible area.
 " " nnoremap <Up> gk
