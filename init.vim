@@ -351,3 +351,9 @@ cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
 " Switch buffer even if it is not saved
 set hidden
 
+
+" Save marks and other information between sessions
+set viminfo='100,f1
+nnoremap ' `
+nnoremap ` '
+
