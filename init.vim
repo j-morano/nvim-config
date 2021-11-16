@@ -204,6 +204,7 @@ set laststatus=2
 " Vertical rulers for Python
 autocmd FileType python set colorcolumn=73,80
 autocmd FileType rust set colorcolumn=81,101
+autocmd FileType javascript set colorcolumn=81
 
 
 " Colorscheme
