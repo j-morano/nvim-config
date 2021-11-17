@@ -358,3 +358,12 @@ set viminfo='100,f1
 nnoremap ' `
 nnoremap ` '
 
+
+" Enable copilot for certain file types only
+let g:copilot_filetypes = {
+    \ '*': v:false,
+    \ 'python': v:true,
+    \ 'javascript': v:true,
+\ }
+
+
