@@ -67,6 +67,9 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'github/copilot.vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Initialize plugin system
 call plug#end()
 
