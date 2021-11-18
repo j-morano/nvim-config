@@ -208,6 +208,7 @@ set laststatus=2
 autocmd FileType python set colorcolumn=73,80
 autocmd FileType rust set colorcolumn=81,101
 autocmd FileType javascript set colorcolumn=81
+autocmd FileType tex set colorcolumn=81
 
 
 " Colorscheme
