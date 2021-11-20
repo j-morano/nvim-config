@@ -325,7 +325,7 @@ command Imp call CocAction("jumpImplementation")
 command Def call CocAction("jumpDefinition")
 command Dec call CocAction("jumpDeclaration")
 " Other actions
-command Ren call CocAction("rename")
+" command Ren call CocAction("rename")
 command Ref call CocAction("refactor")
 command Form call CocAction("format")
 
