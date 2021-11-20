@@ -318,11 +318,16 @@ set smartcase
 
 
 " coc.nvim commands
+" github.com/neoclide/coc.nvim/blob/9f6e29b6f9661ebba10ff3df84de11d96c8a9e56/doc/coc.txt
 " GoTo code navigation.
 command Refs call CocAction("jumpReferences")
 command Imp call CocAction("jumpImplementation")
 command Def call CocAction("jumpDefinition")
 command Dec call CocAction("jumpDeclaration")
+" Other actions
+command Ren call CocAction("rename")
+command Ref call CocAction("refactor")
+command Form call CocAction("format")
 
 " Replace currently selected text with default register
 "  without yanking it
