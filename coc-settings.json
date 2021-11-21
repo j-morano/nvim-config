@@ -1,11 +1,15 @@
 {
     "python.analysis.typeCheckingMode": "off",
-    "python.linting.mypyEnabled": true,
+    "python.linting.pytypeEnabled": true,
     "python.linting.mypyArgs": [
         "--no-pretty",
         "--ignore-missing-imports",
         "--follow-imports=normal",
         "--show-column-numbers"
+    ],
+    "python.linting.pytypeArgs": [
+        "-d",
+        "import-error"
     ],
     "rust-analyzer.procMacro.enable": true
 }
