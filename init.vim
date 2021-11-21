@@ -375,6 +375,8 @@ set hidden
 set viminfo='100,f1
 nnoremap ' `
 nnoremap ` '
+nnoremap <silent> <expr> ' "'".toupper(nr2char(getchar()))
+nnoremap <silent> <expr> m "m".toupper(nr2char(getchar()))
 
 
 " Enable copilot for certain file types only
