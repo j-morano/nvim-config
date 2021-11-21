@@ -1,5 +1,6 @@
 {
     "python.analysis.typeCheckingMode": "off",
+    "python.linting.mypyPath": "/usr/bin/mypy",
     "python.linting.pytypeEnabled": true,
     "python.linting.mypyArgs": [
         "--no-pretty",
@@ -7,9 +8,6 @@
         "--follow-imports=normal",
         "--show-column-numbers"
     ],
-    "python.linting.pytypeArgs": [
-        "-d",
-        "import-error"
-    ],
+    "python.linting.pytypePath": "/usr/bin/pytype",
     "rust-analyzer.procMacro.enable": true
 }
