@@ -396,3 +396,5 @@ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 autocmd TermOpen * startinsert
 " Exit terminal mode with ESC
 :tnoremap <Esc> <C-\><C-n>
+" Airline: show terminal buffer title
+let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
