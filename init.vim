@@ -254,6 +254,8 @@ set nohlsearch
 " noremap ñ l
 " noremap l h
 noremap ñ h
+noremap ; h
+noremap h ;
 
 " Move cursor up and down in the visible area.
 " " nnoremap <Up> gk
