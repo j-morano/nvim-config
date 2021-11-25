@@ -390,7 +390,8 @@ let g:copilot_filetypes = {
 
 
 " Resize Neovim itself when launched as initial command for terminal
-autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+autocmd VimEnter * :sleep 100m
+autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 
 
 " Terminal
