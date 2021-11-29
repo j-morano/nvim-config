@@ -67,8 +67,8 @@ Plug 'Yggdroot/indentLine'
 
 " Plug 'github/copilot.vim'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -413,3 +413,12 @@ autocmd TermOpen * startinsert
 :tnoremap <Esc> <C-\><C-n>
 " Airline: show terminal buffer title
 let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
+
+
+" Map leader to space
+let mapleader = " "
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
