@@ -417,12 +417,19 @@ let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|start
 
 " Map leader to space
 let mapleader = " "
+
+
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+
 " Move between buffers
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
+
+
+" Search and replace selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
