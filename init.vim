@@ -431,5 +431,5 @@ nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
 
 
-" Search and replace selected text
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+" Search and replace selected text starting from the cursor position
+vnoremap <C-r> "hy:,$s/<C-r>h//gc<left><left><left>
