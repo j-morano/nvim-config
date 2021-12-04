@@ -433,3 +433,7 @@ nnoremap <leader>n :bn<CR>
 
 " Search and replace selected text starting from the cursor position
 vnoremap <C-r> "hy:,$s/<C-r>h//gc<left><left><left>
+
+
+" Yank a region without moving the cursor to the top of the block
+vmap y ygv<Esc>
