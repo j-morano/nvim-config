@@ -441,4 +441,4 @@ vmap y ygv<Esc>
 
 " Show trailing spaces
 set listchars=trail:@
-set list
+" set list
