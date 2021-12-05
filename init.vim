@@ -437,3 +437,8 @@ vnoremap <C-r> "hy:,$s/<C-r>h//gc<left><left><left>
 
 " Yank a region without moving the cursor to the top of the block
 vmap y ygv<Esc>
+
+
+" Show trailing spaces
+set listchars=trail:@
+set list
