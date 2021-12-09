@@ -193,9 +193,9 @@ set encoding=utf-8
 
 " Save on double s
 " nnoremap s <NOP>
-" nmap ss :w<CR>
+" nmap ss :update<CR>
 " Save on single 's'
-nnoremap s :w<CR>
+nnoremap s :update<CR>
 
 
 " Show line numbers
