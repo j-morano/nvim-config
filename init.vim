@@ -43,11 +43,13 @@ call plug#begin('~/.config/nvim/installed_plugins')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify'
-else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
+" if has('nvim') || has('patch-8.0.902')
+"   Plug 'mhinz/vim-signify'
+" else
+"   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+" endif
+
+Plug 'airblade/vim-gitgutter' 
 
 Plug 'NLKNguyen/papercolor-theme'
 
