@@ -434,6 +434,10 @@ set listchars=trail:@
 " set list
 
 
+" Do not leave scroll margins
+set scrolloff=0
+
+
 " --- Best remaps ever ---
 
 " Behave Vim
