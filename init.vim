@@ -187,14 +187,6 @@ highlight NonText ctermbg=NONE
 " Tabs as spaces
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab smartindent
 
-" Autoclosing
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 " Soft word wrap
 set wrap linebreak
