@@ -19,12 +19,6 @@ call plug#begin('~/.config/nvim/installed_plugins')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" if has('nvim') || has('patch-8.0.902')
-"   Plug 'mhinz/vim-signify'
-" else
-"   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-" endif
-
 Plug 'airblade/vim-gitgutter' 
 
 Plug 'NLKNguyen/papercolor-theme'
@@ -79,10 +73,6 @@ endif
 " confusing.
 set nrformats-=octal
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries.
-if has('win32')
-  set guioptions-=t
-endif
 
 " Don't use Ex mode, use Q for formatting.
 " Revert with ":unmap Q".
@@ -195,14 +185,17 @@ highlight LineNr ctermbg=NONE
 highlight NonText ctermbg=NONE
 
 " Tabs as spaces
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab smartindent
 
 " Autoclosing
-"inoremap " ""<left>
-"inoremap ' ''<left>
-"inoremap ( ()<left>
-"inoremap [ []<left>
-"inoremap { {}
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " Soft word wrap
 set wrap linebreak
 
@@ -220,12 +213,7 @@ nnoremap * *N
 nnoremap _ :noh<CR>
 set nohlsearch
 
-" Remap hjkl to more natural jklñ
-" noremap ñ l
-" noremap l k
-" noremap k j
-" noremap j h
-" Custom
+" Custom hjkl remap (ES and US layout)
 " noremap ñ l
 " noremap l h
 noremap ñ h
@@ -233,21 +221,17 @@ noremap ; h
 noremap h ;
 
 " Move cursor up and down in the visible area.
-" " nnoremap <Up> gk
-" " nnoremap <Down> gj
-" nnoremap l gk
-" nnoremap k gj
-" inoremap <C-l> <C-o>gk
-" inoremap <C-k> <C-o>gj
-" " inoremap <Up> <C-o>gk
-" " inoremap <Down> <C-o>gj
+" nnoremap <Up> gk
+" nnoremap <Down> gj
+" inoremap <Up> <C-o>gk
+" inoremap <Down> <C-o>gj
 " Custom
 nnoremap k gk
 nnoremap j gj
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
 
-" Slow mouse scroll
+" Smooth mouse scroll
 " map <ScrollWheelUp> <C-y>
 " map <ScrollWheelDown> <C-e>
 
