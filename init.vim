@@ -173,7 +173,6 @@ set laststatus=2
 autocmd FileType python set colorcolumn=73,80
 autocmd FileType rust set colorcolumn=81,101
 autocmd FileType javascript set colorcolumn=81
-autocmd FileType tex set colorcolumn=81
 
 
 " Colorscheme
@@ -255,12 +254,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-
-" Do not spell comments in LaTex
-let g:vimtex_syntax_nospell_comments=1
-
-" Only check spelling in LaTex files
-" autocmd BufRead,BufNewFile *.tex set spelllang=en,es spell
 
 " Custom tabspaces values
 autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
