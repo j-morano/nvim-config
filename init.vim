@@ -349,9 +349,9 @@ set hidden
 
 " Save marks and other information between sessions
 set viminfo='100,f1
-nnoremap ' `
-nnoremap ` '
-nnoremap <silent> <expr> ' "'".toupper(nr2char(getchar()))
+" nnoremap ' `
+" nnoremap ` '
+nnoremap <silent> <expr> ' "`".toupper(nr2char(getchar()))
 nnoremap <silent> <expr> m "m".toupper(nr2char(getchar()))
 
 
