@@ -412,6 +412,10 @@ set listchars=trail:@
 set scrolloff=0
 
 
+" Fast repeat macro
+nnoremap ¡ @q
+
+
 " --- Best remaps ever ---
 
 " Behave Vim
