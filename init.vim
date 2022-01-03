@@ -213,6 +213,7 @@ noremap h ;
 nnoremap Ñ :
 nnoremap qÑ q:
 nnoremap @Ñ @:
+nnoremap <C-w>ñ <C-w>h
 
 " Move cursor up and down in the visible area.
 " nnoremap <Up> gk
