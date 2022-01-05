@@ -236,6 +236,10 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " map <ScrollWheelDown> <C-e>
 
 
+" Go backwards
+nnoremap W b
+
+
 " Use <c-r> to trigger completion.
 inoremap <silent><expr> <c-r> coc#refresh()
 
