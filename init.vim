@@ -339,6 +339,9 @@ cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
 " Switch buffer even if it is not saved
 set hidden
 
+" Fix buffers of netrw not getting closed
+autocmd FileType netrw setl bufhidden=delete
+
 
 " Save marks and other information between sessions
 set viminfo='100,f1
