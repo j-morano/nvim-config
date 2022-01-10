@@ -19,6 +19,12 @@ call plug#begin('~/.config/nvim/installed_plugins')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 Plug 'airblade/vim-gitgutter' 
 
 Plug 'NLKNguyen/papercolor-theme'
@@ -305,6 +311,10 @@ command Dec call CocAction("jumpDeclaration")
 command Ref call CocAction("refactor")
 command Form call CocAction("format")
 command Sea call CocSearchCurrentWord()
+
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
 
 
 " Replace currently selected text with default register
