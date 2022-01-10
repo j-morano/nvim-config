@@ -314,7 +314,7 @@ command Sea call CocSearchCurrentWord()
 
 
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+let g:UltiSnipsExpandTrigger = '<C-l>'
 
 
 " Replace currently selected text with default register
