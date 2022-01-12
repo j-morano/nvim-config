@@ -224,6 +224,11 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " map <ScrollWheelUp> <C-y>
 " map <ScrollWheelDown> <C-e>
 
+" Delete next word
+nnoremap <C-d> dw
+
+" Add blank line below
+nnoremap - o<Esc>k
 
 " Go backwards
 nnoremap W b
