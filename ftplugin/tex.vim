@@ -7,6 +7,7 @@ let g:vimtex_syntax_nospell_comments=1
 " Only check spelling in LaTex files
 " autocmd BufRead,BufNewFile *.tex set spelllang=en,es spell
 
+nnoremap <leader>v a\verb\|\|<ESC>i
 nnoremap <leader>i a\textit{}<ESC>i
 nnoremap <leader>b a\textbf{}<ESC>i
 nnoremap <leader>c a~\cite{}<ESC>i
