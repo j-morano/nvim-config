@@ -47,6 +47,7 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 " Initialize plugin system
 call plug#end()
@@ -418,6 +419,17 @@ set scrolloff=0
 
 " Fast repeat macro
 nnoremap ¡ @q
+
+
+" --- Harpoon ---
+nnoremap <leader><leader> :lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>a :lua require("harpoon.mark").add_file()<cr>
+nnoremap <leader>j :lua require("harpoon.ui").nav_next()<cr>
+nnoremap <leader>k :lua require("harpoon.ui").nav_prev()<cr>
+nnoremap <leader>1 :lua require("harpoon.ui").nav_file(1)<cr>
+nnoremap <leader>2 :lua require("harpoon.ui").nav_file(2)<cr>
+nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<cr>
+nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
 
 
 " --- Best remaps ever ---
