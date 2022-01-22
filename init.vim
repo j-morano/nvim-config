@@ -421,6 +421,10 @@ set scrolloff=0
 nnoremap ¡ @q
 
 
+" Remap increase number
+nnoremap <C-c> <C-a>
+
+
 " --- Harpoon ---
 nnoremap <leader><leader> :lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<cr>
