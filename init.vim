@@ -229,9 +229,6 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " Add blank line below
 nnoremap - o<Esc>k
 
-" Go backwards
-nnoremap W b
-
 
 " Use <c-r> to trigger completion.
 inoremap <silent><expr> <c-r> coc#refresh()
