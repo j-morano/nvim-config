@@ -194,12 +194,8 @@ nnoremap * *N
 nnoremap _ :noh<CR>
 set nohlsearch
 
-" Custom hjkl remap (ES and US layout)
-" noremap ñ l
-" noremap l h
+" Custom hjkl remap
 noremap ñ h
-noremap ; h
-noremap h ;
 nnoremap Ñ :
 nnoremap qÑ q:
 nnoremap @Ñ @:
