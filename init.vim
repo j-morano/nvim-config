@@ -226,6 +226,10 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap - o<Esc>k
 
 
+" Remove trailing spaces
+command RmTrail :%s/\s\+$//e
+
+
 " Use <c-r> to trigger completion.
 inoremap <silent><expr> <c-r> coc#refresh()
 
