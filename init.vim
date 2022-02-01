@@ -35,9 +35,9 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline-themes'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -334,9 +334,9 @@ let g:cursorhold_updatetime = 100
 set showtabline=1
 
 " Airline configuration
-let g:airline_theme='papercolor'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+"let g:airline_theme='papercolor'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
 
 
 " Switch arrow key mappings for wildmenu tab completion
@@ -378,7 +378,7 @@ autocmd TermOpen * startinsert
 " Exit terminal mode with ESC
 :tnoremap <Esc> <C-\><C-n>
 " Airline: show terminal buffer title
-let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
+"let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 
 " Map leader to space
@@ -388,7 +388,7 @@ let mapleader = " "
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
@@ -398,7 +398,8 @@ nnoremap <leader>n :bn<CR>
 
 
 " Search and replace selected text starting from the cursor position
-vnoremap <C-r> "hy:,$s/<C-r>h//gc<left><left><left>
+" sno: nomagic: do not use regex
+vnoremap <C-r> "hy:,$sno/<C-r>h//gc<left><left><left>
 
 
 " Yank a region without moving the cursor to the top of the block
