@@ -9,7 +9,7 @@ let g:vimtex_syntax_nospell_comments=1
 
 nnoremap <leader>v a\verb\|\|<ESC>i
 nnoremap <leader>i a\textit{}<ESC>i
-nnoremap <leader>b a\textbf{}<ESC>i
+nnoremap <leader>d a\textbf{}<ESC>i
 nnoremap <leader>c a~\cite{}<ESC>i
 nnoremap <leader>r a~\ref{}<ESC>i
 nnoremap <leader>fu a\footnote{\url{}}<ESC>hi

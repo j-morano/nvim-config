@@ -382,7 +382,6 @@ autocmd TermOpen * startinsert
 " Airline: show terminal buffer title
 "let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
-
 " Map leader to space
 let mapleader = " "
 
@@ -397,6 +396,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Move between buffers
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
+nnoremap <leader>b :buffers<CR>:b
 
 
 " Search and replace selected text starting from the cursor position
