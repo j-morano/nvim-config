@@ -396,7 +396,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Move between buffers
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
-nnoremap <leader>b :buffers<CR>:b<space>
+nnoremap <leader><leader> :buffers<CR>:b<space>
 
 
 " Search and replace selected text starting from the cursor position
@@ -424,9 +424,8 @@ nnoremap ¡ @q
 " Remap increase number
 nnoremap <C-c> <C-a>
 
-
 " --- Harpoon ---
-nnoremap <leader><leader> :lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <leader>o :lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<cr>
 nnoremap <leader>j :lua require("harpoon.ui").nav_next()<cr>
 nnoremap <leader>k :lua require("harpoon.ui").nav_prev()<cr>
