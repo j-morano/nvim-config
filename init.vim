@@ -321,6 +321,8 @@ let g:UltiSnipsExpandTrigger = '<C-l>'
 " Replace currently selected text with default register
 "  without yanking it
 vnoremap p "_dP
+noremap c "_c
+
 
 " Enable highlight current symbol on CursorHold:
 autocmd CursorHold * silent call CocActionAsync('highlight')
