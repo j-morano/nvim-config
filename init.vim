@@ -346,7 +346,8 @@ set wildcharm=<C-Z>
 cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
 cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
 cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
-cnoremap <expr> ¡ wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<right>"
+cnoremap <expr> <right> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<right>"
+cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 
 
 " Switch buffer even if it is not saved
@@ -418,7 +419,7 @@ set scrolloff=0
 
 
 " Fast repeat macro
-nnoremap º @q
+nnoremap ¡ @q
 
 
 " Remap increase number
