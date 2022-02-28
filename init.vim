@@ -230,8 +230,11 @@ nnoremap - o<Esc>k
 command RmTrail :%s/\s\+$//e
 
 
-" Use <c-r> to trigger completion.
-inoremap <silent><expr> <c-r> coc#refresh()
+" Use <C-r> to trigger completion.
+inoremap <silent><expr> <C-r> coc#refresh()
+
+" Trigger signature help
+inoremap <C-p> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
 
 " Show relative numbers
 set relativenumber
