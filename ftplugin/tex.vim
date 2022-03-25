@@ -15,3 +15,4 @@ nnoremap <leader>r a~\ref{}<ESC>i
 nnoremap <leader>fu a\footnote{\url{}}<ESC>hi
 nnoremap <leader>z a\begin{itemize}<CR>\item <CR>\end{itemize}<ESC><<<kA
 nnoremap <leader>x :!./compile
+nnoremap <leader>. f.lxi<CR><ESC>
