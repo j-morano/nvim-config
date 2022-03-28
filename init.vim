@@ -260,7 +260,7 @@ endfunction
 
 
 " Custom tabspaces values
-autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+"autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 " Use K to show documentation in preview window.
