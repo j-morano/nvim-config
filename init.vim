@@ -452,3 +452,9 @@ nnoremap J mzJ`z
 " Moving text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" When switching buffers, preserve window view.
+if v:version >= 700
+    au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+    au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | endif
+endif
