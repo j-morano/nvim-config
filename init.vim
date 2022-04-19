@@ -404,8 +404,8 @@ nnoremap <leader><leader> :buffers<CR>:b<space>
 
 
 " Search and replace selected text starting from the cursor position
-" sno: nomagic: do not use regex
-vnoremap <C-r> "hy:,$sno/<C-r>h//gc<left><left><left>
+" \V: very nomagic: do not use regex
+vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
 
 " Yank a region without moving the cursor to the top of the block
