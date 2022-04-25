@@ -408,8 +408,8 @@ nnoremap <leader><leader> :buffers<CR>:b<space>
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
 " -- Vim-style alternative to multiple cursors
-" You can change a whole word by pressing s*, or if you only want to change
-" a few characters, visually select them and then press s*. This changes
+" You can change a whole word by pressing <leader>s, or if you only want to change
+" a few characters, visually select them and then press <leader>s. This changes
 " just the word/selection under the cursor; to repeat the change,
 " press . (dot), which searches for the next match and changes it in one go.
 nnoremap <silent> <leader>s :let @/='\<'.expand('<cword>').'\>'<CR>cgn
