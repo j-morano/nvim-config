@@ -221,6 +221,8 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " map <ScrollWheelUp> <C-y>
 " map <ScrollWheelDown> <C-e>
 
+vnoremap "" c"<c-r>""
+vnoremap '' c'<c-r>"'
 
 " Add blank line below
 nnoremap - o<Esc>k
