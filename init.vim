@@ -407,6 +407,10 @@ nnoremap <leader>n :bn<CR>
 nnoremap <leader><leader> :buffers<CR>:b<space>
 
 
+" Check if file under cursor exists
+nnoremap <leader>r :echo filereadable(expand('<cfile>')) ? 'exists' : 'does not exist'<cr>
+
+
 " Search and replace selected text starting from the cursor position
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
