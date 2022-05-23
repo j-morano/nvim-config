@@ -407,8 +407,19 @@ nnoremap <leader>n :bn<CR>
 nnoremap <leader><leader> :buffers<CR>:b<space>
 
 
+function IsFile()
+    if filereadable(expand('<cfile>'))
+        return 1
+    endif
+    if isdirectory(expand('<cfile>'))
+        return 1
+    endif
+    return 0
+endfunction
+
+
 " Check if file under cursor exists
-nnoremap <leader>r :echo filereadable(expand('<cfile>')) ? 'exists' : 'does not exist'<cr>
+nnoremap <leader>r :echo IsFile() ? 'exists' : 'does not exist'<cr>
 
 
 " Search and replace selected text starting from the cursor position
