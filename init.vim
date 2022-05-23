@@ -216,6 +216,8 @@ inoremap <C-j> <C-o>gj
 " Jump regular lines when using numbers
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
+vnoremap <expr> j v:count ? 'j' : 'gj'
+vnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Smooth mouse scroll
 " map <ScrollWheelUp> <C-y>
