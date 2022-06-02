@@ -422,6 +422,11 @@ endfunction
 nnoremap <leader>r :echo IsFile() ? 'exists' : 'does not exist'<cr>
 
 
+" More comfortable keybindig for alternate-file
+inoremap <M-w> <ESC>:e#<CR>a
+nnoremap <M-w> <ESC>:e#<CR>
+
+
 " Search and replace selected text starting from the cursor position
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
