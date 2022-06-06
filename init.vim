@@ -471,6 +471,10 @@ nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<cr>
 nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
 
 
+# Alternative escape
+inoremap jj <Esc>
+
+
 " --- Best remaps ever ---
 
 " Behave Vim
