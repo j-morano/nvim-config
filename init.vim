@@ -399,6 +399,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope resume<cr>
 
 
 " Move between buffers
@@ -419,7 +420,7 @@ endfunction
 
 
 " Check if file under cursor exists
-nnoremap <leader>r :echo IsFile() ? 'exists' : 'does not exist'<cr>
+nnoremap <leader>e :echo IsFile() ? 'exists' : 'does not exist'<cr>
 
 
 " More comfortable keybindig for alternate-file
