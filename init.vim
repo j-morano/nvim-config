@@ -1,9 +1,6 @@
 " Custom vimrc file.
 "
 " Maintainer:	José Morano <j.morano@udc..es>
-"
-" Individual settings can be reverted with ":set option&".
-" Other commands can be reverted as mentioned below.
 
 
 " Disable indentLine plugin for certain file types
@@ -35,15 +32,9 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
-"Plug 'vim-airline/vim-airline'
-
-"Plug 'vim-airline/vim-airline-themes'
-
 Plug 'sheerun/vim-polyglot'
 
 Plug 'Yggdroot/indentLine'
-
-" Plug 'github/copilot.vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -67,9 +58,9 @@ set ttimeoutlen=100	" wait up to 100ms after Esc for special key
 " Show @@@ in the last line if it is truncated.
 set display=truncate
 
-" Show a few lines of context around the cursor.  Note that this makes the
+" Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
+set scrolloff=0
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -219,9 +210,6 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 vnoremap <expr> j v:count ? 'j' : 'gj'
 vnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Smooth mouse scroll
-" map <ScrollWheelUp> <C-y>
-" map <ScrollWheelDown> <C-e>
 
 vnoremap "" c"<c-r>""
 vnoremap '' c'<c-r>"'
@@ -342,11 +330,6 @@ let g:cursorhold_updatetime = 100
 " Show tabline
 set showtabline=1
 
-" Airline configuration
-"let g:airline_theme='papercolor'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
-
 
 " Switch arrow key mappings for wildmenu tab completion
 set wildcharm=<C-Z>
@@ -369,14 +352,6 @@ nnoremap <silent> <expr> ' "`" . toupper(nr2char(getchar())) . 'zz'
 nnoremap <silent> <expr> m "m" . toupper(nr2char(getchar()))
 
 
-" Enable copilot for certain file types only
-let g:copilot_filetypes = {
-    \ '*': v:false,
-    \ 'python': v:true,
-    \ 'javascript': v:true,
-\ }
-
-
 " Resize Neovim itself when launched as initial command for terminal
 autocmd VimEnter * :sleep 100m
 autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
@@ -387,8 +362,6 @@ autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 autocmd TermOpen * startinsert
 " Exit terminal mode with ESC
 :tnoremap <Esc> <C-\><C-n>
-" Airline: show terminal buffer title
-"let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 " Map leader to space
 let mapleader = " "
@@ -403,8 +376,6 @@ nnoremap <leader>fr <cmd>Telescope resume<cr>
 
 
 " Move between buffers
-nnoremap <leader>p :bp<CR>
-nnoremap <leader>n :bn<CR>
 nnoremap <leader><leader> :buffers<CR>:b<space>
 
 
@@ -432,6 +403,7 @@ nnoremap <M-w> <ESC>:e#<CR>
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
+
 " -- Vim-style alternative to multiple cursors
 " You can change a whole word by pressing <leader>s, or if you only want to change
 " a few characters, visually select them and then press <leader>s. This changes
@@ -448,10 +420,6 @@ vmap y ygv<Esc>
 " Show trailing spaces
 set listchars=trail:@
 " set list
-
-
-" Do not leave scroll margins
-set scrolloff=0
 
 
 " Fast repeat macro
