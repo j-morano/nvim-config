@@ -211,6 +211,10 @@ vnoremap <expr> j v:count ? 'j' : 'gj'
 vnoremap <expr> k v:count ? 'k' : 'gk'
 
 
+" Wildmode to last used
+set wildmode=full:lastused
+
+
 vnoremap "" c"<c-r>""
 vnoremap '' c'<c-r>"'
 
