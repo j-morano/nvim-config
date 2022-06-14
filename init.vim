@@ -441,7 +441,7 @@ nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
 
 
 " Alternative escape
-inoremap jj <Esc>
+inoremap ç <Esc>
 
 
 " --- Best remaps ever ---
