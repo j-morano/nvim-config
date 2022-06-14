@@ -168,6 +168,11 @@ highlight NonText ctermbg=NONE
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab smartindent
 
 
+" Break indent
+set breakindent
+set showbreak=>>
+
+
 " Soft word wrap
 set wrap linebreak
 
