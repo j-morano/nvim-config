@@ -203,10 +203,10 @@ nnoremap <C-w>ñ <C-w>h
 " inoremap <Up> <C-o>gk
 " inoremap <Down> <C-o>gj
 " Move cursor by display lines
-nnoremap k gk
-nnoremap j gj
-vnoremap k gk
-vnoremap j gj
+"nnoremap k gk
+"nnoremap j gj
+"vnoremap k gk
+"vnoremap j gj
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
 " Jump regular lines when using numbers
