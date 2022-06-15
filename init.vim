@@ -224,7 +224,7 @@ vnoremap "" c"<c-r>""
 vnoremap '' c'<c-r>"'
 
 " Add blank line below
-nnoremap - o<Esc>k
+nnoremap _ o<Esc>k
 
 
 " Remove trailing spaces
