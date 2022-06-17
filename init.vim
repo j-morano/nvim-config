@@ -426,6 +426,11 @@ xnoremap <silent> <leader>s "sy:let @/=@s<CR>cgn
 vmap y ygv<Esc>
 
 
+" Open splits to the right and below
+set splitright
+set splitbelow
+
+
 " Show trailing spaces
 set listchars=trail:@
 " set list
