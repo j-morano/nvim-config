@@ -221,8 +221,8 @@ vnoremap <expr> k v:count ? 'k' : 'gk'
 set wildmode=full:lastused
 
 
-vnoremap "" c"<c-r>""
-vnoremap '' c'<c-r>"'
+vnoremap "" c"<c-r>""<esc>
+vnoremap '' c'<c-r>"'<esc>
 
 " Add blank line below
 nnoremap _ o<Esc>k
