@@ -193,6 +193,7 @@ set nohlsearch
 " Custom hjkl remap
 noremap ñ h
 nnoremap Ñ :
+vnoremap Ñ :
 nnoremap qÑ q:
 nnoremap @Ñ @:
 nnoremap <C-w>ñ <C-w>h
