@@ -6,4 +6,4 @@ xnoremap ) :norm I# <ESC>
 xnoremap ( :norm ^2x<ESC>
 
 " Write dictionary keyworkds
-inoremap <C-k> ['']<left><left>
+inoremap <C-d> ['']<left><left>
