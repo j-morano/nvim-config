@@ -44,6 +44,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 
+Plug 'itchyny/vim-cursorword'
+
 " Initialize plugin system
 call plug#end()
 
@@ -152,26 +154,30 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require'lspconfig'.pyright.setup({
+require'lspconfig'.pylsp.setup({
+    cmd={"python3", "-m", "pylsp"},
+    settings = {
+        pylsp = {
+            plugins={
+                pycodestyle={
+                    enabled=false
+                }
+            }
+        }
+    },
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
 })
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local hold_group = augroup('HighlightValue', {})
-autocmd('CursorHold', {
-    group = hold_group,
-    pattern = '*',
-    callback = function()
-       vim.lsp.buf.document_highlight() 
-    end,
-})
 EOF
 
-autocmd CursorHold  * lua vim.lsp.buf.document_highlight()
-autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()
-autocmd CursorMoved * lua vim.lsp.buf.clear_references()
+let g:cursorword_highlight = 0
+let g:cursorword_delay = 0
+
+augroup cursorword
+  autocmd!
+  autocmd VimEnter,ColorScheme * highlight CursorWord0 ctermbg=254
+augroup END
 
 
 " Allow backspacing over everything in insert mode.
@@ -318,7 +324,7 @@ set clipboard+=unnamedplus
 " set hlsearch
 "nnoremap * *N
 nnoremap _ :noh<CR>
-"set nohlsearch
+set nohlsearch
 
 " Custom hjkl remap
 noremap ñ h
@@ -391,7 +397,7 @@ noremap c "_c
 
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
-let g:cursorhold_updatetime = 100
+let g:updatetime = 100
 
 
 " Show tabline
