@@ -14,8 +14,6 @@ call plug#begin('~/.config/nvim/installed_plugins')
 
 " Make sure you use single quotes
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
@@ -40,8 +38,140 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ThePrimeagen/harpoon'
 
+Plug 'neovim/nvim-lspconfig'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+
 " Initialize plugin system
 call plug#end()
+
+lua << EOF
+---- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+snippet = {
+  -- REQUIRED - you must specify a snippet engine
+  expand = function(args)
+    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+    -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+  end,
+},
+window = {
+  -- completion = cmp.config.window.bordered(),
+  -- documentation = cmp.config.window.bordered(),
+},
+mapping = cmp.mapping.preset.insert({
+  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  ['<C-Space>'] = cmp.mapping.complete(),
+  ['<C-e>'] = cmp.mapping.abort(),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+}),
+sources = cmp.config.sources({
+  { name = 'nvim_lsp' },
+  { name = 'vsnip' }, -- For vsnip users.
+  -- { name = 'luasnip' }, -- For luasnip users.
+  -- { name = 'ultisnips' }, -- For ultisnips users.
+  -- { name = 'snippy' }, -- For snippy users.
+}, {
+  { name = 'buffer' },
+})
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+sources = cmp.config.sources({
+  { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+}, {
+  { name = 'buffer' },
+})
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+mapping = cmp.mapping.preset.cmdline(),
+sources = {
+  { name = 'buffer' }
+}
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+mapping = cmp.mapping.preset.cmdline(),
+sources = cmp.config.sources({
+  { name = 'path' }
+}, {
+  { name = 'cmdline' }
+})
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+---- LSP
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+end
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require'lspconfig'.pyright.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local hold_group = augroup('HighlightValue', {})
+autocmd('CursorHold', {
+    group = hold_group,
+    pattern = '*',
+    callback = function()
+       vim.lsp.buf.document_highlight() 
+    end,
+})
+EOF
+
+autocmd CursorHold  * lua vim.lsp.buf.document_highlight()
+autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()
+autocmd CursorMoved * lua vim.lsp.buf.clear_references()
 
 
 " Allow backspacing over everything in insert mode.
@@ -186,9 +316,9 @@ set clipboard+=unnamedplus
 
 " Higlight current word occurences
 " set hlsearch
-nnoremap * *N
+"nnoremap * *N
 nnoremap _ :noh<CR>
-set nohlsearch
+"set nohlsearch
 
 " Custom hjkl remap
 noremap ñ h
@@ -232,62 +362,13 @@ nnoremap _ o<Esc>k
 command RmTrail :%s/\s\+$//e
 
 
-" Use <C-r> to trigger completion.
-inoremap <silent><expr> <C-r> coc#refresh()
-
-" Trigger signature help
-inoremap <C-p> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
-
 " Show relative numbers
 set relativenumber
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 
 " Custom tabspaces values
 "autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
 
 
 " Ignore case in searches.
@@ -296,27 +377,6 @@ set ignorecase
 "  case characters. Only used when the search pattern is typed and
 "  'ignorecase' option is on.
 set smartcase
-
-
-" coc.nvim auxiliary functions
-function! CocSearchCurrentWord()
-  let currentword = expand("<cword>")
-  :echo currentword
-  :execute ":CocSearch " . currentword
-endfunction
-
-" coc.nvim commands
-" github.com/neoclide/coc.nvim/blob/9f6e29b6f9661ebba10ff3df84de11d96c8a9e56/doc/coc.txt
-" GoTo code navigation.
-command Refs call CocAction("jumpReferences")
-command Imp call CocAction("jumpImplementation")
-command Def call CocAction("jumpDefinition")
-command Dec call CocAction("jumpDeclaration")
-" Other actions
-" command Ren call CocAction("rename")
-command Ref call CocAction("refactor")
-command Form call CocAction("format")
-command Sea call CocSearchCurrentWord()
 
 
 " Use <C-l> for trigger snippet expand.
@@ -328,9 +388,6 @@ let g:UltiSnipsExpandTrigger = '<C-l>'
 vnoremap p "_dP
 noremap c "_c
 
-
-" Enable highlight current symbol on CursorHold:
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
