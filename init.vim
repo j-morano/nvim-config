@@ -20,7 +20,8 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-Plug 'airblade/vim-gitgutter' 
+"Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -73,6 +74,7 @@ mapping = cmp.mapping.preset.insert({
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  ['<TAB>'] = cmp.mapping.select_next_item(),
 }),
 sources = cmp.config.sources({
   { name = 'nvim_lsp' },
@@ -313,6 +315,10 @@ set showbreak=>>
 set wrap linebreak
 
 
+" Always show 2 sign columns
+set signcolumn=yes
+
+
 " Make the left and right arrow keys change line
 set whichwrap+=<,>,[,],h,l
 
@@ -397,7 +403,9 @@ noremap c "_c
 
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
-let g:updatetime = 100
+let g:cursorhold_updatetime = 100
+" default updatetime 4000ms is not good for async update
+set updatetime=100
 
 
 " Show tabline
