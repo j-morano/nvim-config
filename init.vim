@@ -44,6 +44,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 Plug 'itchyny/vim-cursorword'
 
@@ -84,6 +85,7 @@ sources = cmp.config.sources({
   -- { name = 'snippy' }, -- For snippy users.
 }, {
   { name = 'buffer' },
+  { name = 'nvim_lsp_signature_help' },
 })
 })
 
