@@ -45,6 +45,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/vim-vsnip'
 
 Plug 'itchyny/vim-cursorword'
 
@@ -169,6 +170,11 @@ require'lspconfig'.pylsp.setup({
             }
         }
     },
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+require'lspconfig'.texlab.setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
