@@ -549,6 +549,10 @@ nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<cr>
 nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
 
 
+" Highlight NOTE
+call matchadd('Todo', 'NOTE')
+
+
 " Alternative escape
 inoremap jj <Esc>
 
