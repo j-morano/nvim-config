@@ -41,6 +41,8 @@ Plug 'ThePrimeagen/harpoon'
 
 Plug 'neovim/nvim-lspconfig'
 
+Plug 'simrat39/rust-tools.nvim'
+
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
@@ -178,6 +180,19 @@ require'lspconfig'.texlab.setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
+})
+require'lspconfig'.rust_analyzer.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+
+require('rust-tools').setup({
+    tools = {
+        inlay_hints = {
+            highlight = "LspDiagnosticsDefaultHint"
+        }
+    }
 })
 EOF
 
