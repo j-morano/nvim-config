@@ -88,6 +88,7 @@ sources = cmp.config.sources({
 }, {
   { name = 'buffer' },
   { name = 'nvim_lsp_signature_help' },
+  { name = 'path' },
 })
 })
 
@@ -117,12 +118,6 @@ sources = cmp.config.sources({
   { name = 'cmdline' }
 })
 })
-
-require'cmp'.setup {
-  sources = {
-    { name = 'path' }
-  }
-}
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
