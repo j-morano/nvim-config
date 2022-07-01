@@ -31,6 +31,8 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
+Plug 'ray-x/lsp_signature.nvim'
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'Yggdroot/indentLine'
@@ -194,6 +196,9 @@ require('rust-tools').setup({
             highlight = "LspDiagnosticsDefaultHint"
         }
     }
+})
+require "lsp_signature".setup({
+    floating_window = false,
 })
 EOF
 
@@ -381,6 +386,11 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 vnoremap <expr> j v:count ? 'j' : 'gj'
 vnoremap <expr> k v:count ? 'k' : 'gk'
+
+
+" Alternative enter (sometimes useful to avoid keymaps)
+"  E.g. with the autocompletion.
+inoremap <C-o> <CR>
 
 
 " Wildmode to last used
