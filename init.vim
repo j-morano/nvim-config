@@ -57,9 +57,6 @@ call plug#end()
 
 lua require('init')
 
-let g:cursorword_highlight = 0
-let g:cursorword_delay = 0
-
 augroup cursorword
   autocmd!
   autocmd VimEnter,ColorScheme * highlight CursorWord0 ctermbg=254
@@ -75,10 +72,6 @@ endif
 " confusing.
 set nrformats-=octal
 
-
-" Don't use Ex mode, use Q for formatting.
-" Revert with ":unmap Q".
-map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -255,17 +248,6 @@ autocmd TermOpen * startinsert
 " Exit terminal mode with ESC
 :tnoremap <Esc> <C-\><C-n>
 
-" Map leader to space
-let mapleader = " "
-
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fr <cmd>Telescope resume<cr>
-
 
 " Move between buffers
 nnoremap <leader><leader> :buffers<CR>:b<space>
@@ -320,16 +302,6 @@ nnoremap ¡ @q
 
 " Remap increase number
 nnoremap <C-c> <C-a>
-
-" --- Harpoon ---
-nnoremap <leader>o :lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <leader>a :lua require("harpoon.mark").add_file()<cr>
-nnoremap <leader>j :lua require("harpoon.ui").nav_next()<cr>
-nnoremap <leader>k :lua require("harpoon.ui").nav_prev()<cr>
-nnoremap <leader>1 :lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <leader>2 :lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<cr>
 
 
 " Highlight NOTE

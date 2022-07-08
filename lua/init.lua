@@ -66,7 +66,9 @@ sources = cmp.config.sources({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+
 ---- LSP
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -143,7 +145,9 @@ require "lsp_signature".setup({
     floating_window = false,
 })
 
--- # VIM options
+
+---- VIM options
+
 -- Show @@@ in the last line if it is truncated.
 vim.opt.display = 'truncate'
 -- Show a few lines of context around the cursor. Note that this makes the
@@ -193,3 +197,33 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 -- Show tabline
 vim.opt.showtabline = 1
+
+---- VIM global variables
+vim.g['cursorword_highlight'] = 0
+vim.g['cursorword_delay'] = 0
+-- Map leader to space
+vim.g['mapleader'] = ' '
+
+local map = vim.keymap.set
+local opts = {noremap = true, silent = true}
+
+-- Telescope keybindings
+local telescope = require('telescope.builtin')
+map('n', '<leader>ff', telescope.find_files, opts)
+map('n', '<leader>fg', telescope.live_grep, opts)
+map('n', '<leader>fh', telescope.help_tags, opts)
+map('n', '<leader>fb', telescope.buffers, opts)
+map('n', '<leader>fr', telescope.resume, opts)
+
+-- Harpoon keybindings
+local harpoon_ui = require('harpoon.ui')
+local harpoon_mark = require('harpoon.mark')
+map('n', '<leader>o', harpoon_ui.toggle_quick_menu, opts)
+map('n', '<leader>a', harpoon_mark.add_file, opts)
+map('n', '<leader>j', harpoon_ui.nav_next, opts)
+map('n', '<leader>k', harpoon_ui.nav_prev, opts)
+map('n', '<leader>1', function() harpoon_ui.nav_file(1) end, opts)
+map('n', '<leader>2', function() harpoon_ui.nav_file(2) end, opts)
+map('n', '<leader>3', function() harpoon_ui.nav_file(3) end, opts)
+map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
+
