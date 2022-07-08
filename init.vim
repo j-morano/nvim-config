@@ -6,55 +6,7 @@
 " Disable indentLine plugin for certain file types
 let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json']
 
-
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.config/nvim/installed_plugins')
-
-" Make sure you use single quotes
-
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-
-"Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'NLKNguyen/papercolor-theme'
-
-Plug 'lervag/vimtex'
-
-Plug 'antoinemadec/FixCursorHold.nvim'
-
-Plug 'Vimjas/vim-python-pep8-indent'
-
-Plug 'ray-x/lsp_signature.nvim'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'Yggdroot/indentLine'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'ThePrimeagen/harpoon'
-
-Plug 'neovim/nvim-lspconfig'
-
-Plug 'simrat39/rust-tools.nvim'
-
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/nvim-cmp'
-
-Plug 'itchyny/vim-cursorword'
-
-" Initialize plugin system
-call plug#end()
-
+lua require('plugins')
 lua require('init')
 
 augroup cursorword
