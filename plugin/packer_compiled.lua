@@ -149,11 +149,6 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-cursorword",
     url = "https://github.com/itchyny/vim-cursorword"
   },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
-    url = "https://github.com/airblade/vim-gitgutter"
-  },
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-polyglot",
@@ -163,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
     url = "https://github.com/Vimjas/vim-python-pep8-indent"
+  },
+  ["vim-signify"] = {
+    loaded = true,
+    path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-signify",
+    url = "https://github.com/mhinz/vim-signify"
   },
   ["vim-snippets"] = {
     loaded = true,

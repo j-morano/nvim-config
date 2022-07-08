@@ -8,8 +8,8 @@ return require('packer').startup(function()
     -- Snippets are separated from the engine. Add this if you want them:
     use 'honza/vim-snippets'
 
-    --use 'mhinz/vim-signify'
-    use 'airblade/vim-gitgutter'
+    use 'mhinz/vim-signify'
+    --use 'airblade/vim-gitgutter'
 
     use 'NLKNguyen/papercolor-theme'
 
