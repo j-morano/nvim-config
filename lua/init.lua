@@ -223,6 +223,8 @@ vim.opt.listchars = 'trail:@'
 vim.opt.incsearch = true
 -- Default updatetime 4000ms is not good for async update
 vim.opt.updatetime = 100
+-- Use mouse in normal, visual and insert mode
+vim.opt.mouse = 'nvi'
 
 ---- Window options
 -- Highlight NOTE
