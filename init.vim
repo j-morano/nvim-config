@@ -3,9 +3,6 @@
 " Maintainer:	José Morano <j.morano@udc.es>
 
 
-" Disable indentLine plugin for certain file types
-let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json']
-
 lua require('plugins')
 lua require('init')
 
@@ -13,12 +10,6 @@ augroup cursorword
   autocmd!
   autocmd VimEnter,ColorScheme * highlight CursorWord0 ctermbg=254
 augroup END
-
-
-" Do incremental searching when it's possible to timeout.
-if has('reltime')
-  set incsearch
-endif
 
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -46,10 +37,6 @@ endif
 " Revert with ":filetype off".
 filetype plugin indent on
 
-" Put these in an autocmd group, so that you can revert them with:
-" ":augroup vimStartup | au! | augroup END"
-augroup vimStartup
-au!
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
@@ -59,8 +46,6 @@ autocmd BufReadPost *
   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
   \ |   exe "normal! g`\""
   \ | endif
-
-augroup END
 
 
 " Convenient command to see the difference between the current buffer and the
@@ -81,6 +66,9 @@ endif
 autocmd FileType python set colorcolumn=73,80
 autocmd FileType rust set colorcolumn=81,101
 autocmd FileType javascript set colorcolumn=81
+" Custom tabspaces values
+"autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 
 " Colorscheme
@@ -120,30 +108,10 @@ vnoremap '' c'<c-r>"'<esc>
 nnoremap _ o<Esc>k
 
 
-" Remove trailing spaces
-command RmTrail :%s/\s\+$//e
-
-
-" Custom tabspaces values
-"autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
-
-
-" Use <C-l> for trigger snippet expand.
-let g:UltiSnipsExpandTrigger = '<C-l>'
-
-
 " Replace currently selected text with default register
 "  without yanking it
 vnoremap p "_dP
 noremap c "_c
-
-
-" in millisecond, used for both CursorHold and CursorHoldI,
-" use updatetime instead if not defined
-let g:cursorhold_updatetime = 100
-" default updatetime 4000ms is not good for async update
-set updatetime=100
 
 
 " Switch arrow key mappings for wildmenu tab completion
@@ -217,21 +185,12 @@ xnoremap <silent> <leader>s "sy:let @/=@s<CR>cgn
 vmap y ygv<Esc>
 
 
-" Show trailing spaces
-set listchars=trail:@
-" set list
-
-
 " Fast repeat macro
 nnoremap ¡ @q
 
 
 " Remap increase number
 nnoremap <C-c> <C-a>
-
-
-" Highlight NOTE
-call matchadd('Todo', 'NOTE')
 
 
 " Alternative escape

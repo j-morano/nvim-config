@@ -216,6 +216,17 @@ vim.opt.whichwrap:append('<,>,[,],h,l')
 vim.opt.clipboard:append('unnamedplus')
 -- Do not highlight current word occurences
 vim.opt.hlsearch = false
+-- Show trailing spaces
+vim.opt.listchars = 'trail:@'
+--set list
+-- Incremental search
+vim.opt.incsearch = true
+-- Default updatetime 4000ms is not good for async update
+vim.opt.updatetime = 100
+
+---- Window options
+-- Highlight NOTE
+vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
 
 
 ---- VIM global variables
@@ -223,6 +234,13 @@ vim.g['cursorword_highlight'] = 0
 vim.g['cursorword_delay'] = 0
 -- Map leader to space
 vim.g['mapleader'] = ' '
+-- Use <C-l> for trigger snippet expand.
+vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
+-- In millisecond, used for both CursorHold and CursorHoldI,
+--  use updatetime instead if not defined
+vim.g['cursorhold_updatetime'] = 100
+-- Disable indentLine plugin for certain file types
+vim.g['indentLine_fileTypeExclude'] = {'tex', 'markdown', 'json'}
 
 
 ---- Keybindings
@@ -253,3 +271,12 @@ map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
 --autocmd InsertLeave * update
+
+
+---- User commands
+-- Remove trailing spaces
+vim.api.nvim_create_user_command(
+  'RmTrail',
+  function() vim.cmd('%s/\\s\\+$//e') end,
+  {}
+  )
