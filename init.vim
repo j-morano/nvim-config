@@ -1,6 +1,6 @@
-" Custom vimrc file.
+" Custom init.vim file.
 "
-" Maintainer:	José Morano <j.morano@udc..es>
+" Maintainer:	José Morano <j.morano@udc.es>
 
 
 " Disable indentLine plugin for certain file types
@@ -19,10 +19,6 @@ augroup END
 if has('reltime')
   set incsearch
 endif
-
-" Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it
-" confusing.
-set nrformats-=octal
 
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -80,12 +76,6 @@ endif
 " ====================================================================
 " Added
 
-" Save on exit insert mode
-" autocmd InsertLeave * update
-
-" Save on single 's'
-nnoremap s :update<CR>
-
 
 " Vertical rulers for Python
 autocmd FileType python set colorcolumn=73,80
@@ -101,22 +91,6 @@ highlight Normal ctermfg=NONE ctermbg=NONE
 highlight LineNr ctermbg=NONE
 highlight NonText ctermbg=NONE
 
-" Tabs as spaces
-set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab smartindent
-
-
-" Make the left and right arrow keys change line
-set whichwrap+=<,>,[,],h,l
-
-" Copy to system clipboard
-" Dependency: clipboard software. For example: xclip
-set clipboard+=unnamedplus
-
-" Higlight current word occurences
-" set hlsearch
-"nnoremap * *N
-nnoremap _ :noh<CR>
-set nohlsearch
 
 " Custom hjkl remap
 noremap ñ h

@@ -20,7 +20,9 @@ mapping = cmp.mapping.preset.insert({
   ['<C-f>'] = cmp.mapping.scroll_docs(4),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  -- Accept currently selected item.
+  --  Set `select` to `false` to only confirm explicitly selected items.
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
   ['<TAB>'] = cmp.mapping.select_next_item(),
 }),
 sources = cmp.config.sources({
@@ -197,6 +199,24 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 -- Show tabline
 vim.opt.showtabline = 1
+-- Do not recognize octal numbers for Ctrl-x and Ctrl-c, it is
+--  confusing.
+vim.opt.nrformats:remove('octal')
+-- Tabs as spaces
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.smartindent = true
+-- Make the left and right arrow keys change line
+vim.opt.whichwrap:append('<,>,[,],h,l')
+-- Copy to system clipboard
+--  Dependency: clipboard software. For example: xclip
+vim.opt.clipboard:append('unnamedplus')
+-- Do not highlight current word occurences
+vim.opt.hlsearch = false
+
 
 ---- VIM global variables
 vim.g['cursorword_highlight'] = 0
@@ -204,6 +224,8 @@ vim.g['cursorword_delay'] = 0
 -- Map leader to space
 vim.g['mapleader'] = ' '
 
+
+---- Keybindings
 local map = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
@@ -227,3 +249,7 @@ map('n', '<leader>2', function() harpoon_ui.nav_file(2) end, opts)
 map('n', '<leader>3', function() harpoon_ui.nav_file(3) end, opts)
 map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
 
+-- VIM
+map('n', 's', function() vim.cmd('update') end, opts)
+-- Save on exit insert mode
+--autocmd InsertLeave * update
