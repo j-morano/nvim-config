@@ -229,6 +229,8 @@ vim.opt.mouse = 'nvi'
 vim.opt.wildcharm = 26  -- equals to'<C-Z>'
 -- Ignore case when completing file and directory names
 vim.opt.ignorecase = true
+-- Save marks and other information between sessions
+vim.opt.viminfo = "'100,f1"
 
 
 ---- Window options
@@ -252,7 +254,7 @@ vim.g['indentLine_fileTypeExclude'] = {'tex', 'markdown', 'json'}
 
 ---- Keybindings
 local map = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = {noremap = true}--, silent = true}
 
 -- Telescope keybindings
 local telescope = require('telescope.builtin')
@@ -310,6 +312,21 @@ map('n', 'J', 'mzJ`z', opts)
 -- Moving text
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
+-- CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+--  so that you can undo CTRL-U after inserting a line break.
+--  Revert with ":iunmap <C-U>".
+map('i', '<C-U>', '<C-G>u<C-U>', opts)
+-- Move between buffers
+map('n', '<leader><leader>', ':buffers<CR>:b<space>', opts)
+-- Custom hjkl remap
+map('', 'ñ', 'h', opts)
+map({'n', 'v'}, 'Ñ', ':', opts)
+map('n', 'qÑ', 'q:', opts)
+map('n', '@Ñ', '@:', opts)
+map('n', '<C-w>ñ', '<C-w>h', opts)
+-- Enclose in quotes
+map('v', '""', 'c"<c-r>""<esc>', opts)
+map('v', "''", "c'<c-r>\"'<esc>", opts)
 
 
 ---- User commands
