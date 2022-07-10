@@ -130,19 +130,36 @@ require'lspconfig'.texlab.setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
-require'lspconfig'.rust_analyzer.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
-})
 
-require('rust-tools').setup({
+
+local options = {
     tools = {
+        autoSetHints = true,
+        hover_with_actions = true,
+        runnables = {
+            use_telescope = true
+        },
         inlay_hints = {
-            highlight = "LspDiagnosticsDefaultHint"
-        }
-    }
-})
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+            highlight = "LspDiagnosticsDefaultHint",
+        },
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+    server = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = lsp_flags,
+    },
+}
+
+require('rust-tools').setup(options)
+
+
 require "lsp_signature".setup({
     floating_window = false,
 })
