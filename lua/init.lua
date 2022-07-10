@@ -225,8 +225,6 @@ vim.opt.incsearch = true
 vim.opt.updatetime = 100
 -- Use mouse in normal, visual and insert mode
 vim.opt.mouse = 'nvi'
--- Wildmenu invoking keybinding
-vim.opt.wildcharm = 26  -- equals to'<C-Z>'
 -- Ignore case when completing file and directory names
 vim.opt.ignorecase = true
 -- Save marks and other information between sessions

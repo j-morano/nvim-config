@@ -52,6 +52,11 @@ if v:version >= 700
 endif
 
 
+" Wildmenu invoking keybinding
+set wildcharm=<C-Z>
+" Switch arrow key mappings for wildmenu tab completion
+cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
+
 " Move cursor by display lines
 " Jump regular lines when using numbers
 nnoremap <expr> j v:count ? 'j' : 'gj'
