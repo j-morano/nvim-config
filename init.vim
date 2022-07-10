@@ -66,31 +66,8 @@ vnoremap <expr> j v:count ? 'j' : 'gj'
 vnoremap <expr> k v:count ? 'k' : 'gk'
 
 
-" Alternative enter (sometimes useful to avoid keymaps)
-"  E.g. with the autocompletion.
-inoremap <C-o> <CR>
-
-
 vnoremap "" c"<c-r>""<esc>
 vnoremap '' c'<c-r>"'<esc>
-
-" Add blank line below
-nnoremap _ o<Esc>k
-
-
-" Replace currently selected text with default register
-"  without yanking it
-vnoremap p "_dP
-noremap c "_c
-
-
-" Switch arrow key mappings for wildmenu tab completion
-set wildcharm=<C-Z>
-cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
-cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
-cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
-cnoremap <expr> <right> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<right>"
-cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 
 
 " Save marks and other information between sessions
@@ -132,11 +109,6 @@ endfunction
 nnoremap <leader>e :echo IsFile() ? 'exists' : 'does not exist'<cr>
 
 
-" More comfortable keybindig for alternate-file
-inoremap <M-w> <ESC>:e#<CR>a
-nnoremap <M-w> <ESC>:e#<CR>
-
-
 " Search and replace selected text starting from the cursor position
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
@@ -150,36 +122,6 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 nnoremap <silent> <leader>s :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> <leader>s "sy:let @/=@s<CR>cgn
 
-
-" Yank a region without moving the cursor to the top of the block
-vmap y ygv<Esc>
-
-
-" Fast repeat macro
-nnoremap ¡ @q
-
-
-" Remap increase number
-nnoremap <C-c> <C-a>
-
-
-" Alternative escape
-inoremap jj <Esc>
-
-
-" --- Best remaps ever ---
-
-" Behave Vim
-nnoremap Y yg$
-
-" Keeping it centered
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-" Moving text
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
 " When switching buffers, preserve window view.
 if v:version >= 700

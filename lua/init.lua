@@ -225,6 +225,11 @@ vim.opt.incsearch = true
 vim.opt.updatetime = 100
 -- Use mouse in normal, visual and insert mode
 vim.opt.mouse = 'nvi'
+-- Wildmenu invoking keybinding
+vim.opt.wildcharm = 26  -- equals to'<C-Z>'
+-- Ignore case when completing file and directory names
+vim.opt.ignorecase = true
+
 
 ---- Window options
 -- Highlight NOTE
@@ -269,10 +274,42 @@ map('n', '<leader>2', function() harpoon_ui.nav_file(2) end, opts)
 map('n', '<leader>3', function() harpoon_ui.nav_file(3) end, opts)
 map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
 
+
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
 --autocmd InsertLeave * update
+-- Replace currently selected text with default register
+--  without yanking it
+map('v', 'p', '"_dP', opts)
+map('', 'c', '"_c', opts)
+map('v', 'P', '"_dP', opts)
+-- Add blank line below
+map('n', '_', 'o<Esc>k', opts)
+-- Alternative enter (sometimes useful to avoid keymaps)
+--  E.g. with the autocompletion.
+map('i', '<C-o>', '<CR>', opts)
+-- More comfortable keybindig for alternate-file
+map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
+map('n', '<M-w>', '<ESC>:e#<CR>', opts)
+-- Yank a region without moving the cursor to the top of the block
+map('v', 'y', 'ygv<Esc>', opts)
+-- Fast repeat macro
+map('n', '¡', '@q', opts)
+-- Remap increase number
+map('n', '<C-c>', '<C-a>', opts)
+-- Alternative escape
+map('i', 'jj', '<Esc>', opts)
+--- Best remaps ever ---
+-- Behave Vim
+map('n', 'Y', 'yg$', opts)
+--" Keeping it centered
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
+map('n', 'J', 'mzJ`z', opts)
+-- Moving text
+map('v', 'J', ":m '>+1<CR>gv=gv", opts)
+map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 
 
 ---- User commands
