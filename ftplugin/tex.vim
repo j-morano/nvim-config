@@ -17,5 +17,5 @@ nnoremap <leader>d a\textbf{}<ESC>i
 nnoremap <leader>c a~\cite{}<ESC>i
 nnoremap <leader>r a~\ref{}<ESC>i
 nnoremap <leader>fu a\footnote{\url{}}<ESC>hi
-nnoremap <leader>x :!./compile
+nnoremap <leader>x :!./compile<CR>
 nnoremap <leader>. f.lxi<CR><ESC>
