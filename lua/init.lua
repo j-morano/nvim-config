@@ -296,11 +296,12 @@ map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
 --autocmd InsertLeave * update
--- Replace currently selected text with default register
+-- Best remap ever
+--  Replace currently selected text with default register
 --  without yanking it
-map('v', 'p', '"_dP', opts)
+map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
-map('v', 'P', '"_dP', opts)
+map('v', 'P', 'pgvy', opts)
 -- Add blank line below
 map('n', '_', 'o<Esc>k', opts)
 -- Alternative enter (sometimes useful to avoid keymaps)
