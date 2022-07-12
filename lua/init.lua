@@ -164,6 +164,8 @@ require "lsp_signature".setup({
     floating_window = false,
 })
 
+require("indent_blankline").setup { }
+
 
 ---- VIM options
 
@@ -263,8 +265,6 @@ vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
 -- In millisecond, used for both CursorHold and CursorHoldI,
 --  use updatetime instead if not defined
 vim.g['cursorhold_updatetime'] = 100
--- Disable indentLine plugin for certain file types
-vim.g['indentLine_fileTypeExclude'] = {'tex', 'markdown', 'json'}
 
 
 ---- Keybindings

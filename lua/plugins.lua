@@ -23,7 +23,7 @@ return require('packer').startup(function()
 
     use 'sheerun/vim-polyglot'
 
-    use 'Yggdroot/indentLine'
+    use 'lukas-reineke/indent-blankline.nvim'
 
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
