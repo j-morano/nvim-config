@@ -45,6 +45,14 @@ autocmd VimEnter * :sleep 100m
 autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 
 
+" Terminal
+" Start directly in insert mode
+autocmd TermOpen * startinsert
+" Exit terminal mode with ESC
+tnoremap <C-x> <C-\><C-n>
+tnoremap <M-w> <C-\><C-n>:e#<CR>
+
+
 " When switching buffers, preserve window view.
 if v:version >= 700
     au BufLeave * if !&diff | let b:winview = winsaveview() | endif
