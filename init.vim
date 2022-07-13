@@ -47,7 +47,8 @@ autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 
 " Terminal
 " Start directly in insert mode
-autocmd TermOpen * startinsert
+autocmd TermOpen term://* startinsert
+autocmd BufEnter term://* startinsert
 " Exit terminal mode with ESC
 tnoremap <C-x> <C-\><C-n>
 tnoremap <M-w> <C-\><C-n>:e#<CR>
