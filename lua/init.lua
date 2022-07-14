@@ -248,6 +248,8 @@ vim.opt.mouse = 'nvi'
 vim.opt.ignorecase = true
 -- Save marks and other information between sessions
 vim.opt.viminfo = "'100,f1"
+-- Maximum number of items to show in the popup menu
+vim.opt.pumheight = 7
 
 
 ---- Window options
