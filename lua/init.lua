@@ -111,57 +111,57 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 require'lspconfig'.pylsp.setup({
-    cmd={"python3", "-m", "pylsp"},
-    settings = {
-        pylsp = {
-            plugins={
-                pycodestyle={
-                    enabled=false
-                }
-            }
+  cmd={"python3", "-m", "pylsp"},
+  settings = {
+    pylsp = {
+      plugins={
+        pycodestyle={
+          enabled=false
         }
-    },
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
+      }
+    }
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
 })
 require'lspconfig'.texlab.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
 })
 
 
 local options = {
-    tools = {
-        autoSetHints = true,
-        hover_with_actions = true,
-        runnables = {
-            use_telescope = true
-        },
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-            highlight = "LspDiagnosticsDefaultHint",
-        },
+  tools = {
+    autoSetHints = true,
+    hover_with_actions = true,
+    runnables = {
+      use_telescope = true
     },
+    inlay_hints = {
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+      highlight = "LspDiagnosticsDefaultHint",
+    },
+  },
 
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        flags = lsp_flags,
-    },
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+  server = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+  },
 }
 
 require('rust-tools').setup(options)
 
 
 require "lsp_signature".setup({
-    floating_window = false,
+  floating_window = false,
 })
 
 require("indent_blankline").setup { }
