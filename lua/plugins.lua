@@ -9,11 +9,8 @@ return require('packer').startup(function()
     use 'honza/vim-snippets'
 
     use 'mhinz/vim-signify'
-    --use 'airblade/vim-gitgutter'
 
     use 'NLKNguyen/papercolor-theme'
-
-    use 'lervag/vimtex'
 
     use 'antoinemadec/FixCursorHold.nvim'
 
