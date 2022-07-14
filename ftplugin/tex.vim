@@ -21,3 +21,7 @@ inoremap ºr ~\ref{}<left>
 inoremap ºfu \footnote{\url{}}<left><left>
 nnoremap <leader>x :update <bar> !./compile<CR>
 nnoremap <leader>. f.lxi<CR><ESC>
+
+" Comment block
+xnoremap ) :norm I% <ESC>
+xnoremap ( :norm ^2x<ESC>
