@@ -65,6 +65,7 @@ endif
 set wildcharm=<C-Z>
 " Switch arrow key mappings for wildmenu tab completion
 cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
+cnoremap <expr> ç wildmenumode() ? "\<up>" : "ç"
 
 " Move cursor by display lines
 " Jump regular lines when using numbers
