@@ -18,9 +18,11 @@ return require('packer').startup(function()
 
     use 'ray-x/lsp_signature.nvim'
 
-    use 'sheerun/vim-polyglot'
-
     use 'lukas-reineke/indent-blankline.nvim'
+
+    use("nvim-treesitter/nvim-treesitter", {
+        run = ":TSUpdate"
+    })
 
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
