@@ -39,6 +39,9 @@ highlight Normal ctermfg=NONE ctermbg=NONE
 highlight LineNr ctermbg=NONE
 highlight NonText ctermbg=NONE
 
+" Customize markdown highlight
+hi markdownCodeBlock ctermfg=black
+
 
 " Resize Neovim itself when launched as initial command for terminal
 autocmd VimEnter * :sleep 100m
