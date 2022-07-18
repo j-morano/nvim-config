@@ -32,6 +32,12 @@ autocmd FileType tex set colorcolumn=81
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 
+" Auto-expansion
+inoremap (<CR> (<CR>)<C-c>O
+inoremap {<CR> {<CR>}<C-c>O
+inoremap [<CR> [<CR>]<C-c>O
+
+
 " Colorscheme
 set background=light
 " Use terminal background color
