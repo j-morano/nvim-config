@@ -160,7 +160,7 @@ local options = {
 require('rust-tools').setup(options)
 
 require'lspconfig'.clangd.setup({
-  cmd = { "clangd-12" },
+  cmd = { "clangd" },
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
