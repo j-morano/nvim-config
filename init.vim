@@ -33,11 +33,16 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 " Colorscheme
 set background=light
-colorscheme PaperColor
 " Use terminal background color
-highlight Normal ctermfg=NONE ctermbg=NONE
-highlight LineNr ctermbg=NONE
-highlight NonText ctermbg=NONE
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+colorscheme PaperColor
+
 
 " Customize markdown highlight
 hi markdownCodeBlock ctermfg=black
