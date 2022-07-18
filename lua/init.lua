@@ -379,9 +379,6 @@ map({'n', 'v'}, 'Ñ', ':', opts)
 map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
--- Enclose in quotes
-map('v', '""', 'c"<c-r>""<esc>', opts)
-map('v', "''", "c'<c-r>\"'<esc>", opts)
 
 
 ---- User commands

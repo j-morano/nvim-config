@@ -18,6 +18,11 @@ return require('packer').startup(function()
 
     use 'ray-x/lsp_signature.nvim'
 
+    -- tpope
+    use 'tpope/vim-surround'
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-commentary'
+
     use 'lukas-reineke/indent-blankline.nvim'
 
     use("nvim-treesitter/nvim-treesitter", {

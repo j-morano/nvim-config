@@ -26,6 +26,7 @@ autocmd BufReadPost *
 autocmd FileType python set colorcolumn=73,80
 autocmd FileType rust set colorcolumn=81,101
 autocmd FileType javascript set colorcolumn=81
+autocmd FileType tex set colorcolumn=81
 " Custom tabspaces values
 "autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab

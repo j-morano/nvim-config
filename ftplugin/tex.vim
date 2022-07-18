@@ -1,9 +1,3 @@
-set colorcolumn=81
-
-" Do not spell comments in LaTex
-let g:vimtex_syntax_nospell_comments=1
-
-
 " Only check spelling in LaTex files
 " autocmd BufRead,BufNewFile *.tex set spelllang=en,es spell
 
@@ -21,7 +15,3 @@ inoremap ºr ~\ref{}<left>
 inoremap ºfu \footnote{\url{}}<left><left>
 nnoremap <leader>x :update <bar> !./compile<CR>
 nnoremap <leader>. f.lxi<CR><ESC>
-
-" Comment block
-xnoremap ) :norm I% <ESC>
-xnoremap ( :norm ^2x<ESC>
