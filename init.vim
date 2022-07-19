@@ -51,8 +51,9 @@ let g:PaperColor_Theme_Options = {
 colorscheme PaperColor
 
 
-" Customize markdown highlight
+" Custom PaperColor highlights
 hi markdownCodeBlock ctermfg=black
+hi String ctermfg=22
 
 
 " Resize Neovim itself when launched as initial command for terminal
