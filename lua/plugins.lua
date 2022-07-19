@@ -10,8 +10,6 @@ return require('packer').startup(function()
 
     use 'mhinz/vim-signify'
 
-    use 'NLKNguyen/papercolor-theme'
-
     use 'antoinemadec/FixCursorHold.nvim'
 
     use 'Vimjas/vim-python-pep8-indent'
