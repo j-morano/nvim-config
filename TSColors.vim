@@ -28,7 +28,7 @@ highlight TSMethod ctermfg=0
 highlight TSNamespace ctermfg=0 cterm=bold
 highlight TSNone ctermfg=0 cterm=bold
 highlight TSNumber ctermfg=125
-highlight TSOperator ctermfg=0
+highlight TSOperator ctermfg=53
 highlight TSParameter ctermfg=0
 highlight TSParameterReference ctermfg=0
 highlight TSPreProc ctermfg=0

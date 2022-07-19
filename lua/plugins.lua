@@ -16,6 +16,8 @@ return require('packer').startup(function()
 
     use 'ray-x/lsp_signature.nvim'
 
+    use 'NLKNguyen/papercolor-theme'
+
     -- tpope
     use 'tpope/vim-surround'
     use 'tpope/vim-fugitive'

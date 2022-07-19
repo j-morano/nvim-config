@@ -41,19 +41,18 @@ inoremap [<CR> [<CR>]<C-c>O
 " Colorscheme
 set background=light
 " Use terminal background color
-" let g:PaperColor_Theme_Options = {
-"   \   'theme': {
-"   \     'default': {
-"   \       'transparent_background': 1
-"   \     }
-"   \   }
-"   \ }
-"colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+colorscheme PaperColor
 
 
 " Custom PaperColor highlights
-" hi markdownCodeBlock ctermfg=black
-"hi String ctermfg=22
+hi markdownCodeBlock ctermfg=black
 
 " Custom colorscheme
 runtime TSColors.vim
