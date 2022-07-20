@@ -279,9 +279,6 @@ vim.g['cursorword_delay'] = 0
 vim.g['mapleader'] = ' '
 -- Use <C-l> for trigger snippet expand.
 vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
--- In millisecond, used for both CursorHold and CursorHoldI,
---  use updatetime instead if not defined
-vim.g['cursorhold_updatetime'] = 100
 
 
 ---- Keybindings
