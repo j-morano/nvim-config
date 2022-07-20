@@ -6,11 +6,6 @@
 lua require('plugins')
 lua require('init')
 
-augroup cursorword
-  autocmd!
-  autocmd VimEnter,ColorScheme * highlight CursorWord0 ctermbg=254
-augroup END
-
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
@@ -51,11 +46,7 @@ let g:PaperColor_Theme_Options = {
 colorscheme PaperColor
 
 
-" Custom PaperColor highlights
-hi markdownCodeBlock ctermfg=black
-
-" Custom colorscheme
-runtime TSColors.vim
+" Custom colors
 runtime VimColors.vim
 
 

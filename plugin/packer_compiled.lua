@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -153,11 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
-  },
-  ["vim-cursorword"] = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-cursorword",
-    url = "https://github.com/itchyny/vim-cursorword"
   },
   ["vim-fugitive"] = {
     loaded = true,

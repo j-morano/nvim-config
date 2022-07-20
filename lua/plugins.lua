@@ -25,10 +25,6 @@ return require('packer').startup(function()
 
     use 'lukas-reineke/indent-blankline.nvim'
 
-    use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
-    })
-
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'ThePrimeagen/harpoon'
@@ -41,6 +37,4 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
-
-    use 'itchyny/vim-cursorword'
 end)
