@@ -270,6 +270,7 @@ vim.opt.pumheight = 7
 ---- Window options
 -- Highlight NOTE
 vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
+vim.w.m1 = vim.fn.matchadd('Todo', '···')
 
 
 ---- VIM global variables
