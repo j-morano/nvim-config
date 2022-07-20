@@ -265,6 +265,8 @@ vim.opt.ignorecase = true
 vim.opt.viminfo = "'100,f1"
 -- Maximum number of items to show in the popup menu
 vim.opt.pumheight = 7
+-- Show cursor line
+vim.opt.cursorline = true
 
 
 ---- Window options
