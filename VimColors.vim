@@ -1,5 +1,8 @@
 " Builtins
 hi Search ctermbg=254
+hi Normal ctermfg=0
+hi NormalFloat ctermfg=0
+hi NormalNC ctermfg=0
 
 " Custom PaperColor highlights
 hi markdownCodeBlock ctermfg=black
