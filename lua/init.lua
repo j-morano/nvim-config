@@ -359,6 +359,8 @@ map('n', '<C-w>ñ', '<C-w>h', opts)
 -- hl search, no jump, no blink
 map('n', '*', 'msHmt`s*`tzt`s', opts)
 map('n', '´', ':noh<CR>', opts)
+-- Delete in insert mode
+map('i', '<C-d>', '<Del>', opts)
 
 
 ---- User commands
