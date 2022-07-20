@@ -3,14 +3,12 @@
 hi Search ctermbg=254
 " True black text
 hi Normal ctermfg=0
-hi NormalFloat ctermfg=0
+hi NormalFloat ctermfg=0 ctermbg=253
 hi NormalNC ctermfg=0
 " Line numbers
 hi LineNr ctermfg=244
 hi LineNrAbove ctermfg=244
 hi LineNrBelow ctermfg=244
-" Cursor line
-hi CursorLine ctermbg=255
 
 "---- Custom PaperColor highlights
 " Markdown
