@@ -279,6 +279,8 @@ vim.g['cursorword_delay'] = 0
 vim.g['mapleader'] = ' '
 -- Use <C-l> for trigger snippet expand.
 vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
+-- Tex: solve excessive error highlighting
+vim.g['tex_no_error'] = 1
 
 
 ---- Keybindings
