@@ -9,6 +9,8 @@ hi NormalNC ctermfg=0
 hi LineNr ctermfg=244
 hi LineNrAbove ctermfg=244
 hi LineNrBelow ctermfg=244
+" Cursor line
+hi CursorLine ctermbg=255
 
 "---- Custom PaperColor highlights
 " Markdown
