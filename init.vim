@@ -100,7 +100,7 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 " searches for the next match and changes it in one go.
 xnoremap <silent> <leader>sc "sy:let @/=@s<CR>cgn
 xnoremap <silent> <leader>sw "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
-nnoremap S /<C-r>w<CR>/<C-r>s<CR>.
+nnoremap S /<C-r>w<CR><left>/<C-r>s<CR>.
 nnoremap <silent> <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 nnoremap <silent> <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
 nnoremap <silent> <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
