@@ -98,7 +98,9 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 " and then press <leader>s. This changes just the word/selection
 " under the cursor; to repeat the change, press . (dot), which
 " searches for the next match and changes it in one go.
-xnoremap <silent> <leader>s "sy:let @/=@s<CR>cgn
+xnoremap <silent> <leader>sc "sy:let @/=@s<CR>cgn
+xnoremap <silent> <leader>sw "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
+nnoremap S /<C-r>w<CR>/<C-r>s<CR>.
 nnoremap <silent> <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 nnoremap <silent> <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
 nnoremap <silent> <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
