@@ -24,6 +24,9 @@ cmp.setup({
         --  Set `select` to `false` to only confirm explicitly selected items.
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<TAB>'] = cmp.mapping.select_next_item(),
+        ['<S-TAB>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
