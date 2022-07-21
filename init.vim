@@ -92,11 +92,13 @@ nnoremap <silent> <expr> m "m" . toupper(nr2char(getchar()))
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
-" -- Vim-style alternative to multiple cursors
-" You can change a whole word by pressing <leader>s, or if you
+"--- Vim-style alternative to multiple cursors
+" You can change a whole word by pressing <leader>s[r|a|i], or if you
 " only want to change a few characters, visually select them
 " and then press <leader>s. This changes just the word/selection
 " under the cursor; to repeat the change, press . (dot), which
 " searches for the next match and changes it in one go.
-nnoremap <silent> <leader>s :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> <leader>s "sy:let @/=@s<CR>cgn
+nnoremap <silent> <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+nnoremap <silent> <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
+nnoremap <silent> <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
