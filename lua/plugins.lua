@@ -11,6 +11,7 @@ return require('packer').startup(function()
     use 'mhinz/vim-signify'
 
     use 'Vimjas/vim-python-pep8-indent'
+    use 'vim-python/python-syntax'
 
     use 'ray-x/lsp_signature.nvim'
 

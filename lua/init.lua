@@ -284,6 +284,8 @@ vim.g['mapleader'] = ' '
 vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
 -- Tex: solve excessive error highlighting
 vim.g['tex_no_error'] = 1
+-- Python syntax highlighting for Vim
+vim.g['python_highlight_all'] = 1
 
 
 ---- Keybindings
