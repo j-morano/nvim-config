@@ -100,7 +100,7 @@ xnoremap <leader>ss "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cg
 " Search and replace selected characters
 " -> Use the dot ('.') command
 " Search and replace characters if they appear within the saved word
-nnoremap <C-s> <left>/<C-r>w<CR>/<C-r>s<CR>.
+nnoremap <C-s> /<C-r>w<CR><left>/<C-r>s<CR>.
 " Search for the next occurrence of the saved word (skip replace)
 nnoremap <C-n> /<C-r>w<CR>
 
