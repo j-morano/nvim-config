@@ -92,15 +92,22 @@ nnoremap <silent> <expr> m "m" . toupper(nr2char(getchar()))
 " \V: very nomagic: do not use regex
 vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
+
 "--- Vim-style alternative to multiple cursors
-" You can change a whole word by pressing <leader>s[r|a|i], or if you
-" only want to change a few characters, visually select them
-" and then press <leader>s. This changes just the word/selection
-" under the cursor; to repeat the change, press . (dot), which
-" searches for the next match and changes it in one go.
-xnoremap <silent> <leader>sc "sy:let @/=@s<CR>cgn
-xnoremap <silent> <leader>sw "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
-nnoremap S /<C-r>w<CR><left>/<C-r>s<CR>.
-nnoremap <silent> <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-nnoremap <silent> <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
-nnoremap <silent> <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
+
+"- Replace some characters
+xnoremap <leader>sc "sy:let @/=@s<CR>cgn
+
+"- Replace some characters within a specific word
+xnoremap <leader>sw "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
+" Search and replace characters
+nnoremap <C-s> <left>/<C-r>w<CR>/<C-r>s<CR>.
+" Search for the word
+nnoremap <C-n> /<C-r>w<CR>
+
+"- Replace full word
+nnoremap <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+"- Append to the end of a word
+nnoremap <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
+"- Append to the beginning of a word
+nnoremap <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
