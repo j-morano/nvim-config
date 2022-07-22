@@ -95,14 +95,13 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
 "--- Vim-style alternative to multiple cursors
 
-"- Replace some characters
-xnoremap <leader>sc "sy:let @/=@s<CR>cgn
-
-"- Replace some characters within a specific word
-xnoremap <leader>sw "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
-" Search and replace characters
+"- Replace selected characters, saving the word to which they belong
+xnoremap <leader>ss "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
+" Search and replace selected characters
+" -> Use the dot ('.') command
+" Search and replace characters if they appear within the saved word
 nnoremap <C-s> <left>/<C-r>w<CR>/<C-r>s<CR>.
-" Search for the word
+" Search for the next occurrence of the saved word (skip replace)
 nnoremap <C-n> /<C-r>w<CR>
 
 "- Replace full word
