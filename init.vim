@@ -94,19 +94,7 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
 
 "--- Vim-style alternative to multiple cursors
-
-"- Replace selected characters, saving the word to which they belong
-xnoremap <leader>ss "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
-" Search and replace selected characters
-" -> Use the dot ('.') command
-" Search and replace characters if they appear within the saved word
-nnoremap <C-s> /<C-r>w<CR><left>/<C-r>s<CR>.
-" Search for the next occurrence of the saved word (skip replace)
-nnoremap <C-n> /<C-r>w<CR>
-
-"- Replace full word
-nnoremap <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-"- Append to the end of a word
-nnoremap <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
-"- Append to the beginning of a word
-nnoremap <leader>si :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"<C-o>b
+" Apply macro to given word
+nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>bqi
+xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
+nnoremap <C-s> n@i
