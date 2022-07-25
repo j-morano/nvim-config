@@ -95,6 +95,6 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 
 "--- Vim-style alternative to multiple cursors
 " Apply macro to given word
-nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>bqi
+nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
 xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
 nnoremap <C-s> n@i
