@@ -336,8 +336,6 @@ map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', '<ESC>:e#<CR>', opts)
 -- Yank a region without moving the cursor to the top of the block
 map('v', 'y', 'ygv<Esc>', opts)
--- Fast repeat macro
-map('n', '¡', '@q', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Alternative escape
