@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  harpoon = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/ThePrimeagen/harpoon"
-  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",

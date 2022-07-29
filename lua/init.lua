@@ -184,6 +184,14 @@ require("indent_blankline").setup {
     },
 }
 
+require "telescope".setup {
+  pickers = {
+    buffers = {
+      initial_mode = "normal"
+    }
+  }
+}
+
 
 ---- VIM options
 
@@ -300,20 +308,8 @@ local telescope = require('telescope.builtin')
 map('n', '<leader>ff', telescope.find_files, opts)
 map('n', '<leader>fg', telescope.live_grep, opts)
 map('n', '<leader>fh', telescope.help_tags, opts)
-map('n', '<leader>fb', telescope.buffers, opts)
+map('n', '<leader>o', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
-
--- Harpoon keybindings
-local harpoon_ui = require('harpoon.ui')
-local harpoon_mark = require('harpoon.mark')
-map('n', '<leader>o', harpoon_ui.toggle_quick_menu, opts)
-map('n', '<leader>a', harpoon_mark.add_file, opts)
-map('n', '<leader>j', harpoon_ui.nav_next, opts)
-map('n', '<leader>k', harpoon_ui.nav_prev, opts)
-map('n', '<leader>1', function() harpoon_ui.nav_file(1) end, opts)
-map('n', '<leader>2', function() harpoon_ui.nav_file(2) end, opts)
-map('n', '<leader>3', function() harpoon_ui.nav_file(3) end, opts)
-map('n', '<leader>4', function() harpoon_ui.nav_file(4) end, opts)
 
 
 -- VIM
