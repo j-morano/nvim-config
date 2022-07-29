@@ -58,10 +58,12 @@ autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 " Terminal
 " Start directly in insert mode
 autocmd TermOpen term://* startinsert
+autocmd TermOpen term://* setlocal nonumber norelativenumber
 autocmd BufEnter term://* startinsert
 " Exit terminal mode with ESC
-tnoremap <C-x> <C-\><C-n>
+tnoremap <M-q> <C-\><C-n>:wincmd p<CR>
 tnoremap <M-w> <C-\><C-n>:e#<CR>
+nnoremap <C-t> <cmd>sp <bar> res 10 <bar> te<CR>
 
 
 " When switching buffers, preserve window view.

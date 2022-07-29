@@ -311,6 +311,7 @@ map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader><leader>', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
+map('n', '<leader>o', require("harpoon.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
@@ -329,7 +330,9 @@ map('n', '_', 'o<Esc>k', opts)
 map('i', '<C-o>', '<CR>', opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
-map('n', '<M-w>', '<ESC>:e#<CR>', opts)
+map('n', '<M-w>', ':e#<CR>', opts)
+map('i', '<M-q>', '<ESC>:wincmd p<CR>a', opts)
+map('n', '<M-q>', ':wincmd p<CR>', opts)
 -- Yank a region without moving the cursor to the top of the block
 map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
