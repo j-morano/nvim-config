@@ -308,7 +308,7 @@ local telescope = require('telescope.builtin')
 map('n', '<leader>ff', telescope.find_files, opts)
 map('n', '<leader>fg', telescope.live_grep, opts)
 map('n', '<leader>fh', telescope.help_tags, opts)
-map('n', '<leader>o', telescope.buffers, opts)
+map('n', '<leader><leader>', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
 
@@ -351,7 +351,7 @@ map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 --  Revert with ":iunmap <C-U>".
 map('i', '<C-U>', '<C-G>u<C-U>', opts)
 -- Move between buffers
-map('n', '<leader><leader>', ':buffers<CR>:b<space>', opts)
+-- map('n', '<leader><leader>', ':buffers<CR>:b<space>', opts)
 -- Custom hjkl remap
 map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
