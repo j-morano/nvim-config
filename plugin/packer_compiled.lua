@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
+  ["skipb.nvim"] = {
+    loaded = true,
+    path = "/home/morano/.local/share/nvim/site/pack/packer/start/skipb.nvim",
+    url = "https://github.com/sonarom/skipb.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/telescope.nvim",

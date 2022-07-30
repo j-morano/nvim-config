@@ -169,6 +169,29 @@ require'lspconfig'.clangd.setup({
     flags = lsp_flags,
 })
 
+require'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 require "lsp_signature".setup({
     floating_window = false,
 })
@@ -305,13 +328,13 @@ local opts = {noremap = true}--, silent = true}
 
 -- Telescope keybindings
 local telescope = require('telescope.builtin')
-map('n', '<leader>ff', telescope.find_files, opts)
+map('n', '<leader>o', telescope.find_files, opts)
 map('n', '<leader>fg', telescope.live_grep, opts)
 map('n', '<leader>fh', telescope.help_tags, opts)
-map('n', '<leader><leader>', telescope.buffers, opts)
+map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
-map('n', '<leader>o', require("harpoon.ui").toggle_quick_menu, opts)
+map('n', '<leader><leader>', require("skipb.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)

@@ -61,6 +61,7 @@ autocmd TermOpen term://* startinsert
 autocmd TermOpen term://* setlocal nonumber norelativenumber
 autocmd BufEnter term://* startinsert
 " Exit terminal mode with ESC
+tnoremap <M-x> <C-\><C-n>
 tnoremap <M-q> <C-\><C-n>:wincmd p<CR>
 tnoremap <M-w> <C-\><C-n>:e#<CR>
 nnoremap <C-t> <cmd>sp <bar> res 10 <bar> te<CR>
