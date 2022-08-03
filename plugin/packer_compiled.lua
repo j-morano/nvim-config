@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/papercolor-theme",
     url = "https://github.com/NLKNguyen/papercolor-theme"
   },
+  ["peruse.nvim"] = {
+    loaded = true,
+    path = "/home/morano/.local/share/nvim/site/pack/packer/start/peruse.nvim",
+    url = "https://github.com/sonarom/peruse.nvim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -128,11 +133,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
-  },
-  ["skipb.nvim"] = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/skipb.nvim",
-    url = "https://github.com/sonarom/skipb.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
