@@ -107,3 +107,6 @@ vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
 nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
 xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
 nnoremap <C-s> n@i
+
+" Close buffer without closing window
+command BD bp | sp | bn | bd

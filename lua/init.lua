@@ -327,6 +327,8 @@ vim.g['UltiSnipsExpandTrigger'] = '<C-l>'
 vim.g['tex_no_error'] = 1
 -- Python syntax highlighting for Vim
 vim.g['python_highlight_all'] = 1
+-- Netrw: do not move the cursor when returning to it
+vim.g['netrw_fastbrowse'] = 2
 
 
 ---- Keybindings
@@ -396,6 +398,8 @@ map('n', '*', 'msHmt`s*`tzt`s', opts)
 map('n', '´', ':noh<CR>', opts)
 -- Delete in insert mode
 map('i', '<C-d>', '<Del>', opts)
+-- Open Netrw on a left split
+map('n', '<leader>l', '<cmd>Lex <bar> vertical resize 30<CR>', opts)
 
 
 ---- User commands
