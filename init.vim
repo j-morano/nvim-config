@@ -31,6 +31,12 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 inoremap (<CR> (<CR>)<C-c>O
 inoremap {<CR> {<CR>}<C-c>O
 inoremap [<CR> [<CR>]<C-c>O
+inoremap (<Space> ()<Left>
+inoremap {<Space> {}<Left>
+inoremap [<Space> []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap ` ``<Left>
 
 
 " Colorscheme

@@ -1,6 +1,8 @@
 ---- Setup nvim-cmp.
 local cmp = require'cmp'
 
+assert(cmp, "cmp not found")
+
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -84,7 +86,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -113,6 +115,7 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
+
 require'lspconfig'.pylsp.setup({
     cmd={"python3", "-m", "pylsp"},
     settings = {
@@ -128,6 +131,7 @@ require'lspconfig'.pylsp.setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
+
 require'lspconfig'.texlab.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -327,7 +331,7 @@ vim.g['python_highlight_all'] = 1
 
 ---- Keybindings
 local map = vim.keymap.set
-local opts = {noremap = true}--, silent = true}
+opts = {noremap = true}--, silent = true}
 
 -- Telescope keybindings
 local telescope = require('telescope.builtin')
@@ -397,7 +401,7 @@ map('i', '<C-d>', '<Del>', opts)
 ---- User commands
 -- Remove trailing spaces
 vim.api.nvim_create_user_command(
-'RmTrail',
-function() vim.cmd('%s/\\s\\+$//e') end,
-{}
+    'RmTrail',
+    function() vim.cmd('%s/\\s\\+$//e') end,
+    {}
 )
