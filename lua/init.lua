@@ -353,7 +353,7 @@ map('v', 'P', 'pgvy', opts)
 map('n', '_', 'o<Esc>k', opts)
 -- Alternative enter (sometimes useful to avoid keymaps)
 --  E.g. with the autocompletion.
-map('i', '<C-o>', '<CR>', opts)
+map('i', '<M-o>', '<CR>', opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
