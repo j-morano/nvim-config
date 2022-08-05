@@ -398,8 +398,6 @@ map('n', '*', 'msHmt`s*`tzt`s', opts)
 map('n', '´', ':noh<CR>', opts)
 -- Delete in insert mode
 map('i', '<C-d>', '<Del>', opts)
--- Open Netrw on a left split
-map('n', '<leader>l', '<cmd>Lex <bar> vertical resize 30<CR>', opts)
 
 
 ---- User commands
