@@ -116,14 +116,11 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-require'lspconfig'.pylsp.setup({
-    cmd={"python3", "-m", "pylsp"},
+require'lspconfig'.pyright.setup({
     settings = {
-        pylsp = {
-            plugins={
-                pycodestyle={
-                    enabled=false
-                }
+        python = {
+            analysis={
+                typeCheckingMode = "off"
             }
         }
     },
@@ -346,7 +343,20 @@ map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
+-- Peruse
 map('n', '<leader><leader>', require("peruse.ui").toggle_quick_menu, opts)
+for line=1,10 do
+    local key = line
+    if line == 10 then
+        key = 0
+    end
+    map(
+        'n',
+        string.format('<leader>%s', key),
+        function () require("peruse.ui").nav_file(line) end,
+        opts
+    )
+end
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
