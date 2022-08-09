@@ -65,6 +65,7 @@ autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
 autocmd TermOpen term://* startinsert
 autocmd TermOpen term://* setlocal nonumber norelativenumber
 autocmd BufEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
 " Exit terminal mode with ESC
 tnoremap <M-x> <C-\><C-n>
 tnoremap <M-q> <C-\><C-n>:wincmd p<CR>

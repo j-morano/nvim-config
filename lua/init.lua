@@ -357,6 +357,7 @@ for line=1,10 do
         opts
     )
 end
+map('t', '<M-Space>', require("peruse.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
