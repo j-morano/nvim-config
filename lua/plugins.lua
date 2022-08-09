@@ -26,7 +26,7 @@ return require('packer').startup(function()
 
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'sonarom/peruse.nvim'
+    use 'sonarom/buffer_manager.nvim'
 
     use 'neovim/nvim-lspconfig'
 

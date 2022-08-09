@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["buffer_manager.nvim"] = {
+    loaded = true,
+    path = "/home/morano/.local/share/nvim/site/pack/packer/start/buffer_manager.nvim",
+    url = "https://github.com/sonarom/buffer_manager.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -113,11 +118,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/papercolor-theme",
     url = "https://github.com/NLKNguyen/papercolor-theme"
-  },
-  ["peruse.nvim"] = {
-    loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/peruse.nvim",
-    url = "https://github.com/sonarom/peruse.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,

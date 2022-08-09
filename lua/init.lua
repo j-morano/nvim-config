@@ -343,8 +343,8 @@ map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
--- Peruse
-map('n', '<leader><leader>', require("peruse.ui").toggle_quick_menu, opts)
+-- buffer_manager
+map('n', '<leader><leader>', require("buffer_manager.ui").toggle_quick_menu, opts)
 for line=1,10 do
     local key = line
     if line == 10 then
@@ -353,11 +353,11 @@ for line=1,10 do
     map(
         'n',
         string.format('<leader>%s', key),
-        function () require("peruse.ui").nav_file(line) end,
+        function () require("buffer_manager.ui").nav_file(line) end,
         opts
     )
 end
-map('t', '<M-Space>', require("peruse.ui").toggle_quick_menu, opts)
+map('t', '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
