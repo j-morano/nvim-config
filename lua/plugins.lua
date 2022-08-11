@@ -2,12 +2,6 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Track the engine.
-    use 'SirVer/ultisnips'
-
-    -- Snippets are separated from the engine. Add this if you want them:
-    use 'honza/vim-snippets'
-
     use 'mhinz/vim-signify'
 
     use 'Vimjas/vim-python-pep8-indent'
