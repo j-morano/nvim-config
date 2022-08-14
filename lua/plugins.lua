@@ -2,13 +2,11 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Visuall information
+    use 'lukas-reineke/indent-blankline.nvim'
     use 'mhinz/vim-signify'
 
-    use 'Vimjas/vim-python-pep8-indent'
-    use 'vim-python/python-syntax'
-
-    use 'ray-x/lsp_signature.nvim'
-
+    -- Colorscheme
     use 'NLKNguyen/papercolor-theme'
 
     -- tpope
@@ -16,16 +14,25 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
 
-    use 'lukas-reineke/indent-blankline.nvim'
-
+    -- File navigation
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'sonarom/buffer_manager.nvim'
 
+    -- Snippets
+    use 'L3MON4D3/LuaSnip'
+
+    -- LSP
     use 'neovim/nvim-lspconfig'
+    use 'ray-x/lsp_signature.nvim'
 
+    -- Rust development
     use 'simrat39/rust-tools.nvim'
+    -- Python development
+    use 'Vimjas/vim-python-pep8-indent'
+    use 'vim-python/python-syntax'
 
+    -- Completion
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
