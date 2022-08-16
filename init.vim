@@ -35,9 +35,6 @@ inoremap [<CR> [<CR>]<C-c>O
 inoremap (<Space> ()<Left>
 inoremap {<Space> {}<Left>
 inoremap [<Space> []<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap ` ``<Left>
 
 
 " Colorscheme
