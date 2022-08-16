@@ -139,7 +139,6 @@ require'lspconfig'.texlab.setup({
 local options = {
     tools = {
         autoSetHints = true,
-        hover_with_actions = true,
         runnables = {
             use_telescope = true
         },
