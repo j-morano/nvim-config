@@ -94,10 +94,10 @@ _G.packer_plugins = {
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["friendly-snippets"] = {
+  ["flutter-tools.nvim"] = {
     loaded = true,
-    path = "/home/morano/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
+    path = "/home/morano/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    url = "https://github.com/akinsho/flutter-tools.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,

@@ -193,6 +193,22 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
+-- alternatively you can override the default configs
+require("flutter-tools").setup {
+  flutter_path = "flutter", -- <-- this takes priority over the lookup
+  lsp = {
+    cmd = { "dart", "language-server", "--protocol=lsp" },
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+  },
+  closing_tags = {
+    highlight = "ClosingTags",
+    prefix = "..",
+    enabled = true,
+  },
+}
+
 require "lsp_signature".setup({
     floating_window = false,
 })
