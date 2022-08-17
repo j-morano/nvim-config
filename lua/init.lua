@@ -235,10 +235,6 @@ require "telescope".setup {
 }
 
 
-vim.opt.termguicolors = true
-require'colorizer'.setup()
-
-
 ---- VIM options
 
 -- Show @@@ in the last line if it is truncated.
@@ -324,6 +320,8 @@ vim.opt.viminfo = "'100,f1"
 vim.opt.pumheight = 7
 -- Show cursor line
 vim.opt.cursorline = true
+-- Use termguicolors
+vim.opt.termguicolors = true
 
 
 ---- Window options
