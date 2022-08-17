@@ -235,6 +235,10 @@ require "telescope".setup {
 }
 
 
+vim.opt.termguicolors = true
+require'colorizer'.setup()
+
+
 ---- VIM options
 
 -- Show @@@ in the last line if it is truncated.

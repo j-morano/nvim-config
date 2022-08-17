@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
     -- Visuall information
     use 'lukas-reineke/indent-blankline.nvim'
     use 'mhinz/vim-signify'
+    use 'norcalli/nvim-colorizer.lua'
 
     -- Colorscheme
     use 'NLKNguyen/papercolor-theme'
