@@ -228,9 +228,6 @@ require "telescope".setup {
     buffers = {
       initial_mode = "normal"
     },
-    find_files = {
-      initial_mode = "normal"
-    }
   }
 }
 
@@ -322,6 +319,9 @@ vim.opt.pumheight = 7
 vim.opt.cursorline = true
 -- Use termguicolors
 vim.opt.termguicolors = true
+-- Permanent undo
+vim.opt.undodir = vim.fn.expand('~/.undodir')
+vim.opt.undofile = true
 
 
 ---- Window options
@@ -399,7 +399,7 @@ map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Alternative escape
-map('i', 'jj', '<Esc>', opts)
+map({'i', 'v'}, '<C-j>', '<Esc>', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
