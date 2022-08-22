@@ -27,6 +27,11 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType dart setlocal ts=2 sts=2 sw=2 expandtab
 
+" Do not allow to use arrows
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " Auto-expansion
 inoremap (<CR> (<CR>)<C-c>O
