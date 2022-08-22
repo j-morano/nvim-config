@@ -72,112 +72,112 @@ _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
+    url = "https://github.com/L3MON4D3/LuaSnip.git"
   },
   ["buffer_manager.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/buffer_manager.nvim",
-    url = "https://github.com/sonarom/buffer_manager.nvim"
+    url = "https://github.com/sonarom/buffer_manager.nvim.git"
   },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-buffer",
-    url = "https://github.com/hrsh7th/cmp-buffer"
+    url = "https://github.com/hrsh7th/cmp-buffer.git"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp.git"
   },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/cmp-path",
-    url = "https://github.com/hrsh7th/cmp-path"
+    url = "https://github.com/hrsh7th/cmp-path.git"
   },
   ["flutter-tools.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
-    url = "https://github.com/akinsho/flutter-tools.nvim"
+    url = "https://github.com/akinsho/flutter-tools.nvim.git"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim.git"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
-    url = "https://github.com/ray-x/lsp_signature.nvim"
+    url = "https://github.com/ray-x/lsp_signature.nvim.git"
   },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
+    url = "https://github.com/hrsh7th/nvim-cmp.git"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/norcalli/nvim-colorizer.lua"
+    url = "https://github.com/norcalli/nvim-colorizer.lua.git"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
+    url = "https://github.com/neovim/nvim-lspconfig.git"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/packer.nvim",
-    url = "https://github.com/wbthomason/packer.nvim"
+    url = "https://github.com/wbthomason/packer.nvim.git"
   },
   ["papercolor-theme"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/papercolor-theme",
-    url = "https://github.com/NLKNguyen/papercolor-theme"
+    url = "https://github.com/NLKNguyen/papercolor-theme.git"
   },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-    url = "https://github.com/nvim-lua/plenary.nvim"
+    url = "https://github.com/nvim-lua/plenary.nvim.git"
   },
   ["python-syntax"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/python-syntax",
-    url = "https://github.com/vim-python/python-syntax"
+    url = "https://github.com/vim-python/python-syntax.git"
   },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
-    url = "https://github.com/simrat39/rust-tools.nvim"
+    url = "https://github.com/simrat39/rust-tools.nvim.git"
   },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-    url = "https://github.com/nvim-telescope/telescope.nvim"
+    url = "https://github.com/nvim-telescope/telescope.nvim.git"
   },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-commentary",
-    url = "https://github.com/tpope/vim-commentary"
+    url = "https://github.com/tpope/vim-commentary.git"
   },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
+    url = "https://github.com/tpope/vim-fugitive.git"
   },
   ["vim-python-pep8-indent"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
-    url = "https://github.com/Vimjas/vim-python-pep8-indent"
+    url = "https://github.com/Vimjas/vim-python-pep8-indent.git"
   },
   ["vim-signify"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-signify",
-    url = "https://github.com/mhinz/vim-signify"
+    url = "https://github.com/mhinz/vim-signify.git"
   },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/morano/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
+    url = "https://github.com/tpope/vim-surround.git"
   }
 }
 
