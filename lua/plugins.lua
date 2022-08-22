@@ -1,43 +1,43 @@
 return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-    -- Visuall information
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'mhinz/vim-signify'
-    use 'norcalli/nvim-colorizer.lua'
+  -- Visuall information
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'mhinz/vim-signify'
+  use 'norcalli/nvim-colorizer.lua'
 
-    -- Colorscheme
-    use 'NLKNguyen/papercolor-theme'
+  -- Colorscheme
+  use 'NLKNguyen/papercolor-theme'
 
-    -- tpope
-    use 'tpope/vim-surround'
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-commentary'
+  -- tpope
+  use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-commentary'
 
-    -- File navigation
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'sonarom/buffer_manager.nvim'
+  -- File navigation
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'sonarom/buffer_manager.nvim'
 
-    -- Snippets
-    use 'L3MON4D3/LuaSnip'
+  -- Snippets
+  use 'L3MON4D3/LuaSnip'
 
-    -- LSP
-    use 'neovim/nvim-lspconfig'
-    use 'ray-x/lsp_signature.nvim'
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'ray-x/lsp_signature.nvim'
 
-    -- Rust development
-    use 'simrat39/rust-tools.nvim'
-    -- Python development
-    use 'Vimjas/vim-python-pep8-indent'
-    use 'vim-python/python-syntax'
-    -- Flutter development
-    use 'akinsho/flutter-tools.nvim'
+  -- Rust development
+  use 'simrat39/rust-tools.nvim'
+  -- Python development
+  use 'Vimjas/vim-python-pep8-indent'
+  use 'vim-python/python-syntax'
+  -- Flutter development
+  use 'akinsho/flutter-tools.nvim'
 
-    -- Completion
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/nvim-cmp'
+  -- Completion
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/nvim-cmp'
 end)
