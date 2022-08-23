@@ -6,12 +6,12 @@ vnoremap <leader>b c\textbf{<c-r>"}<Esc>
 vnoremap <leader>u c\underline{<c-r>"}<Esc>
 vnoremap <leader>v c\verb\|<c-r>"\|<Esc>
 
-inoremap ºv \verb\|\|<left>
-inoremap ºi \textit{}<left>
-inoremap ºu \underline{}<left>
-inoremap ºb \textbf{}<left>
-inoremap ºc ~\cite{}<left>
-inoremap ºr ~\ref{}<left>
-inoremap ºfu \footnote{\url{}}<left><left>
+inoremap ¡v \verb\|\|<left>
+inoremap ¡i \textit{}<left>
+inoremap ¡u \underline{}<left>
+inoremap ¡b \textbf{}<left>
+inoremap ¡c ~\cite{}<left>
+inoremap ¡r ~\ref{}<left>
+inoremap ¡fu \footnote{\url{}}<left><left>
 nnoremap <leader>x :update <bar> !./compile<CR>
 nnoremap <leader>. f.lxi<CR><ESC>
