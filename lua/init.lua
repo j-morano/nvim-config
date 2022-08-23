@@ -399,7 +399,10 @@ map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Alternative escape
-map({'i', 'v', 'n'}, 'º', '<Esc>', opts)
+map({'i', 'v', 'n', 'c'}, 'º', '<Esc>', opts)
+-- Avoid unintentionally macro recording
+map('n', 'q', '<Nop>', opts)
+map('n', 'qq', 'q', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
