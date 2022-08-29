@@ -300,9 +300,6 @@ vim.opt.whichwrap:append('<,>,[,],h,l')
 vim.opt.clipboard:append('unnamedplus')
 -- Do not highlight current word occurences
 vim.opt.hlsearch = true
--- Show trailing spaces
-vim.opt.listchars = 'trail:@'
---set list
 -- Incremental search
 vim.opt.incsearch = true
 -- Default updatetime 4000ms is not good for async update
@@ -400,6 +397,9 @@ map('v', 'y', 'ygv<Esc>', opts)
 map('n', '<C-c>', '<C-a>', opts)
 -- Alternative escape
 map({'i', 'v', 'n', 'c'}, 'º', '<Esc>', opts)
+-- Move cursor in insert mode
+map('i', '<M-l>', '<Right>', opts)
+map('i', '<M-ñ>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
