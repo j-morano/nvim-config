@@ -24,7 +24,7 @@ hi xmlString ctermfg=22 guifg=#005f00
 
 "---- LSP
 hi TypeHints ctermbg=189 guibg=#dfdfff
-hi ClosingTags ctermfg=244 cterm=bold guibg=#808080 gui=bold
+hi ClosingTags ctermfg=244 cterm=bold guifg=#808080 gui=bold
 
 "---- IndentBlankLine
 hi IndentBlanklineIndent1 ctermfg=248 cterm=nocombine guifg=#a8a8a8 gui=nocombine

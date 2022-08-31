@@ -203,7 +203,7 @@ require("flutter-tools").setup {
   },
   closing_tags = {
     highlight = "ClosingTags",
-    prefix = "..",
+    prefix = "·",
     enabled = true,
   },
 }
