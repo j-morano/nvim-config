@@ -206,6 +206,9 @@ require("flutter-tools").setup {
     prefix = "·",
     enabled = true,
   },
+  widget_guides = {
+    enabled = true,
+  },
 }
 
 require "lsp_signature".setup({
