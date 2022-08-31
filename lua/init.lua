@@ -395,8 +395,6 @@ map('n', '<M-q>', ':wincmd p<CR>', opts)
 map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
--- Alternative escape
-map({'i', 'v', 'n', 'c'}, 'º', '<Esc>', opts)
 -- Move cursor in insert mode
 map('i', '<M-l>', '<Right>', opts)
 map('i', '<M-ñ>', '<Left>', opts)
