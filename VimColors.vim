@@ -41,3 +41,22 @@ hi diffRemoved ctermfg=88 ctermbg=none guifg=#005f00 guibg=none
 "---- Highlight trailing spaces
 hi EoLSpace ctermbg=182 guibg=#dfafdf
 match EoLSpace /\s\+$/
+
+
+"---- Terminal colors
+let g:terminal_color_0 = '#212121'
+let g:terminal_color_8 = '#424242'
+let g:terminal_color_1 = '#b7141e'
+let g:terminal_color_9 = '#e83a3f'
+let g:terminal_color_2 = '#457b23'
+let g:terminal_color_10= '#7aba39'
+let g:terminal_color_3 = '#a36500'
+let g:terminal_color_11= '#fee92e'
+let g:terminal_color_4 = '#134eb2'
+let g:terminal_color_12= '#53a4f3'
+let g:terminal_color_5 = '#550087'
+let g:terminal_color_13= '#a94dbb'
+let g:terminal_color_6 = '#0e707c'
+let g:terminal_color_14= '#26bad1'
+let g:terminal_color_7 = '#eeeeee'
+let g:terminal_color_15= '#d8d8d8'
