@@ -359,7 +359,6 @@ map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
 -- buffer_manager
-map('n', '<leader><leader>', require("buffer_manager.ui").toggle_quick_menu, opts)
 for line=1,10 do
   local key = line
   if line == 10 then
@@ -372,7 +371,7 @@ for line=1,10 do
     opts
   )
 end
-map('t', '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
+map({ 't', 'n' }, '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
