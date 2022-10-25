@@ -432,7 +432,8 @@ map('n', '´', ':noh<CR>', opts)
 map('i', '<C-d>', '<Del>', opts)
 -- Rex
 map('n', '<M-e>', '<cmd>Rex<CR>', opts)
-
+-- Alternative escape
+map('i', '<M-j>', '<Esc>', opts)
 
 ---- User commands
 -- Remove trailing spaces
