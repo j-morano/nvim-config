@@ -398,8 +398,8 @@ map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Move cursor in insert mode
-map('i', '<M-l>', '<Right>', opts)
-map('i', '<M-ñ>', '<Left>', opts)
+map('i', '<M-i>', '<Right>', opts)
+map('i', '<M-S-i>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
@@ -432,8 +432,6 @@ map('n', '´', ':noh<CR>', opts)
 map('i', '<C-d>', '<Del>', opts)
 -- Rex
 map('n', '<M-e>', '<cmd>Rex<CR>', opts)
--- Alternative escape
-map('i', '<M-j>', '<Esc>', opts)
 
 ---- User commands
 -- Remove trailing spaces
