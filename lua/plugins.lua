@@ -2,7 +2,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Visuall information
+  -- Visual information
   use 'lukas-reineke/indent-blankline.nvim'
   use 'mhinz/vim-signify'
   use 'norcalli/nvim-colorizer.lua'
@@ -32,8 +32,6 @@ return require('packer').startup(function(use)
   -- Python development
   use 'Vimjas/vim-python-pep8-indent'
   use 'vim-python/python-syntax'
-  -- Flutter development
-  use 'akinsho/flutter-tools.nvim'
 
   -- Completion
   use 'hrsh7th/cmp-nvim-lsp'
