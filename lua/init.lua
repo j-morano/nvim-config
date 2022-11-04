@@ -374,6 +374,9 @@ map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
 map('i', '<M-q>', '<ESC>:wincmd p<CR>a', opts)
 map('n', '<M-q>', ':wincmd p<CR>', opts)
+-- Alternative escape
+map('i', 'jk', '<ESC>', opts)
+map('i', 'kj', '<ESC>', opts)
 -- Yank a region without moving the cursor to the top of the block
 map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
