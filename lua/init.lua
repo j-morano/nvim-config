@@ -116,11 +116,14 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require'lspconfig'.pyright.setup({
+require'lspconfig'.pylsp.setup({
+  cmd={"python3", "-m", "pylsp"},
   settings = {
-    python = {
-      analysis={
-        typeCheckingMode = "off"
+    pylsp = {
+      plugins={
+        pycodestyle={
+          enabled=false
+        }
       }
     }
   },
@@ -385,8 +388,8 @@ map('n', '<C-c>', '<C-a>', opts)
 map('i', '<M-i>', '<Right>', opts)
 map('i', '<M-S-i>', '<Left>', opts)
 -- Avoid unintentionally macro recording
-map('n', 'q', '<Nop>', opts)
-map('n', 'qq', 'q', opts)
+-- map('n', 'q', '<Nop>', opts)
+-- map('n', 'qq', 'q', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -414,8 +417,8 @@ map('n', '*', 'msHmt`s*`tzt`s', opts)
 map('n', '´', ':noh<CR>', opts)
 -- Delete in insert mode
 map('i', '<C-d>', '<Del>', opts)
--- Rex
-map('n', '<M-e>', '<cmd>Rex<CR>', opts)
+-- Ex
+map('n', '<M-e>', '<cmd>Ex<CR>', opts)
 
 ---- User commands
 -- Remove trailing spaces
