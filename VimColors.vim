@@ -40,7 +40,7 @@ hi diffRemoved ctermfg=88 ctermbg=none guifg=#005f00 guibg=none
 
 "---- Highlight trailing spaces
 hi EoLSpace ctermbg=182 guibg=#dfafdf
-match EoLSpace /\s\+$/
+autocmd Syntax * syntax match EoLSpace /\s\+$/
 
 
 "---- Terminal colors
