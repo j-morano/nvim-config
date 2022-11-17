@@ -342,8 +342,20 @@ map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
--- Easy buffer navigation
-map({ 't', 'n' }, '<M-Space>', ':ls<CR>:b<Space>', opts)
+-- buffer_manager
+for line=1,10 do
+  local key = line
+  if line == 10 then
+    key = 0
+  end
+  map(
+    'n',
+    string.format('<leader>%s', key),
+    function () require("buffer_manager.ui").nav_file(line) end,
+    opts
+  )
+end
+map({ 't', 'n' }, '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)

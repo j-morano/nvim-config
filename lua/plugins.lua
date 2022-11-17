@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
   -- File navigation
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  use 'j-morano/buffer_manager.nvim'
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
