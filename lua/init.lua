@@ -357,6 +357,12 @@ for line=1,10 do
 end
 map({ 't', 'n' }, '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
 
+-- Copilot
+vim.keymap.set('i', '<M-j>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-k>', '<Plug>(copilot-previous)')
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<M-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
@@ -385,11 +391,11 @@ map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Move cursor in insert mode
-map('i', '<M-i>', '<Right>', opts)
-map('i', '<M-S-i>', '<Left>', opts)
+map('i', '<M-l>', '<Right>', opts)
+map('i', '<M-ñ>', '<Left>', opts)
 -- Avoid unintentionally macro recording
--- map('n', 'q', '<Nop>', opts)
--- map('n', 'qq', 'q', opts)
+map('n', 'q', '<Nop>', opts)
+map('n', 'qq', 'q', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -413,8 +419,8 @@ map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
 -- hl search, no jump, no blink
-map('n', '*', 'msHmt`s*`tzt`s', opts)
-map('n', '´', ':noh<CR>', opts)
+map('n', '+', 'msHmt`s*`tzt`s', opts)
+map('n', '*', ':noh<CR>', opts)
 -- Delete in insert mode
 map('i', '<C-d>', '<Del>', opts)
 -- Ex

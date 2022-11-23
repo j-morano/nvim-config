@@ -42,6 +42,8 @@ hi diffRemoved ctermfg=88 ctermbg=none guifg=#005f00 guibg=none
 hi EoLSpace ctermbg=182 guibg=#dfafdf
 autocmd Syntax * syntax match EoLSpace /\s\+$/
 
+"---- Highlight trailing tabs
+highlight CopilotSuggestion guifg=#9c4fb8 ctermfg=54
 
 "---- Terminal colors
 let g:terminal_color_0 = '#212121'
