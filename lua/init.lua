@@ -358,10 +358,16 @@ end
 map({ 't', 'n' }, '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
 
 -- Copilot
-vim.keymap.set('i', '<M-j>', '<Plug>(copilot-next)')
-vim.keymap.set('i', '<M-k>', '<Plug>(copilot-previous)')
+local function SuggestOneWord()
+  vim.fn['copilot#Accept']("")
+  local bar = vim.fn['copilot#TextQueuedForInsertion']()
+  return vim.fn.split(bar,  [[[ .]\zs]])[1]
+end
+map('i', '<M-j>', '<Plug>(copilot-next)')
+map('i', '<M-k>', '<Plug>(copilot-previous)')
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<M-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+map('i', '<M-o>', SuggestOneWord, {expr = true, remap = false})
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
@@ -377,7 +383,7 @@ map('v', 'P', 'pgvy', opts)
 map('n', '_', 'o<Esc>k', opts)
 -- Alternative enter (sometimes useful to avoid keymaps)
 --  E.g. with the autocompletion.
-map('i', '<M-o>', '<CR>', opts)
+map('i', '<M-p>', '<CR>', opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
