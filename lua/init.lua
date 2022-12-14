@@ -381,9 +381,6 @@ map('', 'c', '"_c', opts)
 map('v', 'P', 'pgvy', opts)
 -- Add blank line below
 map('n', '_', 'o<Esc>k', opts)
--- Alternative enter (sometimes useful to avoid keymaps)
---  E.g. with the autocompletion.
-map('i', '<M-p>', '<CR>', opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
