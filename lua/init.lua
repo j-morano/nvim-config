@@ -428,7 +428,10 @@ map('n', '+', ':noh<CR>', opts)
 map('i', '<C-d>', '<Del>', opts)
 -- Ex
 map('n', '<M-e>', '<cmd>Ex<CR>', opts)
+-- Unicode symbols
 map('i', '<C-a>', '➜', opts)
+-- Filename suggestions
+map('i', '<C-f>', '<C-x><C-f>', opts)
 
 ---- User commands
 -- Remove trailing spaces
