@@ -347,17 +347,20 @@ map('n', '<leader>fr', telescope.resume, opts)
 
 
 -- buffer_manager
+local bmui = require("buffer_manager.ui")
 local keys = '1234567890'
 for i = 1, #keys do
   local key = keys:sub(i,i)
   map(
     'n',
     string.format('<leader>%s', key),
-    function () require("buffer_manager.ui").nav_file(i) end,
+    function () bmui.nav_file(i) end,
     opts
   )
 end
-map({ 't', 'n' }, '<M-Space>', require("buffer_manager.ui").toggle_quick_menu, opts)
+map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
+map('n', '<M-j>', bmui.nav_next, opts)
+map('n', '<M-k>', bmui.nav_prev, opts)
 
 -- Copilot
 local function SuggestOneWord()
