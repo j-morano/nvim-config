@@ -453,6 +453,9 @@ map('n', '<C-t>', '<cmd>sp <bar> res 10 <bar> te<CR>', opts)
 -- Search and replace selected text starting from the cursor position
 -- \V: very nomagic: do not use regex
 map('v', '<C-r>', '"hy:,$s/\\V<C-r>h//gc<left><left><left>', opts)
+-- Paste and indent
+map({'n', 'v'}, '<C-p>', 'pgvy`[v`]=<Esc>', opts)
+map('i', '<C-p>', '<Esc>p`[v`]=<Esc>', opts)
 
 local expr_opts = {noremap = true, expr = true}
 -- Move cursor by display lines
@@ -494,17 +497,26 @@ end
 -- Vertical rulers
 vim.opt.colorcolumn = {81}
 vim.api.nvim_create_autocmd(
-    { "FileType python" },
-    { callback = set_color_columns({73, 80}) }
+    { "FileType" },
+    {
+      pattern = "python",
+      callback = set_color_columns({73, 80})
+    }
 )
 vim.api.nvim_create_autocmd(
-    { "FileType rust" },
-    { callback = set_color_columns({81, 101}) }
+    { "FileType" },
+    {
+      pattern = "rust",
+      callback = set_color_columns({81, 101})
+    }
 )
 -- Custom tabspaces values
 vim.api.nvim_create_autocmd(
-    { "FileType javascript", "FileType typescript", "FileType lua" },
-    { command = "setlocal ts=2 sts=2 sw=2 expandtab" }
+    { "FileType" },
+    {
+      pattern = {"javascript", "typescript", "lua" },
+      command = "setlocal ts=2 sts=2 sw=2 expandtab"
+    }
 )
 -- Resize Neovim itself when launched as initial command for terminal
 vim.api.nvim_create_autocmd(
