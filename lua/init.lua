@@ -165,9 +165,12 @@ local options = {
 
 require('rust-tools').setup(options)
 
+local clangd_capabilities = capabilities
+clangd_capabilities.offsetEncoding = { "utf-16" }
+
 require'lspconfig'.clangd.setup({
   cmd = { "clangd" },
-  capabilities = capabilities,
+  capabilities = clangd_capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
 })
@@ -342,16 +345,15 @@ map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
 
+
 -- buffer_manager
-for line=1,10 do
-  local key = line
-  if line == 10 then
-    key = 0
-  end
+local keys = '1234567890'
+for i = 1, #keys do
+  local key = keys:sub(i,i)
   map(
     'n',
     string.format('<leader>%s', key),
-    function () require("buffer_manager.ui").nav_file(line) end,
+    function () require("buffer_manager.ui").nav_file(i) end,
     opts
   )
 end
@@ -432,6 +434,39 @@ map('n', '<M-e>', '<cmd>Ex<CR>', opts)
 map('i', '<C-a>', '➜', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
+-- Auto-expansion
+map('i', '(<CR>', '(<CR>)<C-c>O', opts)
+map('i', '{<CR>', '{<CR>}<C-c>O', opts)
+map('i', '[<CR>', '[<CR>]<C-c>O', opts)
+map('i', '(<Space>', '()<Left>', opts)
+map('i', '{<Space>', '{}<Left>', opts)
+map('i', '[<Space>', '[]<Left>', opts)
+map('i', '\'<Space>', '\'\'<Left>', opts)
+map('i', '"<Space>', '""<Left>', opts)
+-- Terminal
+map('t', '<M-x>', '<C-\\><C-n>', opts)
+map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
+map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
+-- Bottom terminal
+map('n', '<C-t>', '<cmd>sp <bar> res 10 <bar> te<CR>', opts)
+
+-- Search and replace selected text starting from the cursor position
+-- \V: very nomagic: do not use regex
+map('v', '<C-r>', '"hy:,$s/\\V<C-r>h//gc<left><left><left>', opts)
+
+local expr_opts = {noremap = true, expr = true}
+-- Move cursor by display lines
+-- Jump regular lines when using numbers
+map('n', 'j', "v:count ? 'j' : 'gj'", expr_opts)
+map('n', 'k', "v:count ? 'k' : 'gk'", expr_opts)
+map('v', 'j', "v:count ? 'j' : 'gj'", expr_opts)
+map('v', 'k', "v:count ? 'k' : 'gk'", expr_opts)
+
+local expr_opts_silent = {noremap = true, expr = true, silent = true}
+-- Always use global marks
+map('n', "'",  '"`" . toupper(nr2char(getchar())) . "zz"', expr_opts_silent)
+map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
+
 
 ---- User commands
 -- Remove trailing spaces
@@ -439,4 +474,67 @@ vim.api.nvim_create_user_command(
   'RmTrail',
   function() vim.cmd('%s/\\s\\+$//e') end,
   {}
+)
+-- Close buffer without closing window
+vim.api.nvim_create_user_command(
+  'BD',
+  function() vim.cmd('bp | sp | bn | bd') end,
+  {}
+)
+
+--------------------------------------------------------------------------------
+-- Autocommands
+
+local function set_color_columns(columns)
+  return function ()
+    vim.opt.colorcolumn = columns
+  end
+end
+
+-- Vertical rulers
+vim.opt.colorcolumn = {81}
+vim.api.nvim_create_autocmd(
+    { "FileType python" },
+    { callback = set_color_columns({73, 80}) }
+)
+vim.api.nvim_create_autocmd(
+    { "FileType rust" },
+    { callback = set_color_columns({81, 101}) }
+)
+-- Custom tabspaces values
+vim.api.nvim_create_autocmd(
+    { "FileType javascript", "FileType typescript", "FileType lua" },
+    { command = "setlocal ts=2 sts=2 sw=2 expandtab" }
+)
+-- Resize Neovim itself when launched as initial command for terminal
+vim.api.nvim_create_autocmd(
+  { 'VimEnter' },
+  {
+    pattern = '*',
+    callback = function()
+      vim.cmd('sleep 100m')
+      vim.cmd('silent exec "!kill -s SIGWINCH" getpid()')
+    end
+  }
+)
+
+-- Terminal
+-- Start directly in insert mode
+vim.api.nvim_create_autocmd(
+  { 'TermOpen' },
+  {
+    pattern = 'term://*',
+    callback = function()
+      vim.cmd('startinsert')
+      vim.cmd('setlocal nonumber norelativenumber')
+    end
+  }
+)
+vim.api.nvim_create_autocmd(
+  { 'BufEnter' },
+  { pattern = 'term://*', command = 'startinsert' }
+)
+vim.api.nvim_create_autocmd(
+  { 'BufLeave' },
+  { pattern = 'term://*', command = 'stopinsert' }
 )

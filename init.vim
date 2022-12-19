@@ -16,27 +16,9 @@ autocmd BufReadPost *
   \ |   exe "normal! g`\""
   \ | endif
 
-
-" Vertical rulers
-set colorcolumn=81
-autocmd FileType python set colorcolumn=73,80
-autocmd FileType rust set colorcolumn=81,101
-" Custom tabspaces values
-"autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType dart setlocal ts=2 sts=2 sw=2 expandtab
-
-
-" Auto-expansion
-inoremap (<CR> (<CR>)<C-c>O
-inoremap {<CR> {<CR>}<C-c>O
-inoremap [<CR> [<CR>]<C-c>O
-inoremap (<Space> ()<Left>
-inoremap {<Space> {}<Left>
-inoremap [<Space> []<Left>
-inoremap '<Space> ''<Left>
-inoremap "<Space> ""<Left>
+" When switching buffers, preserve window view.
+au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | endif
 
 
 " Colorscheme
@@ -56,61 +38,12 @@ colorscheme PaperColor
 runtime VimColors.vim
 
 
-" Resize Neovim itself when launched as initial command for terminal
-autocmd VimEnter * :sleep 100m
-autocmd VimEnter * silent exec "!kill -s SIGWINCH" getpid()
-
-
-" Terminal
-" Start directly in insert mode
-autocmd TermOpen term://* startinsert
-autocmd TermOpen term://* setlocal nonumber norelativenumber
-autocmd BufEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
-" Exit terminal mode with ESC
-tnoremap <M-x> <C-\><C-n>
-tnoremap <M-q> <C-\><C-n>:wincmd p<CR>
-tnoremap <M-w> <C-\><C-n>:e#<CR>
-nnoremap <C-t> <cmd>sp <bar> res 10 <bar> te<CR>
-
-
-" When switching buffers, preserve window view.
-if v:version >= 700
-    au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-    au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | endif
-endif
-
-
 " Switch arrow key mappings for wildmenu tab completion
 cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 cnoremap <expr> <M-ñ> wildmenumode() ? "\<up>" : "\<M-ñ>"
-
-" Move cursor by display lines
-" Jump regular lines when using numbers
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
-vnoremap <expr> j v:count ? 'j' : 'gj'
-vnoremap <expr> k v:count ? 'k' : 'gk'
-
-" Always use global marks
-nnoremap <silent> <expr> ' "`" . toupper(nr2char(getchar())) . 'zz'
-nnoremap <silent> <expr> m "m" . toupper(nr2char(getchar()))
-
-" Search and replace selected text starting from the cursor position
-" \V: very nomagic: do not use regex
-vnoremap <C-r> "hy:,$s/\V<C-r>h//gc<left><left><left>
-
 
 "--- Vim-style alternative to multiple cursors
 " Apply macro to given word
 nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
 xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
 nnoremap <C-s> n@i
-
-" Replace full word
-nnoremap <leader>s :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-" Append to the end of a word
-nnoremap <leader>a :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
-
-" Close buffer without closing window
-command BD bp | sp | bn | bd
