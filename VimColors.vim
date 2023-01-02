@@ -1,26 +1,27 @@
 "---- Builtins
 " Soft hl color
-hi Search ctermbg=254 guibg=#e4e4e4
-" True black text
-hi Normal ctermfg=0 guifg=#000000
-hi NormalFloat ctermfg=0 ctermbg=253 guifg=#000000 guibg=#dadada
-hi NormalNC ctermfg=0 guifg=#000000
-" Line numbers
+hi Search ctermbg=189 guibg=#d7d7ff
+" " True black text
+hi Normal ctermfg=236 guifg=#303030
+hi NormalFloat ctermfg=236 ctermbg=253 guifg=#303030 guibg=#dadada
+hi NormalNC ctermfg=236 guifg=#303030
+" " Line numbers
 hi LineNr ctermfg=244 guifg=#808080
 hi LineNrAbove ctermfg=244 guifg=#808080
 hi LineNrBelow ctermfg=244 guifg=#808080
 " Cursor line
-hi CursorLine ctermbg=255 guibg=#eeeeee
+hi CursorLine ctermbg=255 guibg=#e8e8e8
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 "---- Custom PaperColor highlights
 " Markdown
-hi markdownCodeBlock ctermfg=0 guifg=#000000
-" Dark green strings
-hi String ctermfg=22 guifg=#005f00
-hi pythonString ctermfg=22 guifg=#005f00
-hi jsxString ctermfg=22 guifg=#005f00
-hi jsonString ctermfg=22 guifg=#005f00
-hi xmlString ctermfg=22 guifg=#005f00
+" hi markdownCodeBlock ctermfg=0 guifg=#000000
+" " Dark green strings
+" hi String ctermfg=22 guifg=#005f00
+" hi pythonString ctermfg=22 guifg=#005f00
+" hi jsxString ctermfg=22 guifg=#005f00
+" hi jsonString ctermfg=22 guifg=#005f00
+" hi xmlString ctermfg=22 guifg=#005f00
 
 "---- LSP
 hi TypeHints ctermbg=189 guibg=#dfdfff

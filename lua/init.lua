@@ -271,7 +271,7 @@ require'nvim-treesitter.configs'.setup {
 vim.opt.display = 'truncate'
 -- Show a few lines of context around the cursor. Note that this makes the
 --  text scroll if you mouse-click near the start or end of the window.
-vim.opt.scrolloff = 0
+vim.opt.scrolloff = 8
 -- Time out for key codes
 vim.opt.ttimeout = true
 -- Wait up to 100ms after Esc for special key
@@ -352,10 +352,13 @@ vim.opt.termguicolors = true
 -- Permanent undo
 vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
+-- Do not highlight search matches
+vim.opt.hlsearch = false
 
 
 ---- Window options
--- Highlight NOTE
+-- Custom highlights
+vim.w.m1 = vim.fn.matchadd('Todo', 'TODO')
 vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
 vim.w.m1 = vim.fn.matchadd('Todo', '···')
 
@@ -390,6 +393,18 @@ map('n', '<leader>fr', telescope.resume, opts)
 
 
 -- buffer_manager
+require("buffer_manager").setup({
+  select_menu_item_commands = {
+    v = {
+      key = "<C-v>",
+      command = "vsplit"
+    },
+    h = {
+      key = "<C-h>",
+      command = "split"
+    }
+  },
+})
 local bmui = require("buffer_manager.ui")
 local keys = '1234567890'
 for i = 1, #keys do
@@ -470,7 +485,7 @@ map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
 -- hl search, no jump, no blink
-map('n', '*', 'msHmt`s*`tzt`s', opts)
+-- map('n', '*', 'msHmt`s*`tzt`s', opts)
 map('n', '+', ':noh<CR>', opts)
 -- Delete in insert mode
 map('i', '<C-d>', '<Del>', opts)
