@@ -7,8 +7,12 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-signify'
   use 'norcalli/nvim-colorizer.lua'
 
-  -- Colorscheme
-  use 'NLKNguyen/papercolor-theme'
+  -- Colorscheme and treesitter
+  use({ 'folke/tokyonight.nvim', as = 'tokyonight' })
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   -- tpope
   use 'tpope/vim-surround'

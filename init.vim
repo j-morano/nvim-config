@@ -23,16 +23,8 @@ au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | e
 
 " Colorscheme
 set background=light
-" Use terminal background color
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
 
+colorscheme tokyonight
 
 " Custom colors
 runtime VimColors.vim
