@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-signify'
   use 'norcalli/nvim-colorizer.lua'
 
+  use 'folke/zen-mode.nvim'
+
   -- Colorscheme and treesitter
   use({ 'folke/tokyonight.nvim', as = 'tokyonight' })
   use {
@@ -36,7 +38,6 @@ return require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim'
   -- Python development
   use 'Vimjas/vim-python-pep8-indent'
-  use 'vim-python/python-syntax'
 
   -- Completion
   use 'hrsh7th/cmp-nvim-lsp'

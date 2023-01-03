@@ -265,6 +265,17 @@ require'nvim-treesitter.configs'.setup {
 }
 
 
+require("zen-mode").setup {
+  window = {
+    width = 120,
+    options = {
+      number = true,
+      relativenumber = true,
+    }
+  },
+}
+
+
 ---- VIM options
 
 -- Show @@@ in the last line if it is truncated.
@@ -382,6 +393,11 @@ vim.g['netrw_bufsettings'] = 'noma nomod rnu nobl nowrap ro'
 ---- Keybindings
 local map = vim.keymap.set
 opts = {noremap = true}--, silent = true}
+
+
+map("n", "<leader>zz", function()
+    require("zen-mode").toggle()
+end, opts)
 
 -- Telescope keybindings
 local telescope = require('telescope.builtin')
