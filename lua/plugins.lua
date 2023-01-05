@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-signify'
   use 'norcalli/nvim-colorizer.lua'
 
+  use 'folke/zen-mode.nvim'
+
   -- Colorscheme and treesitter
   use({ 'folke/tokyonight.nvim', as = 'tokyonight' })
   use {

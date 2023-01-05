@@ -265,6 +265,17 @@ require'nvim-treesitter.configs'.setup {
 }
 
 
+require("zen-mode").setup {
+  window = {
+    width = 100,
+    options = {
+      number = true,
+      relativenumber = true,
+    }
+  },
+}
+
+
 ---- VIM options
 
 -- Show @@@ in the last line if it is truncated.
@@ -384,6 +395,10 @@ local map = vim.keymap.set
 opts = {noremap = true}--, silent = true}
 
 
+map("n", "<leader>zz", function()
+    require("zen-mode").toggle()
+end, opts)
+
 -- Telescope keybindings
 local telescope = require('telescope.builtin')
 map('n', '<leader>o', telescope.find_files, opts)
@@ -432,29 +447,6 @@ map('i', '<M-k>', '<Plug>(copilot-previous)')
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<M-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 map('i', '<M-o>', SuggestOneWord, {expr = true, remap = false})
-
-
--- Custom Zen-mode
--- Centers the current pane as the middle 2 of 4 imaginary columns
---   should be called in a window with a single pane.
-local function CenterPane()
-  vim.cmd([[
-    lefta vnew
-    wincmd w
-    exec 'vertical resize '. string(&columns * 0.75)
-  ]])
-end
-
-local function CloseLeftPane()
-  vim.cmd([[
-    wincmd h
-    bd
-  ]])
-end
-
--- optionally map it to a key:
-map('n', '<leader>zz', CenterPane, opts)
-map('n', '<leader>zc', CloseLeftPane, opts)
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
