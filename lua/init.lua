@@ -282,7 +282,7 @@ require("zen-mode").setup {
 vim.opt.display = 'truncate'
 -- Show a few lines of context around the cursor. Note that this makes the
 --  text scroll if you mouse-click near the start or end of the window.
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 2
 -- Time out for key codes
 vim.opt.ttimeout = true
 -- Wait up to 100ms after Esc for special key
