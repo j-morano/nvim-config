@@ -13,6 +13,9 @@ hi LineNrBelow ctermfg=244 guifg=#808080
 hi CursorLine ctermbg=255 guibg=#e8e8e8
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
+" Spelling
+hi SpellBad ctermbg=218 guibg=#ffafd7
+
 "---- Custom PaperColor highlights
 " Markdown
 " hi markdownCodeBlock ctermfg=0 guifg=#000000
