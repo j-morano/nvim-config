@@ -267,7 +267,7 @@ require'nvim-treesitter.configs'.setup {
 
 require("zen-mode").setup {
   window = {
-    width = 100,
+    width = 120,
     options = {
       number = true,
       relativenumber = true,
@@ -394,9 +394,16 @@ vim.g['netrw_bufsettings'] = 'noma nomod rnu nobl nowrap ro'
 local map = vim.keymap.set
 opts = {noremap = true}--, silent = true}
 
-
-map("n", "<leader>zz", function()
-    require("zen-mode").toggle()
+-- Center buffer
+map("n", "<leader>zz", require("zen-mode").toggle, opts)
+-- Increase left margin
+map("n", "<leader>cc", function()
+  local numberwidth = vim.wo.numberwidth
+  if numberwidth == 20 then
+    vim.wo.numberwidth = 4
+  else
+    vim.wo.numberwidth = 20
+  end
 end, opts)
 
 -- Telescope keybindings
