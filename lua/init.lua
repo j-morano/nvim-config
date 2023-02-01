@@ -184,6 +184,14 @@ local opts = {noremap = true}--, silent = true}
 
 -- Center buffer
 map("n", "<leader>zz", require("zen-mode").toggle, opts)
+map("n", "<leader>cc", function()
+  local numberwidth = vim.wo.numberwidth
+  if numberwidth == 16 then
+    vim.wo.numberwidth = 4
+  else
+    vim.wo.numberwidth = 16
+  end
+end, opts)
 
 -- Copilot
 local function SuggestOneWord()
