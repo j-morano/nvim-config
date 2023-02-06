@@ -159,7 +159,6 @@ vim.opt.hlsearch = false
 -- Custom highlights
 vim.w.m1 = vim.fn.matchadd('Todo', 'TODO')
 vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
-vim.w.m1 = vim.fn.matchadd('Todo', '···')
 
 
 ---- VIM global variables
