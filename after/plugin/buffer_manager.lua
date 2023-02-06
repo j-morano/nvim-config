@@ -29,9 +29,12 @@ for i = 1, #keys do
 end
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
 -- Open menu and search
-map({ 't', 'n' }, '<M-CR>', function ()
+map({ 't', 'n' }, '<M-m>', function ()
   bmui.toggle_quick_menu()
-  vim.fn.feedkeys('/')
+  -- wait for menu to open
+  vim.defer_fn(function ()
+    vim.fn.feedkeys('/')
+  end, 50)
 end, opts)
 map('n', '<M-j>', bmui.nav_next, opts)
 map('n', '<M-k>', bmui.nav_prev, opts)
