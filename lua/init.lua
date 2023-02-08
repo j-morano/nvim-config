@@ -280,6 +280,8 @@ map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
 -- Bottom terminal
 map('n', '<C-t>', '<cmd>sp <bar> res 10 <bar> te<CR>', opts)
+-- Run current file
+map('n', '<M-r>', '<cmd>:!%:p<CR>', opts)
 
 local expr_opts = {noremap = true, expr = true}
 -- Move cursor by display lines
