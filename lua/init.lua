@@ -248,6 +248,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 --  so that you can undo CTRL-U after inserting a line break.
 --  Revert with ":iunmap <C-U>".
 map('i', '<C-U>', '<C-G>u<C-U>', opts)
+-- Delete with ctrl-backspace
+map('i', '<C-BS>', '<C-w>', opts)
 -- Custom hjkl remap
 map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
