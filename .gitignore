@@ -1,2 +1,3 @@
 installed_plugins/
 .luarc.json
+packer_compiled.lua
