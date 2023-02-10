@@ -229,8 +229,8 @@ map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
 map('n', '<C-c>', '<C-a>', opts)
 -- Move cursor in insert mode
-map('i', 'ç', '<Right>', opts)
-map('i', 'Ç', '<Left>', opts)
+map('i', '<C-l>', '<Right>', opts)
+map('i', '<C-ñ>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
