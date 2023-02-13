@@ -22,7 +22,6 @@ au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | e
 
 " Colorscheme
 set background=light
-
 colorscheme tokyonight
 
 " Custom colors

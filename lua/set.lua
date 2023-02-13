@@ -96,16 +96,16 @@ vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
 
 
 ---- VIM global variables
-vim.g['cursorword_highlight'] = 0
-vim.g['cursorword_delay'] = 0
+vim.g.cursorword_highlight = 0
+vim.g.cursorword_delay = 0
 -- Map leader to space
-vim.g['mapleader'] = ' '
+vim.g.mapleader = ' '
 -- Tex: solve excessive error highlighting
-vim.g['tex_no_error'] = 1
+vim.g.tex_no_error = 1
 -- Python syntax highlighting for Vim
-vim.g['python_highlight_all'] = 1
+vim.g.python_highlight_all = 1
 ---- Netrw
 -- Do not move the cursor when returning to it
-vim.g['netrw_fastbrowse'] = 2
+vim.g.netrw_fastbrowse = 2
 -- Always show line numbers
-vim.g['netrw_bufsettings'] = 'noma nomod rnu nobl nowrap ro'
+vim.g.netrw_bufsettings = 'noma nomod rnu nobl nowrap ro'
