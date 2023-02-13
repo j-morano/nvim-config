@@ -3,7 +3,6 @@
 " Maintainer:	José Morano <j.morano@udc.es>
 
 
-lua require('plugins')
 lua require('init')
 
 
