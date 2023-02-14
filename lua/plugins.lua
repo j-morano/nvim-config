@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   use { 'j-morano/buffer_manager.nvim', branch = 'basename-only' }
 
   -- Snippets
-  use 'L3MON4D3/LuaSnip'
+  -- use 'L3MON4D3/LuaSnip'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -43,5 +43,6 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
 end)
