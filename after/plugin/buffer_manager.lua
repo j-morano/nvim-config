@@ -13,7 +13,7 @@ require("buffer_manager").setup({
       command = "split"
     }
   },
-  basename_only = true,
+  short_file_names = true,
   short_term_names = true,
 })
 local bmui = require("buffer_manager.ui")

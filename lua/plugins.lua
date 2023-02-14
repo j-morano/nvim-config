@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   use { 'j-morano/buffer_manager.nvim', branch = 'basename-only' }
 
   -- Snippets
-  -- use 'L3MON4D3/LuaSnip'
+  use 'L3MON4D3/LuaSnip'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
