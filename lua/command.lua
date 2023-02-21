@@ -4,9 +4,17 @@ vim.api.nvim_create_user_command(
   function() vim.cmd('%s/\\s\\+$//e') end,
   {}
 )
+
 -- Close buffer without closing window
 vim.api.nvim_create_user_command(
   'BD',
   function() vim.cmd('bp | sp | bn | bd') end,
+  {}
+)
+
+-- Close buffer without closing window
+vim.api.nvim_create_user_command(
+  'CH',
+  function() vim.cmd('!chmod +x %') end,
   {}
 )
