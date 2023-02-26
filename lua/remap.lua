@@ -58,9 +58,14 @@ map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 map('i', '<C-U>', '<C-G>u<C-U>', opts)
 -- Delete with ctrl-backspace
 map('i', '<C-BS>', '<C-w>', opts)
+-- [1] Sometimes, wezterm interprets keybindings in a weird way, so it is
+-- necessary to define other custom keybindings:
+map('i', '<C-H>', '<C-w>', opts)
 -- Custom hjkl remap
 map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
+-- wezterm (see [1]):
+map({'n', 'v'}, '<S-Ñ>', ':', opts)
 map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
