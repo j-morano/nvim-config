@@ -13,5 +13,5 @@ inoremap ¡b \textbf{}<left>
 inoremap ¡c ~\cite{}<left>
 inoremap ¡r ~\ref{}<left>
 inoremap ¡fu \footnote{\url{}}<left><left>
-nnoremap <leader>x :update <bar> !./compile<CR>
+nnoremap <C-s> :update <bar> !./compile<CR>
 nnoremap <leader>. f.lxi<CR><ESC>
