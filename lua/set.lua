@@ -6,7 +6,7 @@ vim.opt.display = 'truncate'
 --  text scroll if you mouse-click near the start or end of the window.
 vim.opt.scrolloff = 2
 -- Time out for key codes
-vim.opt.ttimeout = true
+vim.opt.ttimeout = false
 -- Wait up to 100ms after Esc for special key
 vim.opt.ttimeoutlen = 100
 -- Keep 200 lines of command line history
