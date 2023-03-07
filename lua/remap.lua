@@ -76,6 +76,8 @@ map('n', '+', ':noh<CR>', opts)
 map('i', '<C-d>', '<Del>', opts)
 -- Ex
 map('n', '<M-e>', '<cmd>Ex<CR>', opts)
+-- Alternative return to to avoid select suggestion
+map('i', '<M-h>', '<CR>', opts)
 -- Unicode symbols
 map('i', '<C-a>', '➜', opts)
 -- Filename suggestions
