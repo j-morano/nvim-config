@@ -36,4 +36,4 @@ cnoremap <expr> <M-ñ> wildmenumode() ? "\<up>" : "\<M-ñ>"
 " Apply macro to given word
 nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
 xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
-nnoremap <C-x> n@i
+nnoremap <M-s> n@i
