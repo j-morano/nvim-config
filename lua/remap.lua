@@ -99,6 +99,10 @@ map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
 map('n', '<C-t>', '<cmd>sp <bar> res 10 <bar> te<CR>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
+-- Folding and indent blankline
+map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
+map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
+map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
 
 local expr_opts = {noremap = true, expr = true}
 -- Move cursor by display lines

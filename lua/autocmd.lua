@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd(
     { "FileType" },
     {
-      pattern = {"javascript", "typescript", "lua" },
+      pattern = {"javascript", "typescript", "lua", "html", "css" },
       command = "setlocal ts=2 sts=2 sw=2 expandtab"
     }
 )

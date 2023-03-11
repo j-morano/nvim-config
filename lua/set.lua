@@ -88,6 +88,10 @@ vim.opt.undofile = true
 -- Do not highlight search matches
 vim.opt.hlsearch = false
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+vim.opt.foldopen:remove({ "hor" })
 
 ---- Window options
 -- Custom highlights
