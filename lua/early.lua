@@ -6,4 +6,8 @@ require("tokyonight").setup({
     keywords = { italic = false },
     functions = { italic = false }
   },
+  -- Black variable names
+  on_highlights = function (hl, _)
+    hl["@variable"].fg = "#ffffff"
+  end
 })

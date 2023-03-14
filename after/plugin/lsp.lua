@@ -41,17 +41,7 @@ local lsp_flags = {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require'lspconfig'.pylsp.setup({
-  cmd={"python3", "-m", "pylsp"},
-  settings = {
-    pylsp = {
-      plugins={
-        pycodestyle={
-          enabled=false
-        }
-      }
-    }
-  },
+require'lspconfig'.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
