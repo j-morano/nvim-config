@@ -1,16 +1,5 @@
-
 local map = vim.keymap.set
 local opts = {noremap = true}--, silent = true}
-
-map("n", "<leader>cc", function()
-  local numberwidth = vim.wo.numberwidth
-  if numberwidth == 16 then
-    vim.wo.numberwidth = 4
-  else
-    vim.wo.numberwidth = 16
-  end
-end, opts)
-
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
@@ -69,17 +58,10 @@ map({'n', 'v'}, '<S-Ñ>', ':', opts)
 map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
--- hl search, no jump, no blink
--- map('n', '*', 'msHmt`s*`tzt`s', opts)
-map('n', '+', ':noh<CR>', opts)
--- Delete in insert mode
-map('i', '<C-d>', '<Del>', opts)
 -- Ex
 map('n', '<M-e>', '<cmd>Ex<CR>', opts)
 -- Alternative return to to avoid select suggestion
-map('i', '<M-h>', '<CR>', opts)
--- Unicode symbols
-map('i', '<C-a>', '➜', opts)
+map('i', '<M-CR>', '<CR>', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
 -- Auto-expansion
@@ -93,10 +75,9 @@ map('i', '\'<Space>', '\'\'<Left>', opts)
 map('i', '"<Space>', '""<Left>', opts)
 -- Terminal
 map('t', '<M-x>', '<C-\\><C-n>', opts)
-map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
--- Bottom terminal
-map('n', '<C-t>', '<cmd>sp <bar> res 10 <bar> te<CR>', opts)
+-- Panes
+map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- Folding and indent blankline
