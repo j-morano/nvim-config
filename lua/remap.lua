@@ -1,6 +1,20 @@
 local map = vim.keymap.set
 local opts = {noremap = true}--, silent = true}
 
+
+map("n", "<leader>cc", function()
+  local signcolumn = vim.wo.signcolumn
+  local foldcolumn = vim.wo.foldcolumn
+  if signcolumn == 'yes:9' and foldcolumn == '9' then
+    vim.wo.foldcolumn = '0'
+    vim.wo.signcolumn = 'yes'
+  else
+    vim.wo.foldcolumn = '9'
+    vim.wo.signcolumn = 'yes:9'
+  end
+end, opts)
+
+
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
