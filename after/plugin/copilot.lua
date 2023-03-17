@@ -14,8 +14,8 @@ end
 
 vim.g.copilot_no_tab_map = true
 
-map('i', '<M-j>', '<Plug>(copilot-next)', {})
-map('i', '<M-k>', '<Plug>(copilot-previous)', {})
+map('i', '<M-l>', '<Plug>(copilot-next)', {})
+map('i', '<M-ñ>', '<Plug>(copilot-previous)', {})
 map(
   "i", "<M-p>", 'copilot#Accept("<CR>")',
   { silent = true, expr = true }
