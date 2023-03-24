@@ -12,6 +12,7 @@ hi LineNrBelow ctermfg=244 guifg=#808080
 " Cursor line
 hi CursorLine ctermbg=255 guibg=#e8e8e8
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+hi BufferManagerModified ctermfg=19 guifg=#0000af
 
 " Spelling
 hi SpellBad ctermbg=218 guibg=#ffafd7
