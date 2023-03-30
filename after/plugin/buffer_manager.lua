@@ -13,7 +13,7 @@ require("buffer_manager").setup({
       command = "split"
     }
   },
-  focus_alternate_buffer = true,
+  focus_alternate_buffer = false,
   short_file_names = true,
   short_term_names = true,
 })
