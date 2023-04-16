@@ -18,3 +18,13 @@ vim.api.nvim_create_user_command(
   function() vim.cmd('!chmod +x %') end,
   {}
 )
+
+-- Update plugins
+vim.api.nvim_create_user_command(
+  'UpdatePlugins',
+  -- Call external python script to update plugins
+  function()
+    vim.cmd('!python3 ~/.config/nvim/scripts/update_plugins.py')
+  end,
+  {}
+)
