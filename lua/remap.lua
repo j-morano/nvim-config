@@ -46,6 +46,8 @@ map('i', '<C-ñ>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
+-- Go to last change
+map('n', 'H', 'g;', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
