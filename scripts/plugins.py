@@ -4,6 +4,7 @@ import os
 import sys
 import glob
 import subprocess
+from subprocess import PIPE
 
 
 plugin_paths = glob.glob(
@@ -23,6 +24,10 @@ elif sys.argv[1] == '--update':
     for plugin_path in plugin_paths:
         print(f'Trying to update {os.path.basename(plugin_path)}:')
         result = subprocess.run(
-            ['git', 'pull'], cwd=plugin_path, check=True, capture_output=True
+            ['git', 'pull'],
+            cwd=plugin_path,
+            check=True,
+            stdout=PIPE,
+            stderr=PIPE
         )
         print(result.stdout.decode('utf-8'), flush=True)
