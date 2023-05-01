@@ -33,7 +33,7 @@ if sys.argv[1] == 'list':
         plugin_url = plugin_url_split[-2] + '/' + plugin_url_split[-1]
         print('  -', plugin_url, flush=True)
 
-elif sys.argv[1] == '--update':
+elif sys.argv[1] == 'update':
     for plugin_path in get_plugin_paths():
         print(f'Trying to update {os.path.basename(plugin_path)}:')
         result = subprocess.run(
@@ -81,3 +81,6 @@ elif sys.argv[1] == 'sync':
             )
             print(result.stdout.decode('utf-8'), flush=True)
 
+else:
+    print('Unknown command')
+    exit(1)

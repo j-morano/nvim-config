@@ -21,13 +21,14 @@ vim.api.nvim_create_user_command(
 
 ---- Plugins
 
+local function plugin_cmd(opts)
+  local args = opts.args
+  vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py ' .. args)
+end
+
 vim.api.nvim_create_user_command(
   'Plugins',
   -- Call external python script to update plugins
-  function()
-    vim.ui.input({ prompt = 'option: ' }, function(input)
-      vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py ' .. input)
-    end)
-  end,
-  {}
+  plugin_cmd,
+  { nargs = '*' }
 )
