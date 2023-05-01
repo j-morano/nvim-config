@@ -22,18 +22,12 @@ vim.api.nvim_create_user_command(
 ---- Plugins
 
 vim.api.nvim_create_user_command(
-  'UpdatePlugins',
+  'Plugins',
   -- Call external python script to update plugins
   function()
-    vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py --update')
-  end,
-  {}
-)
-
-vim.api.nvim_create_user_command(
-  'ListPlugins',
-  function()
-    vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py --list')
+    vim.ui.input({ prompt = 'option: ' }, function(input)
+      vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py ' .. input)
+    end)
   end,
   {}
 )
