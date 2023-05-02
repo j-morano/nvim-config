@@ -41,7 +41,7 @@ hi IndentBlanklineIndent6 ctermfg=72 cterm=nocombine  guifg=#5faf87 gui=nocombin
 
 "---- Fugitive
 hi diffAdded ctermfg=22 ctermbg=none guifg=#005f00 guibg=none
-hi diffRemoved ctermfg=88 ctermbg=none guifg=#005f00 guibg=none
+hi diffRemoved ctermfg=88 ctermbg=none guifg=#870000 guibg=none
 
 "---- Highlight trailing spaces
 hi EoLSpace ctermbg=182 guibg=#dfafdf
