@@ -17,6 +17,5 @@ tpope/vim-fugitive
 nvim-lua/plenary.nvim
 hrsh7th/cmp-path
 simrat39/rust-tools.nvim
-wbthomason/packer.nvim
 ray-x/lsp_signature.nvim
 Vimjas/vim-python-pep8-indent
