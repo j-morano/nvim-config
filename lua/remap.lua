@@ -115,3 +115,51 @@ local expr_opts_silent = {noremap = true, expr = true, silent = true}
 map('n', "'",  '"`" . toupper(nr2char(getchar())) . "zz"', expr_opts_silent)
 map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
 
+
+local function search_on_current_line_only(str)
+  -- Get position of the cursor after the search. If it is in the same line,
+  -- return it. Otherwise, return the cursor to the original position and
+  -- return 0.
+  local r_o,c_o = unpack(vim.api.nvim_win_get_cursor(0))
+  local r_s = vim.fn.search(str, 'c')
+  if r_o == r_s then
+    return r_s
+  else
+    vim.api.nvim_win_set_cursor(0, {r_o,c_o})
+    return 0
+  end
+end
+
+
+local function rewrap()
+  -- Search a '(' in the current line
+  -- If found, add a carriage return after it
+  -- If not found, search for ', ', remove the space and put a carriage return
+  -- after the comma.
+  -- If not found, search for ')' and put a carriage return before it.
+  -- If not found, return.
+
+  -- Search for '(' only in the current line
+  local pos = search_on_current_line_only('(')
+  -- Insert carriage return using feedkeys, and exit insert mode
+  local init_par_keys = vim.api.nvim_replace_termcodes('a<CR><ESC>',true,false,true)
+  local comma_keys = vim.api.nvim_replace_termcodes('lxi<CR><ESC>',true,false,true)
+  local fin_par_keys = vim.api.nvim_replace_termcodes('i<CR><ESC>2l',true,false,true)
+  -- Apply only if the search was successful in the current line
+  if pos ~= 0 then
+    vim.api.nvim_feedkeys(init_par_keys, 'n', false)
+    return
+  end
+  pos = search_on_current_line_only(', ')
+  if pos ~= 0 then
+    vim.api.nvim_feedkeys(comma_keys, 'n', false)
+    return
+  end
+  pos = search_on_current_line_only(')')
+  if pos ~= 0 then
+    vim.api.nvim_feedkeys(fin_par_keys, 'n', false)
+    return
+  end
+end
+
+map('n', '<leader>,', rewrap, opts)
