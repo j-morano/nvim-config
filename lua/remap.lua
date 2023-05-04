@@ -114,3 +114,38 @@ local expr_opts_silent = {noremap = true, expr = true, silent = true}
 -- Always use global marks
 map('n', "'",  '"`" . toupper(nr2char(getchar())) . "zz"', expr_opts_silent)
 map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
+
+
+---- Useful formatting mappings
+
+local ts_utils = require("nvim-treesitter.ts_utils")
+
+-- Function to get argument_list and put each argument in a new line
+local function get_args()
+  -- Get column of cursor
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  local node_at_cursor = ts_utils.get_node_at_cursor()
+  local args = ts_utils.get_named_children(node_at_cursor)
+  -- Remove the rest of the line after the cursor
+  local args_text = {}
+  for _, arg in ipairs(args) do
+    local arg_text = ts_utils.get_node_text(arg)[1]
+    table.insert(args_text, arg_text)
+  end
+  -- Get text after the end of the node_at_cursor
+  local line = vim.api.nvim_get_current_line()
+  node_length = ts_utils.node_length(node_at_cursor)
+  -- get text after node_length
+  local text = string.sub(line, col + node_length)
+  vim.cmd("normal! l\"_d$")
+  for _, arg in ipairs(args_text) do
+    if arg == args_text[#args_text] then
+      vim.cmd("normal! o" .. arg)
+    else
+      vim.cmd("normal! o" .. arg .. ",")
+    end
+  end
+  vim.cmd("normal! o" .. text)
+end
+
+map('n', '<M-a>', get_args, opts)
