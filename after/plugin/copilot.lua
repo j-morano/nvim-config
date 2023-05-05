@@ -14,11 +14,10 @@ end
 
 vim.g.copilot_no_tab_map = true
 
+local opts = { remap = false, silent = true, expr = true, replace_keycodes = false }
+
 map('i', '<M-l>', '<Plug>(copilot-next)', {})
 map('i', '<M-ñ>', '<Plug>(copilot-previous)', {})
-map(
-  "i", "<M-p>", 'copilot#Accept("<CR>")',
-  { silent = true, expr = true }
-)
-map('i', '<M-o>', accept_word, {expr = true, remap = false})
-map('i', '<M-i>', accept_line, {expr = true, remap = false})
+map("i", "<M-p>", 'copilot#Accept("<CR>")', opts)
+map('i', '<M-o>', accept_word, opts)
+map('i', '<M-i>', accept_line, opts)
