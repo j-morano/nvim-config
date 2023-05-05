@@ -120,8 +120,9 @@ map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
 
 local ts_utils = require("nvim-treesitter.ts_utils")
 
--- Function to get argument_list and put each argument in a new line
-local function get_args()
+-- Function to get argument_list and put each argument in a new line. The cursor
+-- position must be the initial parenthesis.
+local function wrap_args()
   -- Get column of cursor
   local col = vim.api.nvim_win_get_cursor(0)[2]
   local node_at_cursor = ts_utils.get_node_at_cursor()
@@ -134,18 +135,25 @@ local function get_args()
   end
   -- Get text after the end of the node_at_cursor
   local line = vim.api.nvim_get_current_line()
-  node_length = ts_utils.node_length(node_at_cursor)
+  if not node_at_cursor then
+    return
+  end
+  local node_length = ts_utils.node_length(node_at_cursor)
   -- get text after node_length
   local text = string.sub(line, col + node_length)
   vim.cmd("normal! l\"_d$")
+  local num_args = #args_text
+  local i = 1
   for _, arg in ipairs(args_text) do
-    if arg == args_text[#args_text] then
+    -- if last element, don't add comma
+    if i == num_args then
       vim.cmd("normal! o" .. arg)
     else
       vim.cmd("normal! o" .. arg .. ",")
     end
+    i = i + 1
   end
   vim.cmd("normal! o" .. text)
 end
 
-map('n', '<M-a>', get_args, opts)
+map('n', '<M-a>', wrap_args, opts)
