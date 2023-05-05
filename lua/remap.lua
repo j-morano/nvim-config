@@ -119,6 +119,7 @@ map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
 ---- Useful formatting mappings
 
 local ts_utils = require("nvim-treesitter.ts_utils")
+local ts_vim = require("vim.treesitter")
 
 -- Function to get argument_list and put each argument in a new line. The cursor
 -- position must be the initial parenthesis.
@@ -130,7 +131,7 @@ local function wrap_args()
   -- Remove the rest of the line after the cursor
   local args_text = {}
   for _, arg in ipairs(args) do
-    local arg_text = ts_utils.get_node_text(arg)[1]
+    local arg_text = ts_vim.get_node_text(arg, 0)
     table.insert(args_text, arg_text)
   end
   -- Get text after the end of the node_at_cursor
