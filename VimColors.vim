@@ -1,55 +1,54 @@
 "---- Builtins
 " Soft hl color
-hi Search ctermbg=189 guibg=#d7d7ff
+hi Search guibg=#d7d7ff
 " " True black text
-hi Normal ctermfg=236 guifg=#303030
-hi NormalFloat ctermfg=236 ctermbg=253 guifg=#303030 guibg=#dadada
-hi NormalNC ctermfg=236 guifg=#303030
+hi Normal guifg=#303030
+hi NormalFloat guifg=#303030 guibg=#dadada
+hi NormalNC guifg=#303030
 " " Line numbers
-hi LineNr ctermfg=244 guifg=#808080
-hi LineNrAbove ctermfg=244 guifg=#808080
-hi LineNrBelow ctermfg=244 guifg=#808080
+hi LineNr guifg=#808080
+hi LineNrAbove guifg=#808080
+hi LineNrBelow guifg=#808080
 " Cursor line
-hi CursorLine ctermbg=255 guibg=#e8e8e8
-hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-hi BufferManagerModified ctermfg=19 guifg=#0000af
+hi CursorLine guibg=#e8e8e8
+hi ColorColumn guibg=lightgrey
+hi BufferManagerModified guifg=#0000af
 
 " Spelling
-hi SpellBad ctermbg=218 guibg=#ffafd7
+hi SpellBad guibg=#ffafd7
 
 "---- Custom PaperColor highlights
 " Markdown
-" hi markdownCodeBlock ctermfg=0 guifg=#000000
+" hi markdownCodeBlock guifg=#000000
 " " Dark green strings
-" hi String ctermfg=22 guifg=#005f00
-" hi pythonString ctermfg=22 guifg=#005f00
-" hi jsxString ctermfg=22 guifg=#005f00
-" hi jsonString ctermfg=22 guifg=#005f00
-" hi xmlString ctermfg=22 guifg=#005f00
+" hi String guifg=#005f00
+" hi pythonString guifg=#005f00
+" hi jsxString guifg=#005f00
+" hi jsonString guifg=#005f00
+" hi xmlString guifg=#005f00
 
 "---- LSP
-hi TypeHints ctermbg=189 guibg=#dfdfff
-hi ClosingTags ctermfg=244 cterm=bold guifg=#808080 gui=bold
+hi TypeHints guibg=#dfdfff
+hi ClosingTags cterm=bold guifg=#808080 gui=bold
 
 "---- IndentBlankLine
-hi IndentBlanklineIndent1 ctermfg=248 cterm=nocombine guifg=#a8a8a8 gui=nocombine
-hi IndentBlanklineIndent2 ctermfg=139 cterm=nocombine guifg=#af87af gui=nocombine
-hi IndentBlanklineIndent3 ctermfg=111 cterm=nocombine guifg=#87afff gui=nocombine
-hi IndentBlanklineIndent4 ctermfg=179 cterm=nocombine guifg=#dfaf5f gui=nocombine
-hi IndentBlanklineIndent5 ctermfg=210 cterm=nocombine guifg=#ff8787 gui=nocombine
-hi IndentBlanklineIndent6 ctermfg=72 cterm=nocombine  guifg=#5faf87 gui=nocombine
+hi IndentBlanklineIndent1 cterm=nocombine guifg=#a8a8a8 gui=nocombine
+hi IndentBlanklineIndent2 cterm=nocombine guifg=#af87af gui=nocombine
+hi IndentBlanklineIndent3 cterm=nocombine guifg=#87afff gui=nocombine
+hi IndentBlanklineIndent4 cterm=nocombine guifg=#dfaf5f gui=nocombine
+hi IndentBlanklineIndent5 cterm=nocombine guifg=#ff8787 gui=nocombine
+hi IndentBlanklineIndent6 cterm=nocombine  guifg=#5faf87 gui=nocombine
 
 "---- Fugitive
-hi diffAdded ctermfg=22 ctermbg=none guifg=#005f00 guibg=none
-hi diffRemoved ctermfg=88 ctermbg=none guifg=#870000 guibg=none
+hi diffAdded guifg=#005f00 guibg=none
+hi diffRemoved guifg=#870000 guibg=none
 
 "---- Highlight trailing spaces
-hi EoLSpace ctermbg=182 guibg=#dfafdf
+hi EoLSpace guibg=#dfafdf
 autocmd Syntax * syntax match EoLSpace /\s\+$/
 
 "---- Highlight trailing tabs
-highlight CopilotSuggestion guifg=#9c4fb8 ctermfg=54
-
+highlight CopilotSuggestion guifg=#9c4fb8 
 "---- Terminal colors
 let g:terminal_color_0 = '#212121'
 let g:terminal_color_8 = '#424242'
