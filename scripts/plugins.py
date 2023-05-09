@@ -55,6 +55,8 @@ elif sys.argv[1] == 'sync':
     plugin_names = []
     for plugin in plugins:
         plugin = plugin.strip()
+        if plugin.startswith('#'):
+            continue
         plugin_url = 'https://github.com/' + plugin
         plugin_name = plugin_url.split('/')[-1]
         plugin_names.append(plugin_name)
