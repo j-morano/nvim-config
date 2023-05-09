@@ -10,7 +10,8 @@ nvim-telescope/telescope.nvim
 norcalli/nvim-colorizer.lua
 github/copilot.vim
 L3MON4D3/LuaSnip
-mhinz/vim-signify
+# mhinz/vim-signify
+lewis6991/gitsigns.nvim
 nvim-treesitter/nvim-treesitter
 hrsh7th/nvim-cmp
 tpope/vim-fugitive
