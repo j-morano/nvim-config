@@ -17,27 +17,17 @@ hi BufferManagerModified guifg=#0000af
 " Spelling
 hi SpellBad guibg=#ffafd7
 
-"---- Custom PaperColor highlights
-" Markdown
-" hi markdownCodeBlock guifg=#000000
-" " Dark green strings
-" hi String guifg=#005f00
-" hi pythonString guifg=#005f00
-" hi jsxString guifg=#005f00
-" hi jsonString guifg=#005f00
-" hi xmlString guifg=#005f00
-
 "---- LSP
 hi TypeHints guibg=#dfdfff
-hi ClosingTags cterm=bold guifg=#808080 gui=bold
+hi ClosingTags guifg=#808080 gui=bold
 
 "---- IndentBlankLine
-hi IndentBlanklineIndent1 cterm=nocombine guifg=#a8a8a8 gui=nocombine
-hi IndentBlanklineIndent2 cterm=nocombine guifg=#af87af gui=nocombine
-hi IndentBlanklineIndent3 cterm=nocombine guifg=#87afff gui=nocombine
-hi IndentBlanklineIndent4 cterm=nocombine guifg=#dfaf5f gui=nocombine
-hi IndentBlanklineIndent5 cterm=nocombine guifg=#ff8787 gui=nocombine
-hi IndentBlanklineIndent6 cterm=nocombine  guifg=#5faf87 gui=nocombine
+hi IndentBlanklineIndent1 guifg=#a8a8a8 gui=nocombine
+hi IndentBlanklineIndent2 guifg=#af87af gui=nocombine
+hi IndentBlanklineIndent3 guifg=#87afff gui=nocombine
+hi IndentBlanklineIndent4 guifg=#dfaf5f gui=nocombine
+hi IndentBlanklineIndent5 guifg=#ff8787 gui=nocombine
+hi IndentBlanklineIndent6 guifg=#5faf87 gui=nocombine
 
 "---- Fugitive
 hi diffAdded guifg=#005f00 guibg=none

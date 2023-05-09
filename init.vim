@@ -30,7 +30,7 @@ runtime VimColors.vim
 
 " Switch arrow key mappings for wildmenu tab completion
 cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
-cnoremap <expr> <M-ñ> wildmenumode() ? "\<up>" : "\<M-ñ>"
+cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<M-ñ>"
 
 "--- Vim-style alternative to multiple cursors
 " Apply macro to given word
