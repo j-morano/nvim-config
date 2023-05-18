@@ -1,4 +1,4 @@
-require('early')
+require('colorscheme')
 require('set')
 require('remap')
 require('autocmd')

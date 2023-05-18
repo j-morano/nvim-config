@@ -20,14 +20,6 @@ au BufLeave * if !&diff | let b:winview = winsaveview() | endif
 au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | endif
 
 
-" Colorscheme
-set background=light
-colorscheme tokyonight
-
-" Custom colors
-runtime VimColors.vim
-
-
 " Switch arrow key mappings for wildmenu tab completion
 cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
