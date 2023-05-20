@@ -158,3 +158,18 @@ local function wrap_args()
 end
 
 map('n', '<M-a>', wrap_args, opts)
+
+
+-- Apply macro to given word
+vim.cmd([[
+cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
+cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
+]])
+
+---- Vim-style alternative to multiple cursors
+-- Apply macro to given word
+vim.cmd([[
+nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
+xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
+nnoremap <M-s> n@i
+]])

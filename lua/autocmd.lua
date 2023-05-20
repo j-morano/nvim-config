@@ -60,3 +60,49 @@ vim.api.nvim_create_autocmd(
   { 'BufLeave' },
   { pattern = 'term://*', command = 'stopinsert' }
 )
+
+-- When editing a file, always jump to the last known cursor position.
+-- Don't do it when the position is invalid, when inside an event handler
+-- (happens when dropping a file on gvim) and for a commit message (it's
+-- likely a different one than last time).
+vim.api.nvim_create_autocmd(
+  'BufReadPost',
+  {
+    pattern = '*',
+    callback = function()
+      local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
+      if {row, col} ~= {0, 0} then
+        vim.api.nvim_win_set_cursor(0, {row, col})
+      end
+    end,
+  }
+)
+
+
+-- When switching buffers, preserve window view.
+--au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+--au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | endif
+
+vim.api.nvim_create_autocmd(
+  'BufLeave',
+  {
+    pattern = '*',
+    callback = function()
+      if not vim.w.diff then
+        vim.b.winview = vim.fn.winsaveview()
+      end
+    end,
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  'BufEnter',
+  {
+    pattern = '*',
+    callback = function()
+      if vim.b.winview and not vim.w.diff then
+        vim.fn.winrestview(vim.b.winview)
+      end
+    end,
+  }
+)
