@@ -12,7 +12,7 @@ require("tokyonight").setup({
   end
 })
 
-function set_custom_highlights()
+local function set_custom_highlights()
   -- Soft hl color
   vim.api.nvim_set_hl(0, "Search", { bg = "#d7d7ff" })
   -- True black text
