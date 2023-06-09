@@ -110,11 +110,6 @@ map('n', 'k', "v:count ? 'k' : 'gk'", expr_opts)
 map('v', 'j', "v:count ? 'j' : 'gj'", expr_opts)
 map('v', 'k', "v:count ? 'k' : 'gk'", expr_opts)
 
-local expr_opts_silent = {noremap = true, expr = true, silent = true}
--- Always use global marks
-map('n', "'",  '"`" . toupper(nr2char(getchar())) . "zz"', expr_opts_silent)
-map('n', "m", '"m" . toupper(nr2char(getchar()))', expr_opts_silent)
-
 
 ---- Useful formatting mappings
 
