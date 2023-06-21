@@ -1,7 +1,6 @@
 local opts = {noremap = true}
 local map = vim.keymap.set
-
--- buffer_manager
+-- Setup
 require("buffer_manager").setup({
   select_menu_item_commands = {
     v = {
@@ -16,7 +15,9 @@ require("buffer_manager").setup({
   focus_alternate_buffer = false,
   short_file_names = true,
   short_term_names = true,
+  loop_nav = false,
 })
+-- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")
 local keys = '1234567890'
 for i = 1, #keys do
@@ -28,14 +29,16 @@ for i = 1, #keys do
     opts
   )
 end
+-- Just the menu
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
 -- Open menu and search
 map({ 't', 'n' }, '<M-m>', function ()
   bmui.toggle_quick_menu()
-  -- wait for menu to open
+  -- wait for the menu to open
   vim.defer_fn(function ()
     vim.fn.feedkeys('/')
   end, 50)
 end, opts)
-map('n', '<C-j>', bmui.nav_next, opts)
-map('n', '<C-k>', bmui.nav_prev, opts)
+-- Next/Prev
+map('n', '<M-j>', bmui.nav_next, opts)
+map('n', '<M-k>', bmui.nav_prev, opts)
