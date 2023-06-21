@@ -13,12 +13,14 @@ vim.api.nvim_set_keymap('n', '<leader>sp', '', {
 })
 
 vim.api.nvim_set_keymap('v', '<leader>i', "c\\textit{<c-r>\"}<Esc>", opts)
+vim.api.nvim_set_keymap('v', '<leader>e', "c\\emph{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>b', "c\\textbf{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>u', "c\\underline{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>v', "c\\verb\\|<c-r>\"\\|<Esc>", opts)
 
 vim.api.nvim_set_keymap('i', '¡v', "\\verb\\|\\|<left>", opts)
 vim.api.nvim_set_keymap('i', '¡i', "\\textit{}<left>", opts)
+vim.api.nvim_set_keymap('i', '¡e', "\\emph{}<left>", opts)
 vim.api.nvim_set_keymap('i', '¡u', "\\underline{}<left>", opts)
 vim.api.nvim_set_keymap('i', '¡b', "\\textbf{}<left>", opts)
 vim.api.nvim_set_keymap('i', '¡c', "~\\cite{}<left>", opts)
