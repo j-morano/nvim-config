@@ -3,9 +3,16 @@ require "telescope".setup {
     buffers = {
       initial_mode = "normal"
     },
+    find_files = {
+      find_command = {
+        "rg",
+        "--files",
+        "--hidden",
+        "--no-ignore-vcs"
+      }
+    }
   }
 }
-
 
 local map = vim.keymap.set
 local opts = {noremap = true}
@@ -17,11 +24,3 @@ map('n', '<leader>fg', telescope.live_grep, opts)
 map('n', '<leader>fh', telescope.help_tags, opts)
 map('n', '<leader>fb', telescope.buffers, opts)
 map('n', '<leader>fr', telescope.resume, opts)
-
-telescope.find_files = {
-  find_command = {
-    "rg",
-    "--hidden",
-    "--no-ignore-vcs"
-  }
-}
