@@ -85,8 +85,8 @@ vim.opt.termguicolors = true
 -- Permanent undo
 vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
--- Do not highlight search matches
-vim.opt.hlsearch = false
+-- Highlight search matches
+vim.opt.hlsearch = true
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
