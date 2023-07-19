@@ -164,7 +164,7 @@ require'lspconfig'.lua_ls.setup {
 }
 
 require "lsp_signature".setup({
-  floating_window = true,
+  floating_window = false,
   doc_lines = 1,
 })
 
