@@ -62,8 +62,9 @@ elif sys.argv[1] == 'sync':
         if plugin.startswith('#'):
             continue
         if '@' in plugin:
-            plugin = plugin.split('@')[0]
-            branch = plugin.split('@')[1]
+            parts = plugin.split('@')
+            plugin = parts[0]
+            branch = parts[1]
         else:
             branch = None
         plugin_url = 'https://github.com/' + plugin
@@ -84,15 +85,22 @@ elif sys.argv[1] == 'sync':
             # Update plugin
             print(f'Updating {plugin}', flush=True)
             if branch is not None:
+                try:
+                    run(
+                        ['git', 'checkout', branch],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+                except subprocess.CalledProcessError:
+                    run(
+                        ['git', 'pull', 'origin', branch],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+            else:
                 run(
-                    ['git', 'checkout', branch],
-                    cwd=os.path.join(base_plugin_path, 'start', plugin),
+                    ['git', 'pull'],
+                    cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                 )
-            run(
-                ['git', 'pull'],
-                cwd=os.path.join(base_plugin_path, 'start', plugin_name),
-            )
-            operations += 1
+                operations += 1
     plugin_paths = get_plugin_paths()
     # Remove plugins that are not in the plugins file
     for plugin_path in plugin_paths:
