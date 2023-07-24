@@ -113,3 +113,6 @@ vim.g.python_highlight_all = 1
 vim.g.netrw_fastbrowse = 2
 -- Always show line numbers
 vim.g.netrw_bufsettings = 'noma nomod rnu nobl nowrap ro'
+-- Copilot
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true

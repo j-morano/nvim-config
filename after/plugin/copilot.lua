@@ -12,8 +12,6 @@ local function accept_line()
   return vim.fn.split(bar, [[[\n]\zs]])[1]
 end
 
-vim.g.copilot_no_tab_map = true
-
 local opts = { remap = false, silent = true, expr = true, replace_keycodes = false }
 
 map('i', '<M-l>', '<Plug>(copilot-next)', {})
