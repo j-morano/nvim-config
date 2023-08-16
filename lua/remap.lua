@@ -101,9 +101,21 @@ map('n', '<M-r>', ':!"%:p"<CR>', opts)
 map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
 map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
 map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
+
 -- Search
-map('n', '+', '*', opts)
-map('n', '<Esc>', ':noh<CR>', opts)
+local function do_hlsearch()
+  vim.opt.hlsearch = true
+  -- Put the word under the cursor in the search register
+  vim.cmd('let @/ = expand("<cword>")')
+end
+
+local function undo_hlsearch()
+  vim.opt.hlsearch = false
+  -- [Optional] Clear search register and s register
+  -- vim.cmd('let @/=""')
+end
+map('n', '+', do_hlsearch, opts)
+map('n', '<Esc>', undo_hlsearch, opts)
 
 local expr_opts = {noremap = true, expr = true}
 -- Move cursor by display lines

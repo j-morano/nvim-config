@@ -65,7 +65,7 @@ vim.opt.whichwrap:append('<,>,[,],h,l')
 --  Dependency: clipboard software. For example: xclip
 vim.opt.clipboard:append('unnamedplus')
 -- Do not highlight current word occurences
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 -- Incremental search
 vim.opt.incsearch = true
 -- Default updatetime 4000ms is not good for async update
@@ -85,8 +85,6 @@ vim.opt.termguicolors = true
 -- Permanent undo
 vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
--- Highlight search matches
-vim.opt.hlsearch = true
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
