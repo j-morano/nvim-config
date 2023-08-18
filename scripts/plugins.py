@@ -12,6 +12,15 @@ from typing import Optional, List
 home = os.environ['HOME']    
 base_plugin_path = f'{home}/.local/share/nvim/site/pack/plugins'
 
+HELP = """Usage: plugins.py <command>
+
+Commands:
+    list        List plugins
+    paths       List plugin paths
+    sync        Sync plugins with plugins file
+    help        Show this help message
+"""
+
 
 def get_plugin_paths(verbose: bool=False):
     plugin_paths = glob.glob(os.path.join(base_plugin_path, 'start', '*'))
@@ -38,7 +47,10 @@ def run(
     return result
 
 
-if sys.argv[1] == 'list':
+if sys.argv[1] == 'help':
+    print(HELP, flush=True)
+
+elif sys.argv[1] == 'list':
     for plugin_path in get_plugin_paths(True):
         # Get url of plugin
         result = run(
@@ -51,7 +63,7 @@ if sys.argv[1] == 'list':
         plugin_url = plugin_url_split[-2] + '/' + plugin_url_split[-1]
         print('  -', plugin_url, flush=True)
 
-elif sys.argv[1] == 'list-paths':
+elif sys.argv[1] == 'paths':
     for plugin_path in get_plugin_paths(True):
         print('  -', plugin_path, flush=True)
 
@@ -78,11 +90,20 @@ elif sys.argv[1] == 'sync':
             operations += 1
         else:
             # Update plugin
-            print(f'Updating {plugin}', flush=True)
-            run(
-                ['git', 'pull'],
+            # Check if plugin is in a branch
+            result = run(
+                command=['git', 'branch', '--show-current'],
                 cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                print_output=False
             )
+            if result.stdout.decode('utf-8').strip() == '':
+                print(f'Plugin {plugin} is not in a branch, skipping.\n', flush=True)
+            else:
+                print(f'Updating {plugin}', flush=True)
+                run(
+                    ['git', 'pull'],
+                    cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                )
             operations += 1
     plugin_paths = get_plugin_paths()
     # Remove plugins that are not in the plugins file
