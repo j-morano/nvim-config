@@ -2,20 +2,6 @@ local map = vim.keymap.set
 local opts = {noremap = true}--, silent = true}
 
 
--- Center text
-map("n", "<leader>cc", function()
-  local signcolumn = vim.wo.signcolumn
-  local foldcolumn = vim.wo.foldcolumn
-  if signcolumn == 'yes:9' and foldcolumn == '9' then
-    vim.cmd('bufdo set foldcolumn=0')
-    vim.cmd('bufdo set signcolumn=yes:2')
-  else
-    vim.cmd('bufdo set foldcolumn=9')
-    vim.cmd('bufdo set signcolumn=yes:9')
-  end
-end, opts)
-
-
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
 -- Save on exit insert mode
