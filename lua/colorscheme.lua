@@ -88,3 +88,9 @@ vim.g.terminal_color_6 = "#0e707c"
 vim.g.terminal_color_14 = "#26bad1"
 vim.g.terminal_color_7 = "#eeeeee"
 vim.g.terminal_color_15 = "#d8d8d8"
+
+
+-- Highlight trailing whitespace
+vim.cmd[[
+match errorMsg /\s\+$/
+]]
