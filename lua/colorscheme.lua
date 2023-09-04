@@ -92,5 +92,5 @@ vim.g.terminal_color_15 = "#d8d8d8"
 
 -- Highlight trailing whitespace
 vim.cmd[[
-match errorMsg /\s\+$/
+match SpellBad /\s\+$/
 ]]
