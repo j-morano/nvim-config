@@ -90,7 +90,16 @@ vim.g.terminal_color_7 = "#eeeeee"
 vim.g.terminal_color_15 = "#d8d8d8"
 
 
--- Highlight trailing whitespace
+-- Highlight trailing whitespace in all lines except the ones that are
+-- currently being edited.
 vim.cmd[[
-match SpellBad /\s\+$/
+highlight default link EndOfLineSpace SpellBad
+match EndOfLineSpace / \+$/
+autocmd InsertEnter * hi link EndOfLineSpace Normal
+autocmd InsertLeave * hi link EndOfLineSpace SpellBad
 ]]
+-- Other option:
+-- vim.cmd[[
+-- set listchars=trail:#
+-- set list
+-- ]]
