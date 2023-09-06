@@ -156,16 +156,37 @@ end
 map('n', '<M-a>', wrap_args, opts)
 
 
--- Apply macro to given word
+-- Wildmenu
 vim.cmd([[
 cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
 ]])
 
 ---- Vim-style alternative to multiple cursors
--- Apply macro to given word
+-- -- Apply macro to given word
+-- vim.cmd([[
+-- nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
+-- xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
+-- nnoremap <M-s> n@i
+-- ]])
+
+
 vim.cmd([[
-nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
-xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
-nnoremap <M-s> n@i
+" Replace selected characters, saving the word to which they belong
+xnoremap <leader>ss "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
+
+" Search and replace previously replaced characters
+" -> Use the dot ('.') command
+
+" Search and replace the characters if they appear within the same word
+nnoremap <M-s> /<C-r>w<CR><left>/<C-r>s<CR>.
+
+" Search for the next occurrence of the saved word (skip replace)
+nnoremap <M-n> /<C-r>w<CR>
+
+" Replace full word
+nnoremap <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+
+" Append to the end of a word
+nnoremap <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
 ]])
