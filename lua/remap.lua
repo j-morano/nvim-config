@@ -162,31 +162,58 @@ cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
 cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
 ]])
 
+
 ---- Vim-style alternative to multiple cursors
--- -- Apply macro to given word
--- vim.cmd([[
--- nnoremap qi <cmd>let @/='\<'.expand('<cword>').'\>'<cr>wbqi
--- xnoremap qi y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>qi
--- nnoremap <M-s> n@i
--- ]])
 
+local function get_visual_selection()
+    -- Yank current visual selection into the 'v' register
+    -- Note that this makes no effort to preserve this register
+    vim.cmd('noau normal! "vy"')
+    return vim.fn.getreg('v')
+end
 
-vim.cmd([[
-" Replace selected characters, saving the word to which they belong
-xnoremap <leader>ss "sy:let @w='\<'.expand('<cword>').'\>' <bar> let @/=@s<CR>cgn
+local function escape_string(string)
+  local escape_characters = {
+    '\\', '"', "'", '[', ']', '.', '*', '+', '-', '?', '^', '$', '(', ')', '%',
+    '#', '{', '}', '|', '<', '>', '=', '!', ':'
+  }
+  for _, char in ipairs(escape_characters) do
+    string = vim.fn.escape(string, char)
+  end
+  return string
+end
 
-" Search and replace previously replaced characters
-" -> Use the dot ('.') command
+-- Apply macro to given word
+local function apply_macro()
+  local mode = vim.api.nvim_get_mode().mode
+  if mode == 'v' then
+    local selection = get_visual_selection()
+    local escaped_selection = escape_string(selection)
+    vim.fn.setreg('/', escaped_selection)
+  elseif mode == 'n' then
+    local word = vim.fn.expand('<cword>')
+    vim.fn.setreg('/', word)
+  end
+  -- start recording macro
+  vim.cmd('normal! qi')
+end
 
-" Search and replace the characters if they appear within the same word
-nnoremap <M-s> /<C-r>w<CR><left>/<C-r>s<CR>.
+local function record_macro()
+  local mode = vim.api.nvim_get_mode().mode
+  -- exit insert mode if it is being recorded
+  if mode == 'i' then
+    vim.cmd('stopinsert')
+  -- exit visual mode if it is being recorded
+  elseif mode == 'v' then
+    -- feedkeys
+    local esc = vim.api.nvim_replace_termcodes('<esc>', true, false, true)
+    vim.api.nvim_feedkeys(esc, 'x', false)
+  end
+  -- stop recording macro if it is being recorded
+  -- or do nothing if it is not
+  vim.cmd('normal! qq')
+end
 
-" Search for the next occurrence of the saved word (skip replace)
-nnoremap <M-n> /<C-r>w<CR>
-
-" Replace full word
-nnoremap <leader>sr :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-
-" Append to the end of a word
-nnoremap <leader>sa :let @/='\<'.expand('<cword>').'\>'<CR>cgn<C-r>"
-]])
+map({'n', 'v'}, 'qi', apply_macro, opts)
+map('n', '<M-s>', 'n@i', opts)
+map({'i', 'v', 'n'}, '<M-q>', record_macro, opts)
