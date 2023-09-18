@@ -163,9 +163,15 @@ require'lspconfig'.lua_ls.setup {
   },
 }
 
+
 require "lsp_signature".setup({
   floating_window = false,
   doc_lines = 1,
 })
+vim.keymap.set({ 'i' }, '<M-k>', function()
+  vim.lsp.buf.signature_help()
+end,
+{ silent = true, noremap = true, desc = 'toggle signature' })
+
 
 vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
