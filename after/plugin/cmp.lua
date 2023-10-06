@@ -50,6 +50,18 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
+
+-- Disable text suggestions for .tex files
+cmp.setup.filetype('tex', {
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' }, -- For luasnip users.
+  }, {
+    { name = 'path' },
+  })
+})
+
+
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline('/', {
 --   mapping = cmp.mapping.preset.cmdline(),
