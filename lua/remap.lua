@@ -29,6 +29,8 @@ map('n', '<C-c>', '<C-a>', opts)
 -- Move cursor in insert mode
 map('i', '<C-l>', '<Right>', opts)
 map('i', '<C-ñ>', '<Left>', opts)
+-- wezterm (see [1]):
+map('i', '<C-;>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
