@@ -43,7 +43,7 @@ vim.opt.splitbelow = true
 vim.opt.wildmode = 'full:lastused'
 -- Break indent
 vim.opt.breakindent = true
-vim.opt.showbreak = '>>'
+vim.opt.showbreak = '···'
 -- Soft word wrap
 vim.opt.wrap = true
 vim.opt.linebreak = true
