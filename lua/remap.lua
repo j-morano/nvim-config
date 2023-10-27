@@ -193,7 +193,9 @@ local function apply_macro()
     local escaped_selection = escape_string(selection)
     vim.fn.setreg('/', escaped_selection)
   elseif mode == 'n' then
-    local word = vim.fn.expand('<cword>')
+    -- Move cursor to the beginning of the word under the cursor and yank it
+    vim.cmd('normal! "vyiw')
+    local word = vim.fn.getreg('v')
     vim.fn.setreg('/', word)
   end
   -- start recording macro
