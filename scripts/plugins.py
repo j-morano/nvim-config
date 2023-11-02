@@ -9,7 +9,7 @@ from subprocess import PIPE
 from typing import Optional, List
 
 
-home = os.environ['HOME']    
+home = os.environ['HOME']
 base_plugin_path = f'{home}/.local/share/nvim/site/pack/plugins'
 
 HELP = """Usage: plugins.py <command>
@@ -17,6 +17,7 @@ HELP = """Usage: plugins.py <command>
 Commands:
     list        List plugins
     paths       List plugin paths
+    path        Print plugin path
     sync        Sync plugins with plugins file
     help        Show this help message
 """
@@ -66,6 +67,9 @@ elif sys.argv[1] == 'list':
 elif sys.argv[1] == 'paths':
     for plugin_path in get_plugin_paths(True):
         print('  -', plugin_path, flush=True)
+
+elif sys.argv[1] == 'path':
+    print(base_plugin_path, flush=True)
 
 elif sys.argv[1] == 'sync':
     operations = 0
