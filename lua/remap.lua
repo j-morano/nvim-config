@@ -78,11 +78,6 @@ map('i', '{<Space>', '{}<Left>', opts)
 map('i', '[<Space>', '[]<Left>', opts)
 map('i', '\'<Space>', '\'\'<Left>', opts)
 map('i', '"<Space>', '""<Left>', opts)
--- Terminal
-map('t', '<M-x>', '<C-\\><C-n>', opts)
-map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
--- Panes
-map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- Folding and indent blankline
@@ -165,7 +160,8 @@ cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
 ]])
 
 
----- Vim-style alternative to multiple cursors
+
+---- Helper functions
 
 local function get_visual_selection()
     -- Yank current visual selection into the 'v' register
@@ -173,6 +169,53 @@ local function get_visual_selection()
     vim.cmd('noau normal! "vy"')
     return vim.fn.getreg('v')
 end
+
+
+---- Interactive Python
+
+-- Terminal
+map('t', '<M-x>', '<C-\\><C-n>', opts)
+map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
+-- Panes
+-- map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
+-- Open interactive python in terminal (right pane)
+local function open_interactive_python()
+  vim.cmd('vnew')
+  vim.cmd('term ipython')
+end
+map('n', '<M-S-h>', open_interactive_python, opts)
+
+
+-- Easily jump between the interactive python terminal and the code
+local function jump_to_pane()
+  -- check if the current buffer is a terminal
+  local buf = vim.api.nvim_get_current_buf()
+  local buf_type = vim.api.nvim_buf_get_option(buf, 'buftype')
+  if buf_type == 'terminal' then
+    -- jump to left pane
+    vim.cmd('wincmd h')
+  else
+    -- jump to right pane
+    vim.cmd('wincmd l')
+  end
+end
+-- map('t', '<M-j>', '<C-\\><C-n><C-w>h', opts)
+map({'t', 'n'}, '<M-h>', jump_to_pane, opts)
+local function jump_and_run()
+  -- Jump to the interactive python terminal and run visual selection
+  get_visual_selection()
+  jump_to_pane()
+  -- paste the visual selection
+  vim.cmd[[normal! "vp]]
+  -- emulate pressing enter inside the terminal using feedkeys
+  local enter = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
+  vim.api.nvim_feedkeys(enter, 't', false)
+end
+map({'v'}, '<M-h>', jump_and_run, opts)
+
+
+
+---- Vim-style alternative to multiple cursors
 
 local function escape_string(string)
   local escape_characters = {
