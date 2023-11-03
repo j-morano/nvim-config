@@ -30,6 +30,8 @@ local function set_custom_highlights()
   vim.api.nvim_set_hl(0, "ColorColumn", { bg = "lightgrey" })
   vim.api.nvim_set_hl(0, "BufferManagerModified", { fg = "#0000af" })
 
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#424242" })
+
   -- Spelling
   vim.api.nvim_set_hl(0, "SpellBad", { bg = "#ffafd7" })
 
