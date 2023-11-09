@@ -167,7 +167,7 @@ require'lspconfig'.lua_ls.setup {
 require "lsp_signature".setup({
   floating_window = false,
   doc_lines = 1,
-  hint_prefix = "📃 ",
+  hint_prefix = "✒️ ",
 })
 vim.keymap.set({ 'i' }, '<M-k>', function()
   vim.lsp.buf.signature_help()
