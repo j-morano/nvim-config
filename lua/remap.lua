@@ -166,19 +166,60 @@ map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
 
 
 ---- Panes
-map({'t', 'n'}, '<M-h>', function ()
+map({'t', 'n'}, '<M-o>', function ()
   vim.cmd('wincmd w')
 end, opts)
 
 
----- Vim-style alternative to multiple cursors
-
+---- Helper functions
 local function get_visual_selection()
-    -- Yank current visual selection into the 'v' register
-    -- Note that this makes no effort to preserve this register
-    vim.cmd('noau normal! "vy"')
-    return vim.fn.getreg('v')
+  -- Yank current visual selection into the 'v' register
+  -- Note that this makes no effort to preserve this register
+  vim.cmd('noau normal! "vy"')
+  return vim.fn.getreg('v')
 end
+
+
+---- Interactive python
+
+-- map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
+-- Open interactive python in terminal (right pane)
+local function open_interactive_python()
+  vim.cmd('term ipython')
+end
+map('n', '<M-S-p>', open_interactive_python, opts)
+
+
+-- Easily jump between the interactive python terminal and the code
+local function jump_to_terminal_buffer()
+  local terminal_buffer = vim.fn.bufnr('ipython')
+  if terminal_buffer == -1 then
+    return 1
+  end
+  vim.cmd('buffer ' .. terminal_buffer)
+  return 0
+end
+
+
+-- map('t', '<M-j>', '<C-\\><C-n><C-w>h', opts)
+local function jump_and_run()
+  -- Jump to the interactive python terminal and run visual selection
+  get_visual_selection()
+  if jump_to_terminal_buffer() == 1 then
+    return
+  end
+  -- paste the visual selection
+  vim.cmd[[normal! "vp]]
+  -- emulate pressing enter inside the terminal using feedkeys
+  local enter = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
+  vim.api.nvim_feedkeys(enter, 't', false)
+end
+map({'v'}, '<M-p>', jump_and_run, opts)
+
+
+
+
+---- Vim-style alternative to multiple cursors
 
 
 local function escape_string(string)

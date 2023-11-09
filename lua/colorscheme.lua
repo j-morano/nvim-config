@@ -43,6 +43,9 @@ local function set_custom_highlights()
   vim.api.nvim_set_hl(0, "diffAdded", { fg = "#005f00", bg = "none" })
   vim.api.nvim_set_hl(0, "diffRemoved", { fg = "#870000", bg = "none" })
 
+  -- Listchars
+  vim.api.nvim_set_hl(0, "Whitespace", { fg = "#ffafd7", bg = "#ffafd7" })
+
   -- Copilot
   vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#9c4fb8" })
 
@@ -92,16 +95,9 @@ vim.g.terminal_color_7 = "#eeeeee"
 vim.g.terminal_color_15 = "#d8d8d8"
 
 
--- Highlight trailing whitespace in all lines except the ones that are
--- currently being edited.
+-- Highlight trailing whitespace except in insert mode
 vim.cmd[[
-highlight default link EndOfLineSpace SpellBad
-match EndOfLineSpace / \+$/
-autocmd InsertEnter * hi link EndOfLineSpace Normal
-autocmd InsertLeave * hi link EndOfLineSpace SpellBad
+autocmd InsertEnter * set listchars=
+autocmd InsertLeave * set listchars=trail:-
+set list
 ]]
--- Other option:
--- vim.cmd[[
--- set listchars=trail:#
--- set list
--- ]]
