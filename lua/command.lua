@@ -32,3 +32,10 @@ vim.api.nvim_create_user_command(
   plugin_cmd,
   { nargs = '*' }
 )
+
+vim.api.nvim_create_user_command(
+  'CD',
+  -- Disable Copilot running the command "Copilot disable"
+  function() vim.cmd('Copilot disable') end,
+  {}
+)
