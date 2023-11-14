@@ -63,6 +63,8 @@ map({'n', 'v'}, '<S-Ñ>', ':', opts)
 map('n', 'qÑ', 'q:', opts)
 map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
+-- Jump to 2nd to last edit location using tab
+map('n', '<Tab>', '2g;', opts)
 -- Ex
 map('n', '<M-e>', '<cmd>Ex<CR>', opts)
 -- Alternative return to to avoid select suggestion
