@@ -173,16 +173,10 @@ map({'t', 'n'}, '<M-o>', function ()
 end, opts)
 
 
----- Helper functions
-local function get_visual_selection()
-  -- Yank current visual selection into the 'v' register
-  -- Note that this makes no effort to preserve this register
-  vim.cmd('noau normal! "vy"')
-  return vim.fn.getreg('v')
-end
-
-
 ---- Interactive python
+
+local utils = require('utils')
+
 
 -- map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 -- Open interactive python in terminal (right pane)
@@ -206,7 +200,7 @@ end
 -- map('t', '<M-j>', '<C-\\><C-n><C-w>h', opts)
 local function jump_and_run()
   -- Jump to the interactive python terminal and run visual selection
-  get_visual_selection()
+  utils.get_visual_selection()
   if jump_to_terminal_buffer() == 1 then
     return
   end
@@ -224,23 +218,12 @@ map({'v'}, '<M-p>', jump_and_run, opts)
 ---- Vim-style alternative to multiple cursors
 
 
-local function escape_string(string)
-  local escape_characters = {
-    '\\', '"', "'", '[', ']', '.', '*', '+', '-', '?', '^', '$', '(', ')', '%',
-    '#', '{', '}', '|', '<', '>', '=', '!', ':'
-  }
-  for _, char in ipairs(escape_characters) do
-    string = vim.fn.escape(string, char)
-  end
-  return string
-end
-
 -- Apply macro to given word
 local function apply_macro()
   local mode = vim.api.nvim_get_mode().mode
   if mode == 'v' then
-    local selection = get_visual_selection()
-    local escaped_selection = escape_string(selection)
+    local selection = utils.get_visual_selection()
+    local escaped_selection = utils.escape_string(selection)
     vim.fn.setreg('/', escaped_selection)
   elseif mode == 'n' then
     -- Move cursor to the beginning of the word under the cursor and yank it
