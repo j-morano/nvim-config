@@ -4,8 +4,6 @@ local opts = {noremap = true}--, silent = true}
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
--- Save on exit insert mode
---autocmd InsertLeave * update
 -- Best remap ever
 --  Replace currently selected text with default register
 --  without yanking it
@@ -17,11 +15,6 @@ map('n', '_', 'o<Esc>k', opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
-map('i', '<M-q>', '<ESC>:wincmd p<CR>a', opts)
-map('n', '<M-q>', ':wincmd p<CR>', opts)
--- Alternative escape
-map('i', 'jk', '<ESC>', opts)
-map('i', 'kj', '<ESC>', opts)
 -- Yank a region without moving the cursor to the top of the block
 map('v', 'y', 'ygv<Esc>', opts)
 -- Remap increase number
@@ -35,7 +28,7 @@ map('i', '<C-;>', '<Left>', opts)
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
 -- Go to last change
-map('n', 'H', 'g;', opts)
+map('n', '<Tab>', 'g;', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -46,10 +39,6 @@ map('n', 'J', 'mzJ`z', opts)
 -- Moving text
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
--- CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
---  so that you can undo CTRL-U after inserting a line break.
---  Revert with ":iunmap <C-U>".
-map('i', '<C-U>', '<C-G>u<C-U>', opts)
 -- Delete with ctrl-backspace
 map('i', '<C-BS>', '<C-w>', opts)
 -- [1] Sometimes, wezterm interprets keybindings in a weird way, so it is
@@ -60,11 +49,7 @@ map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
 -- wezterm (see [1]):
 map({'n', 'v'}, '<S-Ñ>', ':', opts)
-map('n', 'qÑ', 'q:', opts)
-map('n', '@Ñ', '@:', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
--- Jump to 2nd to last edit location using tab
-map('n', '<Tab>', 'g;', opts)
 -- Ex
 map('n', '<M-e>', '<cmd>Ex<CR>', opts)
 -- Alternative return to to avoid select suggestion
@@ -153,13 +138,6 @@ local function wrap_args()
 end
 
 map('n', '<M-a>', wrap_args, opts)
-
-
--- Wildmenu
-vim.cmd([[
-cnoremap <expr> <CR> wildmenumode() ? "<space>\<bs>\<C-Z>" : "\<CR>"
-cnoremap <expr> <C-p> wildmenumode() ? "\<up>" : "\<C-p>"
-]])
 
 
 ---- Terminal
