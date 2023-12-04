@@ -26,8 +26,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.laststatus = 2
 -- Switch buffer even if it is not saved
 vim.opt.hidden = true
--- Allow backspacing over everything in insert mode.
-vim.opt.backspace = 'indent,eol,start'
 -- Encoding
 vim.opt.encoding = 'utf-8'
 -- Ignore case in searches.
@@ -59,8 +57,6 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.smartindent = true
--- Make the left and right arrow keys change line
-vim.opt.whichwrap:append('<,>,[,],h,l')
 -- Copy to system clipboard
 --  Dependency: clipboard software. For example: xclip
 vim.opt.clipboard:append('unnamedplus')
