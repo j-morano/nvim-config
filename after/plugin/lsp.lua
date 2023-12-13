@@ -93,6 +93,17 @@ require'lspconfig'.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
+  root_dir = function(fname)
+    return vim.fn.getcwd()
+    -- return require'lspconfig'.util.root_pattern(
+    -- '.git',
+    -- '.ignore',
+    -- 'setup.py',
+    -- 'setup.cfg',
+    -- 'pyproject.toml',
+    -- 'requirements.txt'
+    -- )(fname) or vim.fn.getcwd()
+  end,
 })
 
 require'lspconfig'.texlab.setup({
