@@ -82,10 +82,10 @@ vim.opt.termguicolors = true
 vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
-vim.opt.foldopen:remove({ "hor" })
+vim.opt.foldmethod = "manual"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldenable = false
+-- vim.opt.foldopen:remove({ "hor" })
 
 ---- Window options
 -- Custom highlights
