@@ -67,10 +67,10 @@ map('i', '\'<Space>', '\'\'<Left>', opts)
 map('i', '"<Space>', '""<Left>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
--- Folding and indent blankline
-map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
-map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
-map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
+-- -- Folding and indent blankline
+-- map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
+-- map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
+-- map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
 
 -- Search
 local function do_hlsearch()
