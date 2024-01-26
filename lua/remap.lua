@@ -28,7 +28,8 @@ map('i', '<C-;>', '<Left>', opts)
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
 -- Go to last change
-map('n', '<Tab>', 'g;', opts)
+map('n', '<Tab>', '2g;', opts)
+map('n', '<M-Tab>', 'g;', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
