@@ -72,6 +72,9 @@ map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
 -- map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
 -- map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
+-- Deactivate C-v for visual block
+map('n', '<C-v>', '<Nop>', opts)
+map('n', '<M-v>', '<C-v>', opts)
 
 -- Search
 local function do_hlsearch()
