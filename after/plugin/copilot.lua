@@ -20,4 +20,8 @@ map("i", "<M-p>", 'copilot#Accept("<CR>")', opts)
 map('i', '<M-o>', accept_word, opts)
 map('i', '<M-i>', accept_line, opts)
 
-vim.g.copilot_filetypes = {markdown = true}
+-- Activate copilot all filetypes
+vim.g.copilot_filetypes = {}
+-- vim.g.copilot_filetypes = {
+--   markdown = true
+-- }
