@@ -37,7 +37,7 @@ cmp.setup({
   }, {
     -- { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'path' },
+    -- { name = 'path' },
   })
 })
 
@@ -58,7 +58,7 @@ cmp.setup.filetype('tex', {
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
   }, {
-    { name = 'path' },
+    -- { name = 'path' },
   })
 })
 
