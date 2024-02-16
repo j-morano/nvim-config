@@ -91,6 +91,7 @@ vim.opt.foldmethod = "manual"
 -- Custom highlights
 vim.w.m1 = vim.fn.matchadd('Todo', 'TODO')
 vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
+vim.w.m1 = vim.fn.matchadd('Todo', 'IMPORTANT')
 
 
 ---- VIM global variables
