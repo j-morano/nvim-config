@@ -75,6 +75,8 @@ map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- Deactivate C-v for visual block
 map('n', '<C-v>', '<Nop>', opts)
 map('n', '<M-v>', '<C-v>', opts)
+-- Alternative escape
+map('i', 'kj', '<Esc>', opts)
 
 -- Search
 local function do_hlsearch()
