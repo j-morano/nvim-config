@@ -48,8 +48,9 @@ map('n', 'J', 'mzJ`z', opts)
 -- Moving text
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
--- Delete with ctrl-backspace
+-- Delete with ctrl-backspace and alt-backspace
 map('i', '<C-BS>', '<C-w>', opts)
+map('i', '<M-BS>', '<C-w>', opts)
 -- [1] Sometimes, wezterm interprets keybindings in a weird way, so it is
 -- necessary to define other custom keybindings:
 map('i', '<C-H>', '<C-w>', opts)
