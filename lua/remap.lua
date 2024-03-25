@@ -10,18 +10,25 @@ map('n', 's', function() vim.cmd('update') end, opts)
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
 map('v', 'P', 'pgvy', opts)
--- Add blank line below
-map('n', '_', 'o<Esc>k', opts)
+-- Select current word
+map('n', 'h', 'viw', opts)
+-- Add blank line below, but keep cursor in the same position
+map('n', '<Enter>', function()
+  local pos = vim.fn.getpos('.')
+  vim.cmd('normal! o')
+  vim.fn.setpos('.', pos)
+end, opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
 -- Yank a region without moving the cursor to the top of the block
 map('v', 'y', 'ygv<Esc>', opts)
--- Remap increase number
-map('n', '<C-c>', '<C-a>', opts)
 -- Move cursor in insert mode
 map('i', '<C-l>', '<Right>', opts)
 map('i', '<C-ñ>', '<Left>', opts)
+-- Better jumping
+map('n', '<M-j>', '<C-d>', opts)
+map('n', '<M-k>', '<C-u>', opts)
 -- wezterm (see [1]):
 map('i', '<C-;>', '<Left>', opts)
 -- Avoid unintentionally macro recording
@@ -29,7 +36,8 @@ map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
 -- Go to last change
 map('n', '<Tab>', '2g;', opts)
-map('n', '<M-Tab>', 'g;', opts)
+-- Go to next change
+map('n', '<M-Tab>', '2g,', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -74,7 +82,7 @@ map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
 -- Deactivate C-v for visual block
 map('n', '<C-v>', '<Nop>', opts)
-map('n', '<M-v>', '<C-v>', opts)
+map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
 map('i', 'kj', '<Esc>', opts)
 
