@@ -27,8 +27,8 @@ map('v', 'y', 'ygv<Esc>', opts)
 map('i', '<C-l>', '<Right>', opts)
 map('i', '<C-ñ>', '<Left>', opts)
 -- Better jumping
-map('n', '<M-j>', '<C-d>', opts)
-map('n', '<M-k>', '<C-u>', opts)
+map('', '<M-j>', '<C-d>', opts)
+map('', '<M-k>', '<C-u>', opts)
 -- wezterm (see [1]):
 map('i', '<C-;>', '<Left>', opts)
 -- Avoid unintentionally macro recording
