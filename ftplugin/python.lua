@@ -9,9 +9,17 @@ local utils = require('utils')
 
 ---- Open Python documentation (pydoc) using C-k
 local function open_pydoc()
-  local selection = utils.get_visual_selection()
-  local escaped_selection = utils.escape_string(selection)
-  vim.cmd('term pydoc ' .. escaped_selection)
+  local selection = ''
+  local current_mode = vim.fn.mode()
+  if current_mode == 'v' then
+     selection = utils.get_visual_selection()
+  else
+    selection = vim.fn.expand('<cword>')
+  end
+  -- local escaped_selection = utils.escape_string(selection)
+  -- vim.cmd('term pydoc ' .. escaped_selection)
+  -- Run browser with the visual selection as search query
+  vim.cmd('silent !brave-browser --new-window "https://google.com/search?q=python ' .. selection .. '"')
 end
 
 vim.keymap.set({'n', 'v'}, '<C-o>', open_pydoc, opts)
