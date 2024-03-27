@@ -9,7 +9,6 @@ map('n', 's', function() vim.cmd('update') end, opts)
 --  without yanking it
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
-map('v', 'P', 'pgvy', opts)
 -- Select current word
 map('n', 'h', 'viw', opts)
 -- Add blank line below, but keep cursor in the same position
@@ -21,16 +20,12 @@ end, opts)
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
--- Yank a region without moving the cursor to the top of the block
-map('v', 'y', 'ygv<Esc>', opts)
 -- Move cursor in insert mode
-map('i', '<C-l>', '<Right>', opts)
-map('i', '<C-ñ>', '<Left>', opts)
+map('i', '<M-l>', '<Right>', opts)
+map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
 -- Better jumping
 map('', '<M-j>', '<C-d>', opts)
 map('', '<M-k>', '<C-u>', opts)
--- wezterm (see [1]):
-map('i', '<C-;>', '<Left>', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
@@ -50,10 +45,6 @@ map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 -- Delete with ctrl-backspace and alt-backspace
 map('i', '<C-BS>', '<C-w>', opts)
-map('i', '<M-BS>', '<C-w>', opts)
--- [1] Sometimes, wezterm interprets keybindings in a weird way, so it is
--- necessary to define other custom keybindings:
-map('i', '<C-H>', '<C-w>', opts)
 -- Custom hjkl remap
 map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)

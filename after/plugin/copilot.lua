@@ -14,8 +14,7 @@ end
 
 local opts = { remap = false, silent = true, expr = true, replace_keycodes = false }
 
-map('i', '<M-l>', '<Plug>(copilot-next)', {})
-map('i', '<M-ñ>', '<Plug>(copilot-previous)', {})
+map('i', '<M-n>', '<Plug>(copilot-next)', {})
 map("i", "<M-p>", 'copilot#Accept("<CR>")', opts)
 map('i', '<M-o>', accept_word, opts)
 map('i', '<M-i>', accept_line, opts)
