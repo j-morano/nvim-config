@@ -9,8 +9,6 @@ map('n', 's', function() vim.cmd('update') end, opts)
 --  without yanking it
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
--- Select current word
-map('n', 'h', 'viw', opts)
 -- Add blank line below, but keep cursor in the same position
 map('n', '<Enter>', function()
   local pos = vim.fn.getpos('.')
@@ -24,15 +22,11 @@ map('n', '<M-w>', ':e#<CR>', opts)
 map('i', '<M-l>', '<Right>', opts)
 map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
 -- Better jumping
-map('', '<M-j>', '<C-d>', opts)
-map('', '<M-k>', '<C-u>', opts)
+map('', '<M-j>', '<C-d>zz', opts)
+map('', '<M-k>', '<C-u>zz', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
--- Go to last change
-map('n', '<Tab>', '2g;', opts)
--- Go to next change
-map('n', '<M-Tab>', '2g,', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -52,10 +46,6 @@ map({'n', 'v'}, 'Ñ', ':', opts)
 -- wezterm (see [1]):
 map({'n', 'v'}, '<S-Ñ>', ':', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
--- Ex
-map('n', '<M-e>', '<cmd>Ex<CR>', opts)
--- Alternative return to to avoid select suggestion
-map('i', '<M-CR>', '<CR>', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
 -- Auto-expansion
@@ -180,7 +170,6 @@ local function jump_to_terminal_buffer()
 end
 
 
--- map('t', '<M-j>', '<C-\\><C-n><C-w>h', opts)
 local function jump_and_run()
   -- Jump to the interactive python terminal and run visual selection
   utils.get_visual_selection()
