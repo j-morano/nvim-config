@@ -9,6 +9,8 @@ map('n', 's', function() vim.cmd('update') end, opts)
 --  without yanking it
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
+-- Copy current word
+map('n', 'h', 'viwy', opts)
 -- Add blank line below, but keep cursor in the same position
 map('n', '<Enter>', function()
   local pos = vim.fn.getpos('.')
@@ -19,14 +21,17 @@ end, opts)
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
 -- Move cursor in insert mode
-map('i', '<M-l>', '<Right>', opts)
-map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
+-- map('i', '<M-l>', '<Right>', opts)
+-- map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
 -- Better jumping
 map('', '<M-j>', '<C-d>zz', opts)
 map('', '<M-k>', '<C-u>zz', opts)
 -- Avoid unintentionally macro recording
 map('n', 'q', '<Nop>', opts)
 map('n', 'qq', 'q', opts)
+-- Go to last change and next change
+map('n', '<Tab>', '2g;', opts)
+map('n', '<M-Tab>', '2g,', opts)
 --- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
@@ -35,8 +40,8 @@ map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
 -- Moving text
-map('v', 'J', ":m '>+1<CR>gv=gv", opts)
-map('v', 'K', ":m '<-2<CR>gv=gv", opts)
+-- map('v', 'J', ":m '>+1<CR>gv=gv", opts)
+-- map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 -- Delete with ctrl-backspace and alt-backspace
 map('i', '<C-BS>', '<C-w>', opts)
 map('i', '<C-H>', '<C-w>', opts)  -- "H" : wezterm
@@ -49,14 +54,14 @@ map('n', '<C-w>ñ', '<C-w>h', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
 -- Auto-expansion
-map('i', '(<CR>', '(<CR>)<C-c>O', opts)
-map('i', '{<CR>', '{<CR>}<C-c>O', opts)
-map('i', '[<CR>', '[<CR>]<C-c>O', opts)
-map('i', '(<Space>', '()<Left>', opts)
-map('i', '{<Space>', '{}<Left>', opts)
-map('i', '[<Space>', '[]<Left>', opts)
-map('i', '\'<Space>', '\'\'<Left>', opts)
-map('i', '"<Space>', '""<Left>', opts)
+-- map('i', '(<CR>', '(<CR>)<C-c>O', opts)
+-- map('i', '{<CR>', '{<CR>}<C-c>O', opts)
+-- map('i', '[<CR>', '[<CR>]<C-c>O', opts)
+-- map('i', '(<Space>', '()<Left>', opts)
+-- map('i', '{<Space>', '{}<Left>', opts)
+-- map('i', '[<Space>', '[]<Left>', opts)
+-- map('i', '\'<Space>', '\'\'<Left>', opts)
+-- map('i', '"<Space>', '""<Left>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- -- Folding and indent blankline
@@ -141,9 +146,9 @@ map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
 
 
 ---- Panes
-map({'t', 'n'}, '<M-o>', function ()
-  vim.cmd('wincmd w')
-end, opts)
+-- map({'t', 'n'}, '<M-o>', function ()
+--   vim.cmd('wincmd w')
+-- end, opts)
 
 
 ---- Interactive python
