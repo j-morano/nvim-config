@@ -15,7 +15,7 @@ require("buffer_manager").setup({
   focus_alternate_buffer = false,
   short_file_names = true,
   short_term_names = true,
-  loop_nav = false,
+  loop_nav = true,
 })
 -- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")
@@ -32,5 +32,6 @@ end
 -- Just the menu
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
 -- Next/Prev
-map('n', '<M-l>', bmui.nav_next, opts)
-map('n', '<M-;>', bmui.nav_prev, opts)
+-- map('n', '<M-l>', bmui.nav_next, opts)
+map('n', '<M-b>', bmui.nav_next, opts)
+-- map('n', '<M-;>', bmui.nav_prev, opts)

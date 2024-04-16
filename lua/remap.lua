@@ -21,8 +21,8 @@ end, opts)
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
 -- Move cursor in insert mode
--- map('i', '<M-l>', '<Right>', opts)
--- map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
+map('i', '<M-l>', '<Right>', opts)
+map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
 -- Better jumping
 map('', '<M-j>', '<C-d>zz', opts)
 map('', '<M-k>', '<C-u>zz', opts)
