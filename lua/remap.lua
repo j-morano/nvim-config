@@ -72,7 +72,7 @@ map('n', '<M-r>', ':!"%:p"<CR>', opts)
 map('n', '<C-v>', '<Nop>', opts)
 map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
-map('i', 'kj', '<ESC>', opts)
+map('i', 'jj', '<ESC>', opts)
 
 -- Search
 local function do_hlsearch()
