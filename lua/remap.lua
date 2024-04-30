@@ -10,7 +10,7 @@ map('n', 's', function() vim.cmd('update') end, opts)
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
 -- Copy current word
-map('n', 'h', 'viwy', opts)
+map('n', 'h', 'viw', opts)
 -- Add blank line below, but keep cursor in the same position
 map('n', '<Enter>', function()
   local pos = vim.fn.getpos('.')
