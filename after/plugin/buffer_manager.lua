@@ -16,6 +16,7 @@ require("buffer_manager").setup({
   short_file_names = true,
   short_term_names = true,
   loop_nav = true,
+  order_buffers = 'filename',
 })
 -- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")
