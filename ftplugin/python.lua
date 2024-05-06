@@ -22,7 +22,7 @@ local function open_pydoc()
   vim.cmd('silent !brave-browser --new-window "https://google.com/search?q=python ' .. selection .. '"')
 end
 
-vim.keymap.set({'n', 'v'}, '<C-o>', open_pydoc, opts)
+vim.keymap.set({'n', 'v'}, '<leader>po', open_pydoc, opts)
 
 
 vim.api.nvim_create_user_command(
