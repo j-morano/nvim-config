@@ -40,11 +40,8 @@ map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
 -- Moving text
--- map('v', 'J', ":m '>+1<CR>gv=gv", opts)
--- map('v', 'K', ":m '<-2<CR>gv=gv", opts)
--- Delete with ctrl-backspace and alt-backspace
-map('i', '<C-BS>', '<C-w>', opts)
-map('i', '<C-H>', '<C-w>', opts)  -- "H" : wezterm
+map('v', 'J', ":m '>+1<CR>gv=gv", opts)
+map('v', 'K', ":m '<-2<CR>gv=gv", opts)
 -- Custom hjkl remap
 map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
@@ -64,10 +61,6 @@ map('i', '<C-f>', '<C-x><C-f>', opts)
 -- map('i', '"<Space>', '""<Left>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
--- -- Folding and indent blankline
--- map('n', 'zo', 'zo:IndentBlanklineRefresh<CR>', opts)
--- map('n', 'zc', 'zc:IndentBlanklineRefresh<CR>', opts)
--- map('n', 'zR', 'zR:IndentBlanklineRefresh<CR>', opts)
 -- Deactivate C-v for visual block
 map('n', '<C-v>', '<Nop>', opts)
 map('n', 'vv', '<C-v>', opts)
@@ -145,12 +138,6 @@ map('n', '<M-a>', wrap_args, opts)
 ---- Terminal
 map('t', '<M-x>', '<C-\\><C-n>', opts)
 map('t', '<M-w>', '<C-\\><C-n>:e#<CR>', opts)
-
-
----- Panes
--- map({'t', 'n'}, '<M-o>', function ()
---   vim.cmd('wincmd w')
--- end, opts)
 
 
 ---- Interactive python
