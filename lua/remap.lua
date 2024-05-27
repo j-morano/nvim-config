@@ -39,6 +39,9 @@ map('n', 'Y', 'yg$', opts)
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
+-- Delete with ctrl-backspace and alt-backspace
+map('i', '<C-BS>', '<C-w>', opts)
+map('i', '<C-H>', '<C-w>', opts)  -- "H" : wezterm
 -- Moving text
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)
