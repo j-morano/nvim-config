@@ -8,7 +8,7 @@ require("tokyonight").setup({
   },
   -- Black variable names
   on_highlights = function (hl, _)
-    hl["@variable"].fg = "#ffffff"
+    hl["@variable"].fg = "#000000"
   end
 })
 
