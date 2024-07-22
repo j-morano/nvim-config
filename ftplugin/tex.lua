@@ -21,6 +21,6 @@ vim.api.nvim_set_keymap('i', '¡c', "~\\cite{}<left>", opts)
 vim.api.nvim_set_keymap('i', '¡r', "~\\ref{}<left>", opts)
 vim.api.nvim_set_keymap('i', '¡fu', "\\footnote{\\url{}}<left><left>", opts)
 
-vim.api.nvim_set_keymap('n', '<C-s>', ":update <bar> !./compile<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<C-s>', ":update <bar> !./bin/compile<CR><CR>", opts)
 vim.api.nvim_set_keymap('n', '<C-S-s>', ":update <bar> !./compile<CR>", opts)
 vim.api.nvim_set_keymap('n', '<leader>.', "f.lxi<CR><ESC>", opts)

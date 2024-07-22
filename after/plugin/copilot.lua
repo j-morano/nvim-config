@@ -23,3 +23,6 @@ map('i', '<M-i>', accept_line, opts)
 vim.g.copilot_filetypes = {
   markdown = true
 }
+
+-- Disabled by default
+-- vim.g.copilot_enabled = 0
