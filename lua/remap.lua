@@ -50,7 +50,7 @@ map('', 'ñ', 'h', opts)
 map({'n', 'v'}, 'Ñ', ':', opts)
 map('n', ';', 'h', opts)
 -- wezterm (see [1]):
-map({'n', 'v'}, '<S-Ñ>', ':', opts)
+map({'n', 'v', 'i'}, '<S-Ñ>', ':', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
