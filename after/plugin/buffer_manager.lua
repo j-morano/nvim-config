@@ -13,7 +13,7 @@ require("buffer_manager").setup({
     }
   },
   focus_alternate_buffer = false,
-  short_file_names = true,
+  short_file_names = false,
   short_term_names = true,
   loop_nav = true,
   order_buffers = 'lastused',
