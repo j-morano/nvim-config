@@ -83,8 +83,8 @@ vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
 
 -- Increase left padding
-vim.opt.foldcolumn = '9'
-vim.opt.signcolumn = 'yes:9'
+-- vim.opt.foldcolumn = '9'
+-- vim.opt.signcolumn = 'yes:9'
 
 
 vim.opt.foldmethod = "manual"
