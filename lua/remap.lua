@@ -72,22 +72,6 @@ map('n', 'vv', '<C-v>', opts)
 map('i', 'jj', '<ESC>', opts)
 
 
-local function toggle_padding()
-  -- print(vim.opt.foldcolumn)
-  local foldcolumn = vim.o.foldcolumn
-  if foldcolumn == '1' then
-    vim.opt.foldcolumn = '9'
-    vim.opt.signcolumn = 'yes:9'
-  else
-    vim.opt.foldcolumn = '1'
-    vim.opt.signcolumn = 'yes'
-  end
-end
-
-map('n', '<M-+>', toggle_padding, opts)
-
-
-
 -- Search
 local function do_hlsearch()
   vim.opt.hlsearch = true
