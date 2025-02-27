@@ -70,6 +70,8 @@ map('n', '<C-v>', '<Nop>', opts)
 map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
 map('i', 'jj', '<ESC>', opts)
+-- Move to pane
+map('n', '<M-h>', '<C-w><C-w>', opts)
 
 
 -- Search

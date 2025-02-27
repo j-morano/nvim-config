@@ -4,11 +4,11 @@ local map = vim.keymap.set
 require("buffer_manager").setup({
   select_menu_item_commands = {
     v = {
-      key = "<C-v>",
+      key = "<M-v>",
       command = "vsplit"
     },
     h = {
-      key = "<C-h>",
+      key = "<M-h>",
       command = "split"
     }
   },
