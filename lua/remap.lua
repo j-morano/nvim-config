@@ -55,9 +55,9 @@ map('n', '<C-w>ñ', '<C-w>h', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
 -- Auto-expansion
-map('i', '(<CR>', '(<CR>)<C-c>O', opts)
-map('i', '{<CR>', '{<CR>}<C-c>O', opts)
-map('i', '[<CR>', '[<CR>]<C-c>O', opts)
+-- map('i', '(<CR>', '(<CR>)<C-c>O', opts)
+-- map('i', '{<CR>', '{<CR>}<C-c>O', opts)
+-- map('i', '[<CR>', '[<CR>]<C-c>O', opts)
 -- map('i', '(<Space>', '()<Left>', opts)
 -- map('i', '{<Space>', '{}<Left>', opts)
 -- map('i', '[<Space>', '[]<Left>', opts)
