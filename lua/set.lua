@@ -5,8 +5,6 @@ vim.opt.display = 'truncate'
 -- Show a few lines of context around the cursor. Note that this makes the
 --  text scroll if you mouse-click near the start or end of the window.
 vim.opt.scrolloff = 0
--- Wait up to 100ms after Esc for special key
-vim.opt.ttimeoutlen = 100
 -- Keep 200 lines of command line history
 vim.opt.history = 200
 -- Show the cursor position all the time
