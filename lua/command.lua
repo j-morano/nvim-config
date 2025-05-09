@@ -23,7 +23,7 @@ vim.api.nvim_create_user_command(
 
 local function plugin_cmd(opts)
   local args = opts.args
-  vim.cmd('!python3 ~/.config/nvim/scripts/plugins.py ' .. args)
+  vim.cmd('!python3 ~/.config/nvim/plugin_manager.py ' .. args)
 end
 
 vim.api.nvim_create_user_command(
