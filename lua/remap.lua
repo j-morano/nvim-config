@@ -32,7 +32,6 @@ map('n', 'qq', 'q', opts)
 -- Go to last change and next change
 map('n', '<Tab>', 'g;', opts)
 map('n', '<M-Tab>', 'g,', opts)
---- Best remaps ever ---
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
 --" Keeping it centered
@@ -72,6 +71,18 @@ map('n', 'vv', '<C-v>', opts)
 map('i', 'jj', '<ESC>', opts)
 -- Move to pane
 map('n', '<M-h>', '<C-w><C-w>', opts)
+-- Smart dd: only yank the line if it's not empty
+map('n', 'dd', function()
+  if vim.fn.getline('.') == '' then
+    -- return '"_dd'
+    vim.cmd('normal! "_dd')
+  else
+    vim.cmd('normal! dd')
+  end
+end, opts)
+-- Repeat or execute macro on all visually selected lines.
+map('x', '.', ':norm .<CR>', opts)
+map('x', '@', ':norm @q<CR>', opts)
 
 
 -- Search
