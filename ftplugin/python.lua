@@ -19,7 +19,7 @@ local function open_pydoc()
   -- local escaped_selection = utils.escape_string(selection)
   -- vim.cmd('term pydoc ' .. escaped_selection)
   -- Run browser with the visual selection as search query
-  vim.cmd('silent !brave-browser --new-window "https://google.com/search?q=python ' .. selection .. '"')
+  vim.cmd('silent !floorp --new-window "https://google.com/search?q=python ' .. selection .. '"')
 end
 
 vim.keymap.set({'n', 'v'}, '<leader>p', open_pydoc, opts)
