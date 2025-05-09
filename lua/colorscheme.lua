@@ -20,6 +20,7 @@ local function set_custom_highlights()
   -- True black text
   vim.api.nvim_set_hl(0, "Normal", { fg = "#303030" }) --, bg = "#e1e2e7" })
   vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#303030", bg = "#dadada" })
+  vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#303030", bg = "#dadada" })
   vim.api.nvim_set_hl(0, "NormalNC", { fg = "#303030" })
   -- Line numbers
   vim.api.nvim_set_hl(0, "LineNr", { fg = "#808080" })

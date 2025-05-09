@@ -25,7 +25,9 @@ local on_attach = function(_, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', functionify(vim.lsp.buf.declaration), bufopts)
   vim.keymap.set('n', 'gd', functionify(vim.lsp.buf.definition), bufopts)
-  vim.keymap.set('n', 'K', functionify(vim.lsp.buf.hover), bufopts)
+  vim.keymap.set('n', 'K', function()
+      vim.lsp.buf.hover { border = "single", max_height = 25, max_width = 120 }
+  end, bufopts)
   vim.keymap.set('n', 'gI', functionify(vim.lsp.buf.implementation), bufopts)
   vim.keymap.set('n', '<C-k>', functionify(vim.lsp.buf.signature_help), bufopts)
   vim.keymap.set('i', '<C-k>', functionify(vim.lsp.buf.signature_help), bufopts)
