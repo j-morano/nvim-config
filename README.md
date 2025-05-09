@@ -8,5 +8,5 @@ Full Lua Neovim configuration with a very simple plugin manager written in Pytho
 # Create the directory where the plugins will be installed
 mkdir -p ~/.local/share/nvim/site/pack/plugins/start
 # Install plugins
-~/.config/nvim/scripts/plugins.py sync
+~/.config/nvim/plugin_manager.py sync
 ```
