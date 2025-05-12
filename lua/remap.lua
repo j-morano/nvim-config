@@ -71,13 +71,13 @@ map('n', 'vv', '<C-v>', opts)
 map('i', 'jj', '<ESC>', opts)
 -- Move to pane
 map('n', '<M-h>', '<C-w><C-w>', opts)
--- Smart dd: only yank the line if it's not empty
+-- Smart dd: only yank the lines if the current line is not empty
 map('n', 'dd', function()
+  local count = vim.v.count1
   if vim.fn.getline('.') == '' then
-    -- return '"_dd'
-    vim.cmd('normal! "_dd')
+    vim.cmd('normal! "_' .. count .. 'dd')
   else
-    vim.cmd('normal! dd')
+    vim.cmd('normal! ' .. count  .. 'dd')
   end
 end, opts)
 -- Repeat or execute macro on all visually selected lines.
