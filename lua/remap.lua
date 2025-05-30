@@ -34,6 +34,8 @@ map('n', '<Tab>', 'g;', opts)
 map('n', '<M-Tab>', 'g,', opts)
 -- Behave Vim
 map('n', 'Y', 'yg$', opts)
+-- Yank selection and keep cursor in place
+map('v', 'y', 'ygv<Esc>', opts)
 --" Keeping it centered
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
