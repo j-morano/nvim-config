@@ -197,3 +197,11 @@ end,
 
 
 vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
+
+
+require'lspconfig'.ltex.setup({
+  filetypes = { "latex", "tex", "bib" },
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+})
