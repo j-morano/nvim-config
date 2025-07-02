@@ -1,6 +1,6 @@
 -- Activate spell checking by default
-vim.opt_local.spelllang = "en,es"
-vim.opt_local.spell = true
+-- vim.opt_local.spelllang = "en,es"
+-- vim.opt_local.spell = true
 
 
 local opts = {noremap = true, silent = true}
