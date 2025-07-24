@@ -1,7 +1,8 @@
 local opts = {noremap = true}
 local map = vim.keymap.set
--- Setup
-require("buffer_manager").setup({
+local bm = require("buffer_manager")
+---- Setup
+bm.setup({
   select_menu_item_commands = {
     v = {
       key = "<M-v>",
@@ -18,7 +19,7 @@ require("buffer_manager").setup({
   loop_nav = true,
   order_buffers = 'lastused',
 })
--- Navigate buffers bypassing the menu
+---- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")
 local keys = '1234567890'
 for i = 1, #keys do
@@ -30,9 +31,31 @@ for i = 1, #keys do
     opts
   )
 end
--- Just the menu
+---- Just the menu
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
--- Next/Prev
+---- Next/Prev
 -- map('n', '<M-l>', bmui.nav_next, opts)
 map('n', '<M-b>', bmui.nav_next, opts)
 -- map('n', '<M-;>', bmui.nav_prev, opts)
+
+---- Use <leader>-t to go to the terminal buffer
+
+local function string_starts(string, start)
+  return string.sub(string, 1, string.len(start)) == start
+end
+
+local function nav_term()
+  -- Go to the first terminal buffer
+  bmui.update_marks()
+  for idx, mark in pairs(bm.marks) do
+    if string_starts(mark.filename, "term://") then
+      bmui.nav_file(idx)
+      return
+    end
+  end
+  -- If no terminal buffer is found, create a new one
+  vim.cmd('terminal')
+end
+
+-- Map <leader>t to navigate to the first terminal buffer
+map('n', '<leader>t', nav_term, opts)

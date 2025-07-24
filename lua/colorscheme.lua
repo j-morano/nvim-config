@@ -6,6 +6,8 @@ require("tokyonight").setup({
     keywords = { italic = false },
     functions = { italic = false }
   },
+  day_brightness = 0.25,
+  terminal_colors = false,
   -- Black variable names
   on_highlights = function (hl, _)
     hl["@variable"].fg = "#000000"
@@ -18,10 +20,10 @@ local function set_custom_highlights()
   vim.api.nvim_set_hl(0, "CurSearch", { bg = "#d7d7ff" })
   vim.api.nvim_set_hl(0, "IncSearch", { bg = "#000000", fg = "#ffffff" })
   -- True black text
-  vim.api.nvim_set_hl(0, "Normal", { fg = "#303030" }) --, bg = "#e1e2e7" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#303030", bg = "#dadada" })
-  vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#303030", bg = "#dadada" })
-  vim.api.nvim_set_hl(0, "NormalNC", { fg = "#303030" })
+  vim.api.nvim_set_hl(0, "Normal", { fg = "#000000" }) --, bg = "#e1e2e7" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#000000", bg = "#dadada" })
+  vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#000000", bg = "#dadada" })
+  vim.api.nvim_set_hl(0, "NormalNC", { fg = "#000000" })
   -- Line numbers
   vim.api.nvim_set_hl(0, "LineNr", { fg = "#808080" })
   vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#808080" })
@@ -49,15 +51,16 @@ local function set_custom_highlights()
 
   -- Copilot
   vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#9c4fb8" })
-
-  ---- IndentBlankLine
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#a8a8a8", nocombine = true })
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#af87af", nocombine = true })
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#87afff", nocombine = true })
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#dfaf5f", nocombine = true })
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent5", { fg = "#ff8787", nocombine = true })
-  vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#5faf87", nocombine = true })
 end
+
+
+---- IndentBlankLine
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#a8a8a8", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#af87af", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#87afff", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#dfaf5f", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent5", { fg = "#ff8787", nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#5faf87", nocombine = true })
 
 
 -- Some colorschemes use the ':hi clear' command to clear all custom highlight
@@ -72,28 +75,8 @@ vim.api.nvim_create_autocmd("ColorScheme",{
   group = au_id
 })
 
-
 vim.opt.background = "light"
 vim.cmd.colorscheme("tokyonight-day")
-
-
----- Terminal colors
-vim.g.terminal_color_0 = "#212121"
-vim.g.terminal_color_8 = "#424242"
-vim.g.terminal_color_1 = "#b7141e"
-vim.g.terminal_color_9 = "#e83a3f"
-vim.g.terminal_color_2 = "#457b23"
-vim.g.terminal_color_10 = "#7aba39"
-vim.g.terminal_color_3 = "#a36500"
-vim.g.terminal_color_11 = "#fee92e"
-vim.g.terminal_color_4 = "#134eb2"
-vim.g.terminal_color_12 = "#53a4f3"
-vim.g.terminal_color_5 = "#550087"
-vim.g.terminal_color_13 = "#a94dbb"
-vim.g.terminal_color_6 = "#0e707c"
-vim.g.terminal_color_14 = "#26bad1"
-vim.g.terminal_color_7 = "#eeeeee"
-vim.g.terminal_color_15 = "#d8d8d8"
 
 
 -- Highlight trailing whitespace except in insert mode
