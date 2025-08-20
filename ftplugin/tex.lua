@@ -1,6 +1,9 @@
 -- Activate spell checking by default
 -- vim.opt_local.spelllang = "en,es"
--- vim.opt_local.spell = true
+vim.opt_local.spelllang = "en"
+vim.opt_local.spell = true
+-- Do not check for spelling errors in comments:
+vim.g.tex_comment_nospell = 1
 
 
 local opts = {noremap = true, silent = true}
