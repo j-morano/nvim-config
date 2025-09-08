@@ -22,6 +22,7 @@ vim.api.nvim_set_keymap('i', '<u', "\\underline{}<left>", opts)
 vim.api.nvim_set_keymap('i', '<b', "\\textbf{}<left>", opts)
 vim.api.nvim_set_keymap('i', '<c', "~\\cite{}<left>", opts)
 vim.api.nvim_set_keymap('i', '<r', "~\\ref{}<left>", opts)
+vim.api.nvim_set_keymap('i', '<g', "\\gls{}<left>", opts)
 vim.api.nvim_set_keymap('i', '<f', "\\footnote{\\url{}}<left><left>", opts)
 
 vim.api.nvim_set_keymap('n', '<C-s>', ":update <bar> !sh bin/compile<CR><CR>", opts)

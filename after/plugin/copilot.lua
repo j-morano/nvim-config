@@ -16,6 +16,13 @@ local function accept_line()
   return vim.fn.split(bar, [[[\n]\zs]])[1]
 end
 
+
+-- Activate copilot all filetypes
+vim.g.copilot_filetypes = {
+  markdown = true
+}
+
+
 local opts = { remap = false, silent = true, expr = true, replace_keycodes = false }
 
 map('i', '<M-m>', '<Plug>(copilot-next)', {})
@@ -23,11 +30,6 @@ map("i", "<M-p>", 'copilot#Accept("<CR>")', opts)
 map('i', '<M-o>', function() return accept_words(1) end, opts)
 map('i', '<M-i>', accept_line, opts)
 map('i', '<M-u>', function() return accept_words(4) end, opts)
-
--- Activate copilot all filetypes
-vim.g.copilot_filetypes = {
-  markdown = true
-}
-
--- Disabled by default
--- vim.g.copilot_enabled = 0
+-- Manually trigger a Copilot suggestion
+-- NOTE: this has to be combined with disabling copilot
+map('i', '<M-j>', 'copilot#Suggest()', opts)

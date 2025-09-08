@@ -7,10 +7,12 @@ import glob
 import subprocess
 from subprocess import PIPE
 from typing import Optional, List
+from functools import partial
 
 
 home = os.environ['HOME']
 base_plugin_path = f'{home}/.local/share/nvim/site/pack/plugins'
+print = partial(print, flush=True)
 
 HELP = """Usage: plugins.py <command>
 
@@ -27,7 +29,7 @@ def get_plugin_paths(verbose: bool=False):
     plugin_paths = glob.glob(os.path.join(base_plugin_path, 'start', '*'))
     plugin_paths += glob.glob(os.path.join(base_plugin_path, 'opt', '*'))
     if verbose:
-        print(f'Found {len(plugin_paths)} plugins', flush=True)
+        print(f'Found {len(plugin_paths)} plugins')
     return plugin_paths
 
 
@@ -44,12 +46,12 @@ def run(
         stderr=PIPE
     )
     if print_output:
-        print(result.stdout.decode('utf-8'), flush=True)
+        print(result.stdout.decode('utf-8'))
     return result
 
 
 if sys.argv[1] == 'help':
-    print(HELP, flush=True)
+    print(HELP)
 
 elif sys.argv[1] == 'list':
     for plugin_path in get_plugin_paths(True):
@@ -62,14 +64,14 @@ elif sys.argv[1] == 'list':
         plugin_url = result.stdout.decode('utf-8').strip().replace('.git', '')
         plugin_url_split = plugin_url.split('/')
         plugin_url = plugin_url_split[-2] + '/' + plugin_url_split[-1]
-        print('  -', plugin_url, flush=True)
+        print('  -', plugin_url)
 
 elif sys.argv[1] == 'paths':
     for plugin_path in get_plugin_paths(True):
-        print('  -', plugin_path, flush=True)
+        print('  -', plugin_path)
 
 elif sys.argv[1] == 'path':
-    print(base_plugin_path, flush=True)
+    print(base_plugin_path)
 
 elif sys.argv[1] == 'sync':
     operations = 0
@@ -81,16 +83,28 @@ elif sys.argv[1] == 'sync':
         plugin = plugin.strip()
         if plugin.startswith('#'):
             continue
+        if '|' in plugin:
+            parts = plugin.split('|')
+            plugin = parts[0]
+            branch = parts[1]
+        else:
+            branch = None
         plugin_url = 'https://github.com/' + plugin
         plugin_name = plugin.split('/')[-1]
         plugin_names.append(plugin_name)
         if not os.path.exists(os.path.join(base_plugin_path, 'start', plugin_name)):
             # Install plugin
-            print(f'Installing {plugin}', flush=True)
-            result = run(
-                command=['git', 'clone', plugin_url],
-                cwd=os.path.join(base_plugin_path, 'start'),
-            )
+            print(f'Installing {plugin}')
+            if branch is not None:
+                result = run(
+                    command=['git', 'clone', '-b', branch, plugin_url],
+                    cwd=os.path.join(base_plugin_path, 'start'),
+                )
+            else:
+                result = run(
+                    command=['git', 'clone', plugin_url],
+                    cwd=os.path.join(base_plugin_path, 'start'),
+                )
             operations += 1
         else:
             # Update plugin
@@ -100,25 +114,51 @@ elif sys.argv[1] == 'sync':
                 cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                 print_output=False
             )
-            if result.stdout.decode('utf-8').strip() == '':
-                print(f'Plugin {plugin} is not in a branch, skipping.\n', flush=True)
+            prev_branch = result.stdout.decode('utf-8').strip()
+            if prev_branch == '':
+                print(f'Plugin {plugin} is not in a branch, skipping.\n')
             else:
-                print(f'Updating {plugin}', flush=True)
-                run(
-                    ['git', 'pull'],
-                    cwd=os.path.join(base_plugin_path, 'start', plugin_name),
-                )
+                if branch is None or prev_branch == branch:
+                    print(f'Updating {plugin}')
+                    run(
+                        ['git', 'pull'],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+                elif branch is not None and prev_branch != branch:
+                    print(f'Changing {plugin} from branch {prev_branch} to {branch}, and updating')
+                    # Check if branch exists locally
+                    result = run(
+                        command=['git', 'branch', '--list', branch],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                        print_output=False
+                    )
+                    local_branch = result.stdout.decode('utf-8').strip()
+                    if local_branch == '':
+                        print(f' - Fetching branch {branch} for {plugin}')
+                        run(
+                            ['git', 'fetch', 'origin', branch],
+                            cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                        )
+                    print(f' - Switching to branch {branch} for {plugin} and pulling')
+                    run(
+                        ['git', 'switch', branch],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+                    run(
+                        ['git', 'pull'],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
             operations += 1
     plugin_paths = get_plugin_paths()
     # Remove plugins that are not in the plugins file
     for plugin_path in plugin_paths:
         if Path(plugin_path).name not in plugin_names:
-            print(f'Removing {Path(plugin_path).stem}', flush=True)
+            print(f'Removing {Path(plugin_path).stem}')
             run(['rm', '-rf', plugin_path])
             operations += 1
     if operations == 0:
-        print('Nothing to do', flush=True)
+        print('Nothing to do')
 
 else:
-    print('Unknown command', flush=True)
+    print('Unknown command')
     exit(1)

@@ -18,6 +18,7 @@ bm.setup({
   short_term_names = true,
   loop_nav = true,
   order_buffers = 'lastused',
+  use_shortcuts = true,
 })
 ---- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")

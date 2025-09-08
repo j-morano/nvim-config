@@ -35,7 +35,7 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
-    -- { name = 'buffer' },
+    { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
     -- { name = 'path' },
   })
@@ -52,12 +52,12 @@ cmp.setup.filetype('gitcommit', {
 })
 
 
--- Disable text suggestions for .tex files
 cmp.setup.filetype('tex', {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
   }, {
+    { name = 'buffer' },
     -- { name = 'path' },
   })
 })
