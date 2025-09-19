@@ -15,6 +15,7 @@ github/copilot.vim
 L3MON4D3/LuaSnip
 mhinz/vim-signify
 simrat39/rust-tools.nvim
+# mrcjkb/rustaceanvim
 ray-x/lsp_signature.nvim
 tpope/vim-commentary
 tpope/vim-fugitive

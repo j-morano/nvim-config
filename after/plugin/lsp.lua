@@ -99,7 +99,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 custom_on_publish_diagnostics, {})
 
 
-require'lspconfig'.pyright.setup({
+vim.lsp.config.pyright = {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
@@ -114,13 +114,13 @@ require'lspconfig'.pyright.setup({
     -- 'requirements.txt'
     -- )(fname) or vim.fn.getcwd()
   end,
-})
+}
 
-require'lspconfig'.texlab.setup({
+vim.lsp.config.texlab = {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
-})
+}
 
 
 local options = {
@@ -152,14 +152,14 @@ require('rust-tools').setup(options)
 local clangd_capabilities = capabilities
 clangd_capabilities.offsetEncoding = { "utf-16" }
 
-require'lspconfig'.clangd.setup({
+vim.lsp.config.clangd = {
   cmd = { "clangd" },
   capabilities = clangd_capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
-})
+}
 
-require'lspconfig'.lua_ls.setup {
+vim.lsp.config.lua_ls = {
   settings = {
     Lua = {
       runtime = {
@@ -205,3 +205,6 @@ vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
 --   on_attach = on_attach,
 --   flags = lsp_flags,
 -- })
+
+
+vim.lsp.enable({ "pyright", "texlab", "clangd", "lua_ls" })
