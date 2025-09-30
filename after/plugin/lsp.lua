@@ -2,8 +2,8 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 
@@ -52,99 +52,16 @@ local lsp_flags = {
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
----- Disable 'x is not accessed' hint if x starts with an underscore
--- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
-
-local function filter(arr, func)
-  -- Filter in place
-  -- https://stackoverflow.com/questions/49709998/how-to-filter-a-lua-array-inplace
-  local new_index = 1
-  local size_orig = #arr
-  for old_index, v in ipairs(arr) do
-    if func(v, old_index) then
-      arr[new_index] = v
-      new_index = new_index + 1
-    end
-  end
-  for i = new_index, size_orig do arr[i] = nil end
-end
-
-local function filter_diagnostics(diagnostic)
-  -- Only filter out Pyright stuff for now
-  if diagnostic.source ~= "Pyright" then
-    return true
-  end
-
-  -- Allow kwargs to be unused, sometimes you want many functions to take the
-  -- same arguments but you don't use all the arguments in all the functions,
-  -- so kwargs is used to suck up all the extras
-  if diagnostic.message == '"kwargs" is not accessed' then
-    return false
-  end
-
-  -- Allow variables starting with an underscore
-  if string.match(diagnostic.message, '"_.+" is not accessed') then
-    return false
-  end
-
-  return true
-end
-
-local function custom_on_publish_diagnostics(a, params, client_id, c, config)
-  filter(params.diagnostics, filter_diagnostics)
-  vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-custom_on_publish_diagnostics, {})
-
-
 vim.lsp.config.pyright = {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
-  root_dir = function(fname)
-    return vim.fn.getcwd()
-    -- return require'lspconfig'.util.root_pattern(
-    -- '.git',
-    -- '.ignore',
-    -- 'setup.py',
-    -- 'setup.cfg',
-    -- 'pyproject.toml',
-    -- 'requirements.txt'
-    -- )(fname) or vim.fn.getcwd()
-  end,
 }
 
 vim.lsp.config.texlab = {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
-}
-
-
-local options = {
-  tools = {
-    autoSetHints = true,
-    runnables = {
-      use_telescope = true
-    },
-    inlay_hints = {
-      show_parameter_hints = false,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-      highlight = "TypeHints",
-    },
-  },
-
-  -- all the opts to send to nvim-lspconfig
-  -- these override the defaults set by rust-tools.nvim
-  -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
-  },
 }
 
 
@@ -196,15 +113,6 @@ end,
 
 
 vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
-
-
--- require'lspconfig'.ltex.setup({
---   filetypes = { "latex", "tex", "bib" },
---   capabilities = capabilities,
---   on_attach = on_attach,
---   flags = lsp_flags,
--- })
-
 
 vim.lsp.enable({ "pyright", "texlab", "clangd", "lua_ls" })
 
