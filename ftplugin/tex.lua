@@ -28,3 +28,5 @@ vim.api.nvim_set_keymap('i', '<f', "\\footnote{\\url{}}<left><left>", opts)
 vim.api.nvim_set_keymap('n', '<C-s>', ":update <bar> !sh bin/compile<CR><CR>", opts)
 vim.api.nvim_set_keymap('n', '<C-S-s>', ":update <bar> !sh compile<CR>", opts)
 vim.api.nvim_set_keymap('n', '<leader>.', "f.lxi<CR><ESC>", opts)
+
+vim.lsp.inlay_hint.enable(false)
