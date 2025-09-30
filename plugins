@@ -14,8 +14,7 @@ norcalli/nvim-colorizer.lua
 github/copilot.vim
 L3MON4D3/LuaSnip
 mhinz/vim-signify
-simrat39/rust-tools.nvim
-# mrcjkb/rustaceanvim
+mrcjkb/rustaceanvim
 ray-x/lsp_signature.nvim
 tpope/vim-commentary
 tpope/vim-fugitive

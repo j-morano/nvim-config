@@ -147,7 +147,6 @@ local options = {
   },
 }
 
-require('rust-tools').setup(options)
 
 local clangd_capabilities = capabilities
 clangd_capabilities.offsetEncoding = { "utf-16" }
@@ -208,3 +207,6 @@ vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
 
 
 vim.lsp.enable({ "pyright", "texlab", "clangd", "lua_ls" })
+
+-- Disable virtual text with inlay/type hints
+vim.lsp.inlay_hint.enable(true)

@@ -15,10 +15,10 @@ end
 
 
 -- Disable lspconfig warning for now
-local notify = vim.notify
-vim.notify = function(msg, level, opts)
-  if type(msg) == "string" and msg:match("The `require%('lspconfig'%)` \"framework\" is deprecated") then
-    return
-  end
-  notify(msg, level, opts)
-end
+-- local notify = vim.notify
+-- vim.notify = function(msg, level, opts)
+--   if type(msg) == "string" and msg:match("The `require%('lspconfig'%)` \"framework\" is deprecated") then
+--     return
+--   end
+--   notify(msg, level, opts)
+-- end
