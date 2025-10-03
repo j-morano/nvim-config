@@ -14,6 +14,8 @@ vim.api.nvim_set_keymap('v', '<leader>b', "c\\textbf{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>m', "c\\mathbf{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>u', "c\\underline{<c-r>\"}<Esc>", opts)
 vim.api.nvim_set_keymap('v', '<leader>v', "c\\verb\\|<c-r>\"\\|<Esc>", opts)
+vim.api.nvim_set_keymap('v', '<leader>g', "c\\gls{<c-r>\"}<Esc>", opts)
+vim.api.nvim_set_keymap('v', '<leader>h', "c\\hl{<c-r>\"}<Esc>", opts)
 
 vim.api.nvim_set_keymap('i', '<v', "\\verb\\|\\|<left>", opts)
 vim.api.nvim_set_keymap('i', '<i', "\\textit{}<left>", opts)
