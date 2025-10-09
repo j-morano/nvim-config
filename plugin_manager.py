@@ -92,6 +92,15 @@ elif sys.argv[1] == 'sync':
         plugin_url = 'https://github.com/' + plugin
         plugin_name = plugin.split('/')[-1]
         plugin_names.append(plugin_name)
+        # Get default branch from server
+        if branch is None:
+            result = run(
+                command=['git', 'ls-remote', '--symref', plugin_url, 'HEAD'],
+                print_output=False
+            )
+            default_branch = result.stdout.decode('utf-8').strip().split('\n')[0]
+            # Format: ref: refs/heads/master  HEAD
+            branch = default_branch.split('refs/heads/')[1].split()[0]
         if not os.path.exists(os.path.join(base_plugin_path, 'start', plugin_name)):
             # Install plugin
             print(f'Installing {plugin}')
@@ -118,13 +127,7 @@ elif sys.argv[1] == 'sync':
             if prev_branch == '':
                 print(f'Plugin {plugin} is not in a branch, skipping.\n')
             else:
-                if branch is None or prev_branch == branch:
-                    print(f'Updating {plugin}')
-                    run(
-                        ['git', 'pull'],
-                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
-                    )
-                elif branch is not None and prev_branch != branch:
+                if prev_branch != branch:
                     print(f'Changing {plugin} from branch {prev_branch} to {branch}, and updating')
                     # Check if branch exists locally
                     result = run(
@@ -144,6 +147,12 @@ elif sys.argv[1] == 'sync':
                         ['git', 'switch', branch],
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                     )
+                    run(
+                        ['git', 'pull'],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+                elif branch is None or prev_branch == branch:
+                    print(f'Updating {plugin}')
                     run(
                         ['git', 'pull'],
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
