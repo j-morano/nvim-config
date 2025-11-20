@@ -17,7 +17,7 @@ bm.setup({
   short_file_names = false,
   short_term_names = true,
   loop_nav = true,
-  order_buffers = 'lastused',
+  -- order_buffers = 'lastused',
   -- use_shortcuts = true,
 })
 ---- Navigate buffers bypassing the menu
