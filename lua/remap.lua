@@ -40,6 +40,8 @@ map('v', 'y', 'ygv<Esc>', opts)
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
+-- Go to mark
+map('n', '<M-m>', '`', opts)
 -- Moving text
 map('v', 'J', ":m '>+1<CR>gv=gv", opts)
 map('v', 'K', ":m '<-2<CR>gv=gv", opts)

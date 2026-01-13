@@ -52,7 +52,24 @@ local lsp_flags = {
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
-vim.lsp.config.pyright = {
+vim.lsp.config.ty = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+  settings = {
+    ty = {
+      inlayHints = {
+        callArgumentNames = false,
+        variableTypes = false,
+        functionReturnTypes = false,
+        enumMemberValues = false,
+        parameterNames = false,
+      }
+    }
+  }
+}
+
+vim.lsp.config.ruff = {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,
@@ -114,7 +131,7 @@ end,
 
 vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
 
-vim.lsp.enable({ "pyright", "texlab", "clangd", "lua_ls" })
+vim.lsp.enable({ "ty", "ruff", "texlab", "clangd", "lua_ls" })
 
 -- Disable virtual text with inlay/type hints
 vim.lsp.inlay_hint.enable(true)
