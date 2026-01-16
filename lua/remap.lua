@@ -12,11 +12,25 @@ map('', 'c', '"_c', opts)
 -- Copy current word
 map('n', 'h', 'viw', opts)
 -- Add blank line below, but keep cursor in the same position
+-- Use a function that checks for the Quickfix window
 map('n', '<Enter>', function()
-  local pos = vim.fn.getpos('.')
-  vim.cmd('normal! o')
-  vim.fn.setpos('.', pos)
-end, opts)
+    -- 1. Check if we are in a Quickfix window
+    if vim.bo.buftype == 'quickfix' then
+        -- We return the actual carriage return key to trigger the jump
+        return '<CR>'
+    end
+    -- 2. If modifiable, schedule the line insertion
+    if vim.bo.modifiable then
+        local pos = vim.fn.getpos('.')
+        vim.schedule(function()
+            -- We use the API to avoid "normal!" command restrictions
+            vim.api.nvim_put({''}, 'l', true, false)
+            vim.fn.setpos('.', pos)
+        end)
+    end
+    -- 3. Return nothing so Enter doesn't move the cursor down in normal buffers
+    return '<Ignore>'
+end, { expr = true, silent = true })
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
