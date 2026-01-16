@@ -117,3 +117,8 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   desc = "load view (folds), when opening file",
   command = "silent! loadview"
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { "python", "lua", "rust", "vim", "html", "javascript" },
+  callback = function() vim.treesitter.start() end,
+})

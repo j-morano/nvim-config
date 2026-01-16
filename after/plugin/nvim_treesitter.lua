@@ -1,4 +1,3 @@
-
 require'nvim-treesitter'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "python", "lua", "rust", "vim", "html", "javascript" },
@@ -8,7 +7,7 @@ require'nvim-treesitter'.setup {
 
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = false,
+  auto_install = true,
 
   -- List of parsers to ignore installing (for "all")
   -- ignore_install = { "javascript" },
