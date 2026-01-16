@@ -112,46 +112,66 @@ map('v', 'k', "v:count ? 'k' : 'gk'", expr_opts)
 
 ---- Useful formatting mappings
 
-local ts_utils = require("nvim-treesitter.ts_utils")
-local ts_vim = require("vim.treesitter")
-
--- Function to get argument_list and put each argument in a new line. The cursor
--- position must be the initial parenthesis.
 local function wrap_args()
-  -- Get column of cursor
-  local col = vim.api.nvim_win_get_cursor(0)[2]
-  local node_at_cursor = ts_utils.get_node_at_cursor()
-  local args = ts_utils.get_named_children(node_at_cursor)
-  -- Remove the rest of the line after the cursor
-  local args_text = {}
-  for _, arg in ipairs(args) do
-    local arg_text = ts_vim.get_node_text(arg, 0)
-    table.insert(args_text, arg_text)
-  end
-  -- Get text after the end of the node_at_cursor
-  local line = vim.api.nvim_get_current_line()
-  if not node_at_cursor then
+  local bufnr = vim.api.nvim_get_current_buf()
+  local cursor_orig = vim.api.nvim_win_get_cursor(0)
+  local row, col = cursor_orig[1] - 1, cursor_orig[2]
+
+  local parser = vim.treesitter.get_parser(bufnr)
+  if not parser then
+    print("No parser found for this buffer")
     return
   end
-  local node_length = ts_utils.node_length(node_at_cursor)
-  -- get text after node_length
-  local text = string.sub(line, col + node_length)
-  vim.cmd("normal! l\"_d$")
-  local num_args = #args_text
-  local i = 1
-  for _, arg in ipairs(args_text) do
-    -- if last element, don't add comma
-    if i == num_args then
-      vim.cmd("normal! o" .. arg)
-    else
-      vim.cmd("normal! o" .. arg .. ",")
-    end
-    i = i + 1
+  local tree = parser:parse()[1]
+
+  local root = tree:root()
+  local node = root:named_descendant_for_range(row, col, row, col)
+
+  if not node then return end
+
+  local target_types = {
+    argument_list = true, parameters = true, list = true,
+    dictionary = true, table_constructor = true
+  }
+
+  while node and not target_types[node:type()] do
+    node = node:parent()
   end
-  vim.cmd("normal! o" .. text)
+
+  if not node then return end
+
+  local args = {}
+  for child in node:iter_children() do
+    if child:named() then
+      table.insert(args, vim.treesitter.get_node_text(child, bufnr))
+    end
+  end
+
+  local s_row, s_col, e_row, e_col = node:range()
+  local text = vim.api.nvim_buf_get_text(bufnr, s_row, s_col, e_row, e_col, {})
+  local opening = string.sub(text[1], 1, 1)
+  local closing = string.sub(text[#text], #text[#text], #text[#text])
+
+  local new_lines = { opening }
+  for i, arg in ipairs(args) do
+    table.insert(new_lines, "  " .. arg .. ",")
+  end
+  table.insert(new_lines, closing)
+
+  -- Apply the change
+  vim.api.nvim_buf_set_text(bufnr, s_row, s_col, e_row, e_col, new_lines)
+
+  -- 1. Correct Indentation
+  local last_row = s_row + #new_lines - 1
+  vim.cmd(string.format("silent! normal! %dG=%dG", s_row + 1, last_row + 1))
+
+  -- 2. Smart Cursor Restoration
+  -- We move the cursor to the first argument line (s_row + 1)
+  -- and put it at the first non-blank character
+  vim.api.nvim_win_set_cursor(0, cursor_orig)
 end
 
-map('n', '<M-a>', wrap_args, opts)
+vim.keymap.set('n', '<M-a>', wrap_args, { desc = "TS: Wrap arguments" })
 
 
 ---- Terminal
