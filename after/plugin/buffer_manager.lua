@@ -60,3 +60,26 @@ end
 
 -- Map <leader>t to navigate to the first terminal buffer
 map('n', '<leader>t', nav_term, opts)
+
+
+-- Search in buffers
+
+local function search_buffers()
+  bmui.toggle_quick_menu()
+
+  -- 1. Enter search mode immediately
+  vim.api.nvim_feedkeys('/', 'n', false)
+
+  -- 2. Create a temporary mapping for the Enter key
+  --    This only applies to the current buffer (the menu)
+  vim.keymap.set('c', '<CR>', function()
+    -- If we are currently in a search ('/')
+    if vim.fn.getcmdtype() == '/' then
+      -- Finish the search AND immediately send a 'Select' Enter
+      return '<CR><CR>'
+    end
+    return '<CR>'
+  end, { remap = true, expr = true, buffer = true })
+end
+
+map('n', '<leader>s', search_buffers, opts)
