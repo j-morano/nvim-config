@@ -65,18 +65,34 @@ map('n', '<leader>t', nav_term, opts)
 -- Search in buffers
 
 local function search_buffers()
+  -- 1. Save current states
+  local saved_search = vim.fn.getreg('/')
+  local saved_hlsearch = vim.v.hlsearch
+
+  -- 2. Open the menu
   bmui.toggle_quick_menu()
 
-  -- 1. Enter search mode immediately
+  -- 3. ALWAYS activate highlighting for this specific interaction
+  vim.opt.hlsearch = true
+
+  -- 4. Trigger search mode
   vim.api.nvim_feedkeys('/', 'n', false)
 
-  -- 2. Create a temporary mapping for the Enter key
-  --    This only applies to the current buffer (the menu)
+  -- 5. Set up the "restore and finish" mapping
   vim.keymap.set('c', '<CR>', function()
-    -- If we are currently in a search ('/')
     if vim.fn.getcmdtype() == '/' then
-      -- Finish the search AND immediately send a 'Select' Enter
-      return '<CR><CR>'
+      -- Prepare the restore command
+      -- This puts the search register back AND resets the highlight state
+      local restore_cmd = string.format(
+        '<Cmd>let @/="%s" | let v:hlsearch=%d<CR>',
+        saved_search:gsub('"', '\\"'), -- Escape quotes to prevent Lua/Vim errors
+        saved_hlsearch
+      )
+      -- Returns:
+      -- <CR> (finish search)
+      -- <CR> (select buffer)
+      -- restore_cmd (clean up)
+      return '<CR><CR>' .. restore_cmd
     end
     return '<CR>'
   end, { remap = true, expr = true, buffer = true })
