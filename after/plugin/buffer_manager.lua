@@ -65,33 +65,34 @@ map('n', '<leader>t', nav_term, opts)
 -- Search in buffers
 
 local function search_buffers()
-  -- 1. Save current states
   local saved_search = vim.fn.getreg('/')
   local saved_hlsearch = vim.v.hlsearch
 
-  -- 2. Open the menu
   bmui.toggle_quick_menu()
-
-  -- 3. ALWAYS activate highlighting for this specific interaction
   vim.opt.hlsearch = true
 
-  -- 4. Trigger search mode
+  -- 1. Create a temporary mapping for the command line
+  -- This replaces every character 'x' with '.*x'
+  -- We use <char-c> to get the character typed
+  vim.keymap.set('c', '<Char>', function()
+    local char = vim.fn.nr2char(vim.fn.getcharstr())
+    return '.*' .. char
+  end, { expr = true, buffer = true })
+
+  -- 2. Trigger search mode
   vim.api.nvim_feedkeys('/', 'n', false)
 
-  -- 5. Set up the "restore and finish" mapping
+  -- 3. Restore and finish mapping
   vim.keymap.set('c', '<CR>', function()
     if vim.fn.getcmdtype() == '/' then
-      -- Prepare the restore command
-      -- This puts the search register back AND resets the highlight state
+      -- Clean up the temporary character mapping so it doesn't break normal Vim use
+      vim.keymap.del('c', '<Char>', { buffer = true })
+
       local restore_cmd = string.format(
         '<Cmd>let @/="%s" | let v:hlsearch=%d<CR>',
-        saved_search:gsub('"', '\\"'), -- Escape quotes to prevent Lua/Vim errors
+        saved_search:gsub('"', '\\"'),
         saved_hlsearch
       )
-      -- Returns:
-      -- <CR> (finish search)
-      -- <CR> (select buffer)
-      -- restore_cmd (clean up)
       return '<CR><CR>' .. restore_cmd
     end
     return '<CR>'
