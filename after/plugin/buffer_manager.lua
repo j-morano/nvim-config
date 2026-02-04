@@ -17,21 +17,21 @@ bm.setup({
   short_file_names = false,
   short_term_names = true,
   loop_nav = true,
-  -- order_buffers = 'lastused',
+  order_buffers = 'lastused',
   -- use_shortcuts = true,
 })
 ---- Navigate buffers bypassing the menu
 local bmui = require("buffer_manager.ui")
-local keys = '1234567890'
-for i = 1, #keys do
-  local key = keys:sub(i,i)
-  map(
-    'n',
-    string.format('<leader>%s', key),
-    function () bmui.nav_file(i) end,
-    opts
-  )
-end
+-- local keys = '1234567890'
+-- for i = 1, #keys do
+--   local key = keys:sub(i,i)
+--   map(
+--     'n',
+--     string.format('<leader>%s', key),
+--     function () bmui.nav_file(i) end,
+--     opts
+--   )
+-- end
 ---- Just the menu
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
 ---- Next/Prev
