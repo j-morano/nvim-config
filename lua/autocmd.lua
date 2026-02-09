@@ -122,3 +122,11 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { "python", "lua", "rust", "vim", "html", "javascript" },
   callback = function() vim.treesitter.start() end,
 })
+
+-- Indent comments in python
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.opt_local.smartindent = false
+  end,
+})
