@@ -205,14 +205,14 @@ local utils = require('utils')
 -- map('t', '<M-q>', '<C-\\><C-n>:wincmd p<CR>', opts)
 -- Open interactive python in terminal (right pane)
 local function open_interactive_python()
-  vim.cmd('term ipython')
+  vim.cmd('term python -m IPython')
 end
 map('n', '<M-S-p>', open_interactive_python, opts)
 
 
 -- Easily jump between the interactive python terminal and the code
 local function jump_to_terminal_buffer()
-  local terminal_buffer = vim.fn.bufnr('ipython')
+  local terminal_buffer = vim.fn.bufnr('python -m IPython')
   if terminal_buffer == -1 then
     return 1
   end
