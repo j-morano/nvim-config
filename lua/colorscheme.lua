@@ -51,6 +51,9 @@ local function set_custom_highlights()
 
   -- Copilot
   vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#9c4fb8" })
+
+  -- Add Critical highlight group in red
+  vim.api.nvim_set_hl(0, "Critical", {fg = "#ffffff", bg = "#bb0000", bold = true })
 end
 
 
