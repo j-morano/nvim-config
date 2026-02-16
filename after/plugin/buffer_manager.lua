@@ -3,6 +3,7 @@ local map = vim.keymap.set
 local bm = require("buffer_manager")
 ---- Setup
 bm.setup({
+  height = 0.5,
   select_menu_item_commands = {
     v = {
       key = "<M-v>",
