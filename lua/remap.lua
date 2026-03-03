@@ -236,6 +236,55 @@ end
 map({'v'}, '<M-p>', jump_and_run, opts)
 
 
+local function surround_selection()
+  -- Wait for next char
+  local char_code = vim.fn.getchar()
+  if char_code == 27 then return end -- Exit if user presses Esc
+  -- Convert the numerical code to an actual string character
+  local char = vim.fn.nr2char(char_code)
+
+  local closing_chars = {
+    ['('] = ')',
+    ['['] = ']',
+    ['{'] = '}',
+    ['<'] = '>',
+  }
+
+  -- Ensure both are strings
+  local opening_char = tostring(char)
+  local closing_char = tostring(closing_chars[opening_char] or opening_char)
+
+  -- Save beginning and end of selection
+  local vpos = vim.fn.getpos('v')
+  local cpos = vim.fn.getpos('.')
+
+  -- Handle backwards selection by finding the true min/max
+  local start_line, start_col = math.min(vpos[2], cpos[2]), math.min(vpos[3], cpos[3])
+  local end_line, end_col = math.max(vpos[2], cpos[2]), math.max(vpos[3], cpos[3])
+
+  -- Apply the surrounding (Adjusting for 0-index API)
+  -- The API expects a table of strings: { "string" }
+  vim.api.nvim_buf_set_text(
+    0,
+    end_line - 1,
+    end_col,
+    end_line - 1,
+    end_col, { closing_char }
+  )
+  vim.api.nvim_buf_set_text(
+    0,
+    start_line - 1,
+    start_col - 1,
+    start_line - 1,
+    start_col - 1,
+    { opening_char }
+  )
+
+  -- Exit visual mode
+  vim.api.nvim_input('<Esc>')
+end
+
+map('v', 's', surround_selection, opts)
 
 
 ---- Vim-style alternative to multiple cursors

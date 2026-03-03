@@ -90,6 +90,7 @@ vim.opt.foldmethod = "manual"
 vim.w.m1 = vim.fn.matchadd('Todo', 'TODO')
 vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
 vim.w.m1 = vim.fn.matchadd('Critical', 'IMPORTANT')
+vim.w.m1 = vim.fn.matchadd('Critical', 'DEPRECATED')
 
 
 ---- VIM global variables

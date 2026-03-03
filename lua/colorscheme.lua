@@ -82,6 +82,32 @@ vim.opt.background = "light"
 vim.cmd.colorscheme("tokyonight-day")
 
 
+require('gitsigns').setup({
+  signs = {
+    add = { text = '+' }, -- The only change you wanted!
+    change = { text = '~' },
+    changedelete = { text = '>' },
+    delete = { text = '-' },
+  },
+})
+
+-- Define the highlight groups for gitsigns
+local git_high_contrast = {
+  -- Black on Green
+  GitSignsAdd    = { fg = '#000000', bg = '#d0f1d4', bold = true },
+  -- Black on Blue
+  GitSignsChange = { fg = '#000000', bg = '#bdd8ff', bold = true },
+  -- Black on Red
+  GitSignsDelete = { fg = '#000000', bg = '#ffbdbd', bold = true },
+  -- Black on Purple
+  GitSignsChangedelete = { fg = '#000000', bg = '#e9bdff', bold = true },
+}
+
+for group, settings in pairs(git_high_contrast) do
+  vim.api.nvim_set_hl(0, group, settings)
+end
+
+
 -- Highlight trailing whitespace except in insert mode
 vim.cmd[[
 autocmd InsertEnter * set listchars=

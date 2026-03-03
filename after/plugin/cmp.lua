@@ -1,82 +1,45 @@
 ---- Setup nvim-cmp.
-local cmp = require'cmp'
 
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
+require('blink.cmp').setup({
+  -- 1. Snippets: 1:1 Luasnip integration
+  -- snippets = { preset = 'luasnip' },
+  snippets = { preset = 'default' },
+
+  -- 2. Keymaps: Migration of your <TAB> and <C-space> logic
+  keymap = {
+    preset = 'none', -- We'll define your exact mappings from the old config
+    ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    ['<C-e>'] = { 'hide' },
+    ['<CR>'] = { 'accept', 'fallback' },
+
+    ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+
+    ['<C-n>'] = { 'select_next', 'fallback' },
+    ['<C-p>'] = { 'select_prev', 'fallback' },
+
+    ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
   },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+
+  -- 3. Sources: Replacing your cmp.config.sources
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+
+    -- Filetype specific overrides (Replacing your setup.filetype logic)
+    per_filetype = {
+      gitcommit = { 'buffer' }, -- Note: 'cmp_git' would need blink.compat if desired
+      tex = { 'lsp', 'snippets', 'buffer' },
+    },
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    -- Accept currently selected item.
-    --  Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<TAB>'] = cmp.mapping.select_next_item(),
-    ['<S-TAB>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-    { name = 'buffer' },
-    { name = 'nvim_lsp_signature_help' },
-    -- { name = 'path' },
-  })
+
+  -- 4. Window: Bordered windows if you prefer them
+  completion = {
+    menu = { border = 'rounded' },
+    documentation = { window = { border = 'rounded' }, auto_show = true },
+  },
+
+  -- Experimental (but very 2026) signature help
+  signature = { enabled = true }
 })
 
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  } --, {
-    -- { name = 'buffer' },
-  --}
-  )
-})
-
-
-cmp.setup.filetype('tex', {
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-  }, {
-    { name = 'buffer' },
-    -- { name = 'path' },
-  })
-})
-
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline('/', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---     { name = 'cmdline' }
---   })
--- })

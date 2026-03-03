@@ -24,6 +24,9 @@ Commands:
     help        Show this help message
 """
 
+BUILD_HOOKS = {
+    'blink.cmp': 'cargo build --release',
+}
 
 def get_plugin_paths(verbose: bool=False):
     plugin_paths = glob.glob(os.path.join(base_plugin_path, 'start', '*'))
@@ -127,6 +130,7 @@ elif sys.argv[1] == 'sync':
             if prev_branch == '':
                 print(f'Plugin {plugin} is not in a branch, skipping.\n')
             else:
+                needs_build = False
                 if prev_branch != branch:
                     print(f'Changing {plugin} from branch {prev_branch} to {branch}, and updating')
                     # Check if branch exists locally
@@ -147,14 +151,24 @@ elif sys.argv[1] == 'sync':
                         ['git', 'switch', branch],
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                     )
-                    run(
+                    res = run(
                         ['git', 'pull'],
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                     )
+                    if 'Already up to date' not in res.stdout.decode('utf-8'):
+                        needs_build = True
                 elif branch is None or prev_branch == branch:
                     print(f'Updating {plugin}')
-                    run(
+                    res = run(
                         ['git', 'pull'],
+                        cwd=os.path.join(base_plugin_path, 'start', plugin_name),
+                    )
+                    if 'Already up to date' not in res.stdout.decode('utf-8'):
+                        needs_build = True
+                if needs_build and plugin_name in BUILD_HOOKS:
+                    print(f' - Running build hook for {plugin}')
+                    run(
+                        BUILD_HOOKS[plugin_name].split(),
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                     )
             operations += 1

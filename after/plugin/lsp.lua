@@ -49,7 +49,8 @@ local lsp_flags = {
 }
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 
 vim.lsp.config.ty = {
@@ -116,17 +117,6 @@ vim.lsp.config.lua_ls = {
     },
   },
 }
-
-
-require "lsp_signature".setup({
-  floating_window = false,
-  doc_lines = 1,
-  hint_prefix = "📚 ",
-})
-vim.keymap.set({ 'i' }, '<M-k>', function()
-  vim.lsp.buf.signature_help()
-end,
-{ silent = true, noremap = true, desc = 'toggle signature' })
 
 
 vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
