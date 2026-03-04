@@ -64,8 +64,6 @@ vim.opt.incsearch = true
 vim.opt.updatetime = 100
 -- Use mouse in normal, visual and insert mode
 vim.opt.mouse = 'nvi'
--- Ignore case when completing file and directory names
-vim.opt.ignorecase = true
 -- Save marks and other information between sessions
 vim.opt.viminfo = "'100,f1"
 -- Maximum number of items to show in the popup menu
@@ -87,10 +85,10 @@ vim.opt.foldmethod = "manual"
 
 ---- Window options
 -- Custom highlights
-vim.w.m1 = vim.fn.matchadd('Todo', 'TODO')
-vim.w.m1 = vim.fn.matchadd('Todo', 'NOTE')
-vim.w.m1 = vim.fn.matchadd('Critical', 'IMPORTANT')
-vim.w.m1 = vim.fn.matchadd('Critical', 'DEPRECATED')
+vim.fn.matchadd('Todo', 'TODO')
+vim.fn.matchadd('Todo', 'NOTE')
+vim.fn.matchadd('Critical', 'IMPORTANT')
+vim.fn.matchadd('Critical', 'DEPRECATED')
 
 
 ---- VIM global variables
