@@ -108,12 +108,12 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.api.nvim_create_autocmd({"BufWinLeave"}, {
-  pattern = {"*.*"},
+  pattern = '*.*',
   desc = "save view (folds), when closing file",
   command = "mkview",
 })
 vim.api.nvim_create_autocmd({"BufWinEnter"}, {
-  pattern = {"*.*"},
+  pattern = '*.*',
   desc = "load view (folds), when opening file",
   command = "silent! loadview"
 })
@@ -125,7 +125,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Indent comments in python
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
+  pattern = 'python',
   callback = function()
     vim.opt_local.smartindent = false
   end,

@@ -1,62 +1,47 @@
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- Global defaults for all servers
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+})
 
-
-local function functionify(fn)
-  return function()
-    return fn()
-  end
-end
-
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', functionify(vim.lsp.buf.declaration), bufopts)
-  vim.keymap.set('n', 'gd', functionify(vim.lsp.buf.definition), bufopts)
-  vim.keymap.set('n', 'K', function()
+-- Single on_attach via autocmd instead of per-server function
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local bufopts = { noremap = true, silent = true, buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', 'K', function()
       vim.lsp.buf.hover { border = "single", max_height = 25, max_width = 120 }
-  end, bufopts)
-  vim.keymap.set('n', 'gI', functionify(vim.lsp.buf.implementation), bufopts)
-  vim.keymap.set('n', '<C-k>', functionify(vim.lsp.buf.signature_help), bufopts)
-  vim.keymap.set('i', '<C-k>', functionify(vim.lsp.buf.signature_help), bufopts)
-  vim.keymap.set('n', '<space>wa', functionify(vim.lsp.buf.add_workspace_folder), bufopts)
-  vim.keymap.set('n', '<space>wr', functionify(vim.lsp.buf.remove_workspace_folder), bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', functionify(vim.lsp.buf.type_definition), bufopts)
-  vim.keymap.set('n', '<space>rn', functionify(vim.lsp.buf.rename), bufopts)
-  vim.keymap.set('n', '<space>ca', functionify(vim.lsp.buf.code_action), bufopts)
-  vim.keymap.set('n', 'gr', functionify(vim.lsp.buf.references), bufopts)
-  vim.keymap.set('n', '<space>f', functionify(vim.lsp.buf.formatting), bufopts)
-end
+    end, bufopts)
+    vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+  end,
+})
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
+-- Diagnostic keymaps
+vim.keymap.set(
+  'n', '<space>e',
+  vim.diagnostic.open_float, { noremap = true, silent = true }
+)
+vim.keymap.set(
+  'n', '<space>q',
+  vim.diagnostic.setloclist, { noremap = true, silent = true }
+)
+vim.keymap.set(
+  'n', '<M-d>',
+  vim.diagnostic.open_float, {}
+)
 
--- Setup lspconfig.
--- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-
+-- Server-specific config (only what differs from the global defaults)
 vim.lsp.config.ty = {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
   settings = {
     ty = {
       inlayHints = {
@@ -70,58 +55,26 @@ vim.lsp.config.ty = {
   }
 }
 
-vim.lsp.config.ruff = {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
-vim.lsp.config.texlab = {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
-
-local clangd_capabilities = capabilities
-clangd_capabilities.offsetEncoding = { "utf-16" }
-
+local clangd_caps = require('blink.cmp').get_lsp_capabilities()
+clangd_caps.offsetEncoding = { "utf-16" }
 vim.lsp.config.clangd = {
   cmd = { "clangd" },
-  capabilities = clangd_capabilities,
-  on_attach = on_attach,
-  flags = lsp_flags,
+  capabilities = clangd_caps,
 }
 
 vim.lsp.config.lua_ls = {
   settings = {
     Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim' } },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
-        -- Do not ask about working environment on every startup
         checkThirdParty = false,
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+      telemetry = { enable = false },
     },
   },
 }
 
-
-vim.keymap.set('n', '<M-d>', vim.diagnostic.open_float, {})
-
 vim.lsp.enable({ "ty", "ruff", "texlab", "clangd", "lua_ls" })
-
--- Disable virtual text with inlay/type hints
 vim.lsp.inlay_hint.enable(true)

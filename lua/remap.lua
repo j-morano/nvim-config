@@ -4,9 +4,7 @@ local opts = {noremap = true}--, silent = true}
 
 -- VIM
 map('n', 's', function() vim.cmd('update') end, opts)
--- Best remap ever
---  Replace currently selected text with default register
---  without yanking it
+--  Replace currently selected text with default register without yanking it
 map('v', 'p', 'pgvy', opts)
 map('', 'c', '"_c', opts)
 -- Copy current word
@@ -72,15 +70,6 @@ map({'n', 'v', 'i'}, '<S-Ñ>', ':', opts)
 map('n', '<C-w>ñ', '<C-w>h', opts)
 -- Filename suggestions
 map('i', '<C-f>', '<C-x><C-f>', opts)
--- Auto-expansion
--- map('i', '(<CR>', '(<CR>)<C-c>O', opts)
--- map('i', '{<CR>', '{<CR>}<C-c>O', opts)
--- map('i', '[<CR>', '[<CR>]<C-c>O', opts)
--- map('i', '(<Space>', '()<Left>', opts)
--- map('i', '{<Space>', '{}<Left>', opts)
--- map('i', '[<Space>', '[]<Left>', opts)
--- map('i', '\'<Space>', '\'\'<Left>', opts)
--- map('i', '"<Space>', '""<Left>', opts)
 -- Run current file
 map('n', '<M-r>', ':!"%:p"<CR>', opts)
 -- Deactivate C-v for visual block
@@ -89,7 +78,7 @@ map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
 map('i', 'jj', '<ESC>', opts)
 -- Move to pane
-map('n', '<M-h>', '<C-w><C-w>', opts)
+map('n', '<M-l>', '<C-w><C-w>', opts)
 -- Smart dd: only yank the lines if the current line is not empty
 map('n', 'dd', function()
   local count = vim.v.count1
@@ -171,7 +160,7 @@ local function wrap_args()
   local closing = string.sub(text[#text], #text[#text], #text[#text])
 
   local new_lines = { opening }
-  for i, arg in ipairs(args) do
+  for _, arg in ipairs(args) do
     table.insert(new_lines, "  " .. arg .. ",")
   end
   table.insert(new_lines, closing)

@@ -26,9 +26,7 @@ local bmui = require("buffer_manager.ui")
 ---- Just the menu
 map({ 't', 'n' }, '<M-Space>', bmui.toggle_quick_menu, opts)
 ---- Next/Prev
--- map('n', '<M-l>', bmui.nav_next, opts)
 map('n', '<M-b>', bmui.nav_next, opts)
--- map('n', '<M-;>', bmui.nav_prev, opts)
 
 ---- Use <leader>-t to go to the terminal buffer
 

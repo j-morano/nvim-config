@@ -56,6 +56,8 @@ vim.opt.smartindent = true
 -- Copy to system clipboard
 --  Dependency: clipboard software. For example: xclip
 vim.opt.clipboard:append('unnamedplus')
+-- If in wayland, set clipboard to wl-copy, otherwise xclip
+vim.g.clipboard = 'xclip'
 -- Do not highlight current word occurences
 vim.opt.hlsearch = false
 -- Incremental search

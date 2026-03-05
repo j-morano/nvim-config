@@ -11,4 +11,3 @@ catgoose/nvim-colorizer.lua
 github/copilot.vim
 lewis6991/gitsigns.nvim
 mrcjkb/rustaceanvim
-tpope/vim-fugitive
