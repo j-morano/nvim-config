@@ -57,7 +57,7 @@ vim.opt.smartindent = true
 --  Dependency: clipboard software. For example: xclip
 vim.opt.clipboard:append('unnamedplus')
 -- If in wayland, set clipboard to wl-copy, otherwise xclip
-vim.g.clipboard = 'xclip'
+-- vim.g.clipboard = 'xclip'
 -- Do not highlight current word occurences
 vim.opt.hlsearch = false
 -- Incremental search
@@ -65,6 +65,8 @@ vim.opt.incsearch = true
 -- Default updatetime 4000ms is not good for async update
 vim.opt.updatetime = 100
 -- Use mouse in normal, visual and insert mode
+-- Scroll 1 line at a time vertically and horizontally
+vim.opt.mousescroll = "ver:1,hor:1"
 vim.opt.mouse = 'nvi'
 -- Save marks and other information between sessions
 vim.opt.viminfo = "'100,f1"
