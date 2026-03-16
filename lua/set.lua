@@ -81,6 +81,7 @@ vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
 -- Show folds sign
 vim.opt.foldcolumn = '1'
+vim.opt.swapfile = false
 
 vim.opt.foldmethod = "manual"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

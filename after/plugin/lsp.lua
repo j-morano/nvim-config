@@ -36,7 +36,7 @@ vim.keymap.set(
   vim.diagnostic.setloclist, { noremap = true, silent = true }
 )
 vim.keymap.set(
-  'n', '<M-d>',
+  'n', '<M-e>',
   vim.diagnostic.open_float, {}
 )
 
