@@ -36,9 +36,6 @@ end, { expr = true, silent = true })
 -- More comfortable keybindig for alternate-file
 map('i', '<M-w>', '<ESC>:e#<CR>a', opts)
 map('n', '<M-w>', ':e#<CR>', opts)
--- Move cursor in insert mode
-map('i', '<M-l>', '<Right>', opts)
-map('i', '<M-;>', '<Left>', opts)  -- ";" : wezterm
 -- Better jumping
 map('', '<M-j>', '<C-d>zz', opts)
 map('', '<M-k>', '<C-u>zz', opts)
@@ -78,7 +75,7 @@ map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
 map('i', 'jj', '<ESC>', opts)
 -- Move to pane
-map('n', '<M-l>', '<C-w><C-w>', opts)
+map('n', '<C-l>', '<C-w><C-w>', opts)
 -- Smart dd: only yank the lines if the current line is not empty
 map('n', 'dd', function()
   local count = vim.v.count1

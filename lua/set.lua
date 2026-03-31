@@ -74,8 +74,6 @@ vim.opt.viminfo = "'100,f1"
 vim.opt.pumheight = 7
 -- Show cursor line
 vim.opt.cursorline = true
--- Use termguicolors
-vim.opt.termguicolors = true
 -- Permanent undo
 vim.opt.undodir = vim.fn.expand('~/.undodir')
 vim.opt.undofile = true
@@ -87,13 +85,6 @@ vim.opt.foldmethod = "manual"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.foldenable = false
 -- vim.opt.foldopen:remove({ "hor" })
-
----- Window options
--- Custom highlights
-vim.fn.matchadd('Todo', 'TODO')
-vim.fn.matchadd('Todo', 'NOTE')
-vim.fn.matchadd('Critical', 'IMPORTANT')
-vim.fn.matchadd('Critical', 'DEPRECATED')
 
 
 ---- VIM global variables
