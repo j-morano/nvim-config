@@ -1,6 +1,5 @@
 nvim-lua/plenary.nvim
 neovim/nvim-lspconfig
-nvim-treesitter/nvim-treesitter
 saghen/blink.cmp
 folke/tokyonight.nvim
 ellisonleao/gruvbox.nvim
