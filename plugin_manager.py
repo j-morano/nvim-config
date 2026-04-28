@@ -24,9 +24,6 @@ Commands:
     help        Show this help message
 """
 
-BUILD_HOOKS = {
-    'blink.cmp': 'cargo build --release',
-}
 
 def get_plugin_paths(verbose: bool=False):
     plugin_paths = glob.glob(os.path.join(base_plugin_path, 'start', '*'))
@@ -90,8 +87,13 @@ elif sys.argv[1] == 'sync':
             parts = plugin.split('|')
             plugin = parts[0]
             branch = parts[1]
+        elif '$' in plugin:
+            parts = plugin.split('$')
+            plugin = parts[0]
+            build_hook = parts[1]
         else:
             branch = None
+            build_hook = None
         plugin_url = 'https://github.com/' + plugin
         plugin_name = plugin.split('/')[-1]
         plugin_names.append(plugin_name)
@@ -165,10 +167,10 @@ elif sys.argv[1] == 'sync':
                     )
                     if 'Already up to date' not in res.stdout.decode('utf-8'):
                         needs_build = True
-                if needs_build and plugin_name in BUILD_HOOKS:
+                if needs_build and build_hook is not None:
                     print(f' - Running build hook for {plugin}')
                     run(
-                        BUILD_HOOKS[plugin_name].split(),
+                        build_hook.split(),
                         cwd=os.path.join(base_plugin_path, 'start', plugin_name),
                     )
             operations += 1

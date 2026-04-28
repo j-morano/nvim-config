@@ -1,6 +1,7 @@
 nvim-lua/plenary.nvim
 neovim/nvim-lspconfig
-saghen/blink.cmp
+saghen/blink.lib
+saghen/blink.cmp$nvim --headless -c \"lua require('blink.cmp').build():wait(60000)\" -c 'qa'
 folke/tokyonight.nvim
 ellisonleao/gruvbox.nvim
 lukas-reineke/indent-blankline.nvim

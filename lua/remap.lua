@@ -74,6 +74,8 @@ map('n', '<C-v>', '<Nop>', opts)
 map('n', 'vv', '<C-v>', opts)
 -- Alternative escape
 map('i', 'jj', '<ESC>', opts)
+-- Remove word with Ctrl-Backspace
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', opts)
 -- Move to pane
 map('n', '<C-l>', '<C-w><C-w>', opts)
 -- Smart dd: only yank the lines if the current line is not empty
@@ -89,6 +91,9 @@ end, opts)
 map('x', '.', ':norm .<CR>', opts)
 map('x', '@', ':norm @q<CR>', opts)
 
+vim.keymap.set('n', 'ge', function()
+  vim.diagnostic.jump({ count = 1 })
+end, { desc = 'Next diagnostic' })
 
 -- Search
 local function do_hlsearch()
